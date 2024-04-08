@@ -1,6 +1,5 @@
 # Will Be There
 An online RSVP service that allows registered users to create events, share the link with their friends, and have their friends indicate whether they are attending or not.
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 ## Getting Started
   Ensure you have nodejs and git installed on your computer
