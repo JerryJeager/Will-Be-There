@@ -7,6 +7,15 @@ An online RSVP service that allows registered users to create events, share the 
    ```
    git clone https://github.com/JerryJeager/Will-Be-There.git
    ```
+- Add Environment Variables
+  - Create a .env file in the root directory of the project and include the following environment variables
+  ```
+    MONGO_URL = 
+    GOOGLE_ID = 
+    GOOGLE_SECRET = 
+    NEXTAUTH_URL = http://localhost:3000
+    NEXTAUTH_SECRET = 
+  ```
 - Install Dependencies
   ```
     npm install 
@@ -15,4 +24,4 @@ An online RSVP service that allows registered users to create events, share the 
   ```
   npm run dev
   ```
-  view the project on your browser from the port that was displayed on the terminal example: [http://localhost:5173](http://localhost:5173)
+  view the project on your browser from the port that was displayed on the terminal example: [http://localhost:3000](http://localhost:3000)
