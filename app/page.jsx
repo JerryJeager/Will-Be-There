@@ -6,6 +6,8 @@ import { Testimonial } from "../src/components/sections/Testimonial";
 import { Pricing } from "../src/components/sections/Pricing";
 import { Faq } from "../src/components/sections/Faq";
 import { Footer } from "../src/components/Footer";
+import { Planning } from "../src/components/sections/Planning";
+
 export default function Home() {
   return (
     <main className="max-h-screen">
@@ -16,6 +18,7 @@ export default function Home() {
       <Testimonial />
       <Pricing />
       <Faq />
+      <Planning />
       <Footer />
     </main>
   );
