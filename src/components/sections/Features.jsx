@@ -49,11 +49,11 @@ export const  Featuredata = [
 
 export const Features = () => {
   return (
-    <section className=' w-full'>
+    <section className=''>
         <div className='bg-[#0D154B] flex flex-col justify-center items-center p-5'>
             <div className='text-center space-y-5 p-5'>
-                <h1 className='text-[#BCC2FF] text-3xl'>Features</h1>
-                <h3 className='text-white'>Essential Tools for Seamless Planning and Delighted Guests.</h3>
+                <p className='text-[#BCC2FF] text-3xl'>Features</p>
+                <p className='text-white'>Essential Tools for Seamless Planning and Delighted Guests.</p>
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 m-2'>
                 {
@@ -61,8 +61,8 @@ export const Features = () => {
                         return (
                             <div key={data.id} className='hover:shadow-2xl shadow-indigo-500 hover:scale-105  cursor-pointer transition-all duration-200 text-white bg-[#BCC2FF]/20 w-60 h-48 rounded-lg flex flex-col items-center justify-center space-y-2'>
                                 <p className='text-center h-10 w-10'><Image src={data.icon} alt='icon' width="300" height={'400'} quality={100} className='w-full h-full'/></p>
-                                <h1 className=''>{data.title}</h1>
-                                <p className='text-sm text-center font-normal p-2 text-slate-400'>{data.text}</p>
+                                <p className='text-[#FFFFFF]'>{data.title}</p>
+                                <p className='text-sm text-center font-normal p-2 text-[#F5F2FA]'>{data.text}</p>
                             </div>
                         )
                     })

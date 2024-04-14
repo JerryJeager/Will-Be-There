@@ -8,7 +8,7 @@ import { Faq } from "../src/components/sections/Faq";
 import { Footer } from "../src/components/Footer";
 export default function Home() {
   return (
-    <main>
+    <main className="max-h-screen">
       <Hero />
       <Overview1 />
       <Overview2 />

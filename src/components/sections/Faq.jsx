@@ -46,15 +46,15 @@ export const Faq = () => {
         <Wrapper>
             <div className='flex flex-col items-center justify-center py-10'>
                 <div className='p-5'>
-                    <h1 className='text-xl sm:text-3xl text-center font-semibold'>Frequently Asked Questions</h1>
+                    <p className='text-xl sm:text-3xl text-center font-semibold'>Frequently Asked Questions</p>
                 </div>
-                <div className='w-[80%]'>
+                <div className='md:w-[80%]'>
                     {
                         FaqData.map((data) => {
                             return (
                                 <div key={data.id} className='p-4'>
                                     <div className='flex justify-between items-center'>
-                                        <h1>{data.title}</h1>
+                                        <p>{data.title}</p>
                                         <span><IoIosArrowDown /></span>
                                     </div>
                                 </div>

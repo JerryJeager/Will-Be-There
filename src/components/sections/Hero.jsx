@@ -18,9 +18,9 @@ export const Hero = () => {
             <div className='flex flex-col md:flex-row gap-2 p-4 items-center justify-between py-10'>
                 {/* left side */}
                 <div className='space-y-5 py-5 md:w-full flex flex-col items-center md:items-start'>
-                    <h1 className='text-3xl font-semibold'>Instantly Create <strong className='text-[#0D35FB]'>Custom</strong> Invite For Any Event.</h1>
+                    <p className='text-3xl font-semibold'>Instantly Create <strong className='text-[#0D35FB]'>Custom</strong> Invite For Any Event.</p>
                     <p>
-                        Let’s help you keep track of  your invited guest with our innovative online RSVP platform, creating stunning invites fit for you.
+                        Let's help you keep track of  your invited guest with our innovative online RSVP platform, creating stunning invites fit for you.
                     </p>
                     <div>
                         <Button text='Sign up for free'/>

@@ -17,7 +17,7 @@ export const testimonialData = [
         comment: "Since using Will Be There, the quality of our guest invite process has improved drastically. The user-friendly interface allows even non-designers like myself to create professional-looking Invite. It's a fantastic tool for any business looking to improve their Event process.",
         name: "Donald Duke",
         occupation: "CEO Designly",
-        bgColor: `#7582D6`
+        bgColor: `#4f60d5`
     },
     {
         id: 3,
@@ -46,15 +46,15 @@ export const Testimonial = () => {
         <Wrapper>
             <div className='flex flex-col items-center justify-center text-center py-5 sm:p-10'>
                 <div>
-                    <h1 className='text-xl sm:text-3xl text-center font-semibold'>Hear From Our Amazing Clients</h1>
-                    <h3 className='text-gray-500 text-sm sm:text-lg py-2'>Review from our customers shows how stunning invites for all event using a reliable and sustainable</h3>
+                    <p className='text-xl sm:text-3xl text-center font-semibold'>Hear From Our Amazing Clients</p>
+                    <p className='text-gray-500 text-sm sm:text-lg py-2'>Review from our customers shows how stunning invites for all event using a reliable and sustainable</p>
                 </div>
                 <div id='slider' className='w-full h-full overflow-x-auto whitespace-nowrap scrollbar-hide scroll-smooth relative py-10 transition-all'>
                     {
                         testimonialData.map((data)=> {
                             return (
-                                <div key={data.id} className='md:w-80 inline-block cursor-pointer relative p-2 text-center mx-5 space-y-5 py-5'>
-                                    <h1 className='bg-[#0D154B] rounded-2xl text-white p-4 text-sm hover:shadow-lg shadow-[#0D154B] transition-all duration-200 whitespace-normal' style={{backgroundColor: `${data?.bgColor}`}}>"{data.comment}"</h1>
+                                <div key={data.id} className='md:w-96 inline-block cursor-pointer relative p-2 text-center mx-5 space-y-5 py-5'>
+                                    <p className='bg-[#0D154B] rounded-2xl text-[#FFFFFF] p-4 text-sm hover:shadow-lg shadow-[#0D154B] transition-all duration-200 whitespace-normal' style={{backgroundColor: `${data?.bgColor}`}}>"{data.comment}"</p>
                                     <div className='text-sm'>
                                         <p className='font-semibold'>{data.name}</p>
                                         <p className='text-[#636363]'>{data.occupation}</p>

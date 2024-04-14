@@ -27,7 +27,8 @@ export const PricingData = [
         offer3: "Event Reminder",
         button: 'sign up',
         bgColor: "#0B195B",
-        color: "#ffffff"        
+        color: "#ffffff",
+        color2: "#b5b1b1"        
     },
     {
         id: 3,
@@ -49,8 +50,8 @@ export const Pricing = () => {
     <section>
         <Wrapper>
             <div className='flex flex-col items-center justify-center py-10'>
-                <h1 className='text-xl sm:text-3xl text-center font-semibold'>PRICING FOR INVITATION</h1>
-                <h3 className='text-gray-500 text-sm sm:text-lg py-2'>Discover the right plan for you. From essentials to premium features, we've got you covered.</h3>
+                <p className='text-xl sm:text-3xl text-center font-semibold'>PRICING FOR INVITATION</p>
+                <p className='text-gray-500 text-sm sm:text-lg py-2'>Discover the right plan for you. From essentials to premium features, we've got you covered.</p>
             </div>
             <div className='flex items-center justify-center'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
@@ -59,14 +60,14 @@ export const Pricing = () => {
                             return (
                                 <div key={index} className='flex flex-col justify-center p-2 border-[3px] border-[#0B195B] rounded-xl w-64 h-96 space-y-5 hover:scale-105 ease-in transition-all ' style={{backgroundColor: `${data?.bgColor}`, color: `${data?.color}`}}>
                                     <div className='text-center'>
-                                        <h1 className='text-[#B4B2B2] font-semibold p-1'>{data.title}</h1>
-                                        <h2>{data.duration}</h2>
+                                        <p className='text-gray-500 font-semibold p-1' style={{color: `${data?.color2}`}}>{data.title}</p>
+                                        <p>{data.duration}</p>
                                     </div>
                                     <div>
-                                        <h4 className='p-2 text-lg'>{data.description}</h4>
-                                        <p className='flex items-center gap-2 text-lg'><Image src={data?.icon || icon} quality={100} />{data.offer1}</p>
-                                        <p className='flex items-center gap-2 text-lg'><Image src={data?.icon || icon} quality={100} />{data.offer2}</p>
-                                        <p className='flex items-center gap-2 text-lg'><Image src={data?.icon || icon} quality={100} />{data.offer3}</p>
+                                        <p className='p-2 text-lg'>{data.description}</p>
+                                        <p className='flex items-center gap-2 text-lg'><Image src={data?.icon || icon} alt='icon' quality={100} />{data.offer1}</p>
+                                        <p className='flex items-center gap-2 text-lg'><Image src={data?.icon || icon} alt='icon' quality={100} />{data.offer2}</p>
+                                        <p className='flex items-center gap-2 text-lg'><Image src={data?.icon || icon} alt='icon' quality={100} />{data.offer3}</p>
                                     </div>
                                     <div className=' text-white bg-[#0D35FB] mx-2 text-center rounded-xl'>
                                         <button className='p-2 '>{data.button}</button>

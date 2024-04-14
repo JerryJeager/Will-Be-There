@@ -11,8 +11,8 @@ export const Overview1 = () => {
             <div className='flex flex-col md:flex-row md:py-10 px-5 space-y-4 md:space-x-12'>
                 {/* left */}
                 <div className='space-y-4 md:w-[50%]'>
-                    <h1 className='font-bold text-3xl'>Streamline your event journey from start to finish</h1>
-                    <p className='text-gray-500'>
+                    <p className='font-bold sm:text-3xl text-xl'>Streamline your event journey from start to finish</p>
+                    <p className='text-gray-500 text-lg'>
                         Begin with effortlessly compile a list of  for guests and items to contribute to your event, ensuring every detail is accounted for.
                     </p>
                     <div>
