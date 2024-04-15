@@ -42,8 +42,6 @@ export const PricingData = [
     }
 ]
  
- 
-
 
 export const Pricing = () => {
   return (

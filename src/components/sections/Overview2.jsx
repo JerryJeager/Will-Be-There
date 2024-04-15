@@ -2,7 +2,7 @@ import React from 'react'
 import { Wrapper } from '../../shared/Wrapper'
 import { Button } from '../../shared/Button'
 import Image from 'next/image'
-import image from '../../../public/assets/Rectangle 5.png'
+import image from '../../../public/assets/overview2.png'
 
 export const Overview2 = () => {
   return (
@@ -10,7 +10,7 @@ export const Overview2 = () => {
         <Wrapper>
             <div className='flex flex-col md:flex-row py-5 md:py-10 px-5 space-y-5 md:space-x-12'>
                 {/* left */}
-                <div className='h-96 md:w-[50%] p-3'>
+                <div className='h-96 md:w-[50%] p-'>
                     <Image src={image} alt={'image'} className='w-full h-full object-contain'/>
                 </div>
                 {/* right */}
@@ -23,7 +23,6 @@ export const Overview2 = () => {
                         <Button text="Try Now For Free"/>
                     </div>
                 </div>
-                
             </div>
         </Wrapper>
     </section>

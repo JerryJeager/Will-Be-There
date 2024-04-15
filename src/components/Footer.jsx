@@ -5,7 +5,7 @@ import facebookIcon from "../../public/assets/facebook.png";
 import twitterIcon from "../../public/assets/twitter.png";
 export const Footer = () => {
   return (
-    <div className="flex flex-col items-start justify-center gap-7 h-auto bg-[#0B195B] text-white py-8 md:px-10 px-5">
+    <section className="flex flex-col items-start justify-center gap-7 h-auto bg-[#0B195B] text-white py-8 md:px-10 px-5 ">
       <div className="flex flex-wrap items-center w-full h-full justify-between md:px-8 space-y-4 ">
         <div className="gap-10">
           <span className="mb-6 text-xl">LOGO</span>
@@ -75,11 +75,11 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="h-[1px] bg-white w-[90%]"></div>
-      <div className="flex item-center gap-4 justify-start  text-sm ml-5">
-        <h4>&copy; 2023 positvus. All right reserved</h4>
-        <h4>Privacy Policy</h4>
+      <div className="h-[1px] bg-white w-full md:w-[90%]"></div>
+      <div className="text-sm flex flex-wrap gap-2 items-center ">
+        <p>&copy; 2023 positvus. All right reserved</p>
+        <p>Privacy Policy</p>
       </div>
-    </div>
+    </section>
   );
 };

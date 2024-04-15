@@ -19,7 +19,7 @@ export default async function RootLayout({
 ) {
   const session = await getServerSession();
   return (
-    <html lang="en">
+    <html lang="en" style={{scrollBehavior: "smooth"}}>
       <body className={inter.className}>
         <SessionProvider session={session}>
         <div className="mx-auto text-xl gap-10 m-10">

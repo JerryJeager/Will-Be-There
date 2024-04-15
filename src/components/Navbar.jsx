@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/assets/logo.png";
 import { Button } from "../shared/Button";
-import menu from "../../public/assets/Menu.png";
+import { CgMenuRight } from "react-icons/cg";
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -18,7 +18,7 @@ const Navbar = () => {
     <div
       className={`${
         isActive &&
-        "fixed inset-0 top-0  transition-all duration-200 bg-white/80 backdrop-blur"
+        "fixed inset-0 top-0  transition-all duration-200"
       } z-[999] h-24 bg-white flex items-center justify-center w-[100%] m-0 p-0 `}
     >
       <ul className="flex justify-between m-5 md:m-10 items-center w-full">
@@ -55,9 +55,10 @@ const Navbar = () => {
               <Button text="signup" />
           </Link>
         </li>
+        {/* hamburger-menu */}
         <li className="block md:hidden transition-all ">
             <p>
-                <Image src={menu} alt="menu" />
+              <CgMenuRight size={30}/>
             </p>
         </li>
       </ul>
