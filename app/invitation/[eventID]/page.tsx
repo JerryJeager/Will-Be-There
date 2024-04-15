@@ -172,62 +172,75 @@ export default function Page({ params }: { params: { eventID: string } }) {
                                     </div>
                                 </fieldset>
 
-                                {formData.isAttending === 'yes' && (
-                                    <fieldset className='sm:col-span-4'>
-                                        <legend className='text-sm font-semibold leading-6 text-gray-900'>
-                                            Are you bringing additional people?
-                                        </legend>
-
-                                        <div className='mt-6 gap-x-6 flex justify-between'>
-                                            <div className='flex items-center gap-x-3'>
-                                                <input
-                                                    id='yesExtras'
-                                                    name='hasExtras'
-                                                    type='radio'
-                                                    value='yes'
-                                                    checked={
-                                                        formData.hasExtras ===
-                                                        'yes'
-                                                    }
-                                                    onChange={handleChange}
-                                                    required
-                                                    className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
-                                                />
-                                                <label
-                                                    htmlFor='yesExtras'
-                                                    className='block text-sm font-medium leading-6 text-gray-900'
-                                                >
-                                                    Yes
-                                                </label>
-                                            </div>
-                                            <div className='flex items-center gap-x-3'>
-                                                <input
-                                                    id='noExtras'
-                                                    name='hasExtras'
-                                                    type='radio'
-                                                    value='no'
-                                                    checked={
-                                                        formData.hasExtras ===
-                                                        'no'
-                                                    }
-                                                    onChange={handleChange}
-                                                    required
-                                                    className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
-                                                />
-                                                <label
-                                                    htmlFor='noExtras'
-                                                    className='block text-sm font-medium leading-6 text-gray-900'
-                                                >
-                                                    No
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </fieldset>
+                                {(Number(extras) === 0 || !extras) && (
+                                    <div className='sm:col-span-4'>
+                                        <p>
+                                            The event organizer doesn't allow
+                                            additional guests
+                                        </p>
+                                    </div>
                                 )}
+
+                                {extras &&
+                                    Number(extras) !== 0 &&
+                                    formData.isAttending === 'yes' && (
+                                        <fieldset className='sm:col-span-4'>
+                                            <legend className='text-sm font-semibold leading-6 text-gray-900'>
+                                                Are you bringing additional
+                                                people?
+                                            </legend>
+
+                                            <div className='mt-6 gap-x-6 flex justify-between'>
+                                                <div className='flex items-center gap-x-3'>
+                                                    <input
+                                                        id='yesExtras'
+                                                        name='hasExtras'
+                                                        type='radio'
+                                                        value='yes'
+                                                        checked={
+                                                            formData.hasExtras ===
+                                                            'yes'
+                                                        }
+                                                        onChange={handleChange}
+                                                        required
+                                                        className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
+                                                    />
+                                                    <label
+                                                        htmlFor='yesExtras'
+                                                        className='block text-sm font-medium leading-6 text-gray-900'
+                                                    >
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div className='flex items-center gap-x-3'>
+                                                    <input
+                                                        id='noExtras'
+                                                        name='hasExtras'
+                                                        type='radio'
+                                                        value='no'
+                                                        checked={
+                                                            formData.hasExtras ===
+                                                            'no'
+                                                        }
+                                                        onChange={handleChange}
+                                                        required
+                                                        className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
+                                                    />
+                                                    <label
+                                                        htmlFor='noExtras'
+                                                        className='block text-sm font-medium leading-6 text-gray-900'
+                                                    >
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    )}
                             </div>
                         </div>
 
                         {extras &&
+                            Number(extras) !== 0 &&
                             formData.isAttending === 'yes' &&
                             formData.hasExtras === 'yes' && (
                                 <div className='border-b border-gray-900/10 pb-12'>
