@@ -7,7 +7,7 @@ export const Planning = () => {
   return (
     <div>
       <Wrapper>
-        <div className="flex flex-col items-center p-11 rounded-[2rem] bg-[#DFE0FF] mb-11">
+        <div className="flex flex-col items-center p-5 text-sm md:p-11 sm:text-lg rounded-[2rem] bg-[#DFE0FF] mb-11">
           <p className="text-center text-[#0B195B] font-bold text-[1.8rem] leading-7 p-5">
             Planning an event shouldn't be stressful, Let's help you create an
             online invite today!
