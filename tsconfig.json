@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/components/sections/NumberMetrics.jsx"  ],
   "exclude": [
     "node_modules"
   ]
