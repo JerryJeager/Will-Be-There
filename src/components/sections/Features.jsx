@@ -74,8 +74,8 @@ export const Features = () => {
                     className="w-full h-full"
                   />
                 </p>
-                <p className="text-[#FFFFFF]">{data.title}</p>
-                <p className="text-sm text-center font-normal p-2 text-[#F5F2FA]">
+                <p className="text-[#FFFFFF] font-bold">{data.title}</p>
+                <p className="text-lg text-center font-[500] p-2 text-[#F5F2FA]">
                   {data.text}
                 </p>
               </div>
