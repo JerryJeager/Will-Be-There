@@ -54,7 +54,7 @@ export const Features = () => {
         <div className="text-center space-y-5 p-5 pt-10 ">
           <p className="text-[#BCC2FF] text-3xl">Features</p>
           <p className="text-white">
-            Essential Tools for Seamless Planning and <br /> Delighted Guests.
+            Essential Tools for Seamless Planning and Delighted Guests.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 m-6">
@@ -62,7 +62,7 @@ export const Features = () => {
             return (
               <div
                 key={data.id}
-                className="hover:shadow-2xl shadow-indigo-500 hover:scale-105  cursor-pointer transition-all duration-200 text-white bg-[#BCC2FF]/20 w-[23rem] h-[16rem] rounded-lg flex flex-col items-center justify-center space-y-2 p-8"
+                className="hover:shadow-2xl shadow-indigo-500 hover:scale-105  cursor-pointer transition-all duration-200 text-white bg-[#BCC2FF]/20 md:w-[23rem] md:h-[16rem] rounded-lg flex flex-col items-center justify-center space-y-2 p-4 md:p-8"
               >
                 <p className="text-center h-10 w-10">
                   <Image
@@ -75,7 +75,7 @@ export const Features = () => {
                   />
                 </p>
                 <p className="text-[#FFFFFF] font-bold">{data.title}</p>
-                <p className="text-lg text-center font-[500] p-2 text-[#F5F2FA]">
+                <p className="text-[1rem] font-[500] text-center font-normal p-2 text-[#F5F2FA]">
                   {data.text}
                 </p>
               </div>
