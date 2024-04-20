@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <div
       className={`${
-        isActive && "fixed inset-0 top-0  transition-all duration-200 p-2"
+        isActive && "fixed inset-0 top-0  transition-all duration-200"
       } z-[999] h-24 bg-white flex items-center justify-center w-[100%] m-0 p-0 `}
     >
       <ul className="flex justify-between m-5 md:m-10 items-center w-full">
@@ -32,7 +32,7 @@ const Navbar = () => {
             <Image src={logo} alt="logo" />
           </Link>
         </li>
-        <li className="gap-10 hidden md:flex transition-all text-[#1B1B21] leading-[2.5rem] font-semibold">
+        <li className="gap-10 hidden md:flex transition-all">
           <Link href="/dashboard" className="flex items-center space-x-1">
             <span>Features</span>
             <svg
@@ -57,7 +57,7 @@ const Navbar = () => {
         </li>
         <li className=" hidden md:flex transition-all">
           <Link href="/signup">
-            <button className='bg-[#0D35FB] text-white p-1  w-[9rem] h-[3.1rem] rounded-lg hover:shadow-xl shadow-[#0D35FB] duration-200 active:scale-100 hover:bg-opacity-80'>Signup</button>
+            <Button text="signup" />
           </Link>
         </li>
         {/* hamburger-menu */}
@@ -68,7 +68,7 @@ const Navbar = () => {
           {sideBar && (
             <div
               className={`${
-                sideBar ? "fixed w-[70%] sm:w-[50%] right-0" : "-right-96 transition-all duration-700 ease-out  "
+                sideBar ? "fixed w-[70%] sm:w-[50%] right-0" : "-right-96"
               }  h-screen top-0 pt-4 rounded-l-lg shadow-2xl bg-white z-50 transition-all duration-700 ease-linear `}
             >
               <div className=" flex justify-end p-3" onClick={handleSideBar}>
