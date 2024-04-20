@@ -44,18 +44,20 @@ export const Testimonial = () => {
     <section>
         <div className='flex flex-col items-center justify-center text-center py-5 sm:p-10'>
             <div>
-                <p className='text-xl sm:text-3xl text-center font-semibold'>Hear From Our Amazing Clients</p>
-                <p className='text-gray-500 text-sm sm:text-lg py-2'>Review from our customers shows how stunning invites for all event using a reliable and sustainable</p>
+                <p className='text-[2rem] sm:text-[2.5rem] text-center font-semibold'>Hear From Our Amazing Clients</p>
+                <p className='text-gray-500 text-[1.25rem] md:text-[1.3rem] py-2 leading-[1.5rem] md:leading-[2.5rem]'>Review from our customers shows how stunning invites for all event using a reliable and sustainable</p>
             </div>
             <div id='slider' className='w-full h-full overflow-x-auto whitespace-nowrap scrollbar-hide scroll-smooth relative py-10 transition-all'>
                 {
                     testimonialData.map((data)=> {
                         return (
-                            <div key={data.id} className='md:w-96 inline-block cursor-pointer relative p-2 text-center mx-5 space-y-5 py-5'>
-                                <p className='bg-[#0D154B] rounded-2xl text-[#FFFFFF] p-4 text-sm hover:shadow-lg shadow-[#0D154B] transition-all duration-200 whitespace-normal' style={{backgroundColor: `${data?.bgColor}`}}>"{data.comment}"</p>
-                                <div className='text-sm'>
-                                    <p className='font-semibold'>{data.name}</p>
-                                    <p className='text-[#636363]'>{data.occupation}</p>
+                            <div key={data.id} className=' inline-block cursor-pointer relative p-2 text-center mx-5 space-y-5 py-5'>
+                                <div className='bg-[#0D154B] rounded-2xl p-4 hover:shadow-lg shadow-[#0D154B] transition-all duration-200 whitespace-normal w-[25.3rem] md:w-[47rem] h-[24.8rem] md:h-[19.9rem] flex items-center' style={{backgroundColor: `${data?.bgColor}`}}>
+                                    <p className='text-[1.3rem] md:text-[1.7rem] leading-[] md:leading-[2.25rem] font-semibold text-[#FFFFFF]'>"{data.comment}"</p>
+                                </div>
+                                <div className=''>
+                                    <p className='font-semibold text-[1.75rem] leading-[2.5rem]'>{data.name}</p>
+                                    <p className='text-[#636363] text-[1.35rem] leading-[2.5rem]'>{data.occupation}</p>
                                 </div>
                             </div>
                         )

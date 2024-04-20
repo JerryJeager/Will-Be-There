@@ -50,19 +50,19 @@ export const  Featuredata = [
 export const Features = () => {
   return (
     <section className=''>
-        <div className='bg-[#0D154B] flex flex-col justify-center items-center p-5'>
-            <div className='text-center space-y-5 p-5'>
-                <p className='text-[#BCC2FF] text-3xl'>Features</p>
-                <p className='text-white'>Essential Tools for Seamless Planning and Delighted Guests.</p>
+        <div className='bg-[#0D154B] flex flex-col justify-center items-center p-[17px] lg:p-[100px] gap-[45px]'>
+            <div className='text-center space-y-5 gap-[24px]'>
+                <p className='text-[#BCC2FF] text-[32px] leading-[40px]'>Features</p>
+                <p className='text-white text-[20px] md:text-[28px] leading-[24px] md:leading-[36px]'>Essential Tools for Seamless Planning and Delighted Guests.</p>
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 m-2'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[1.8rem]'>
                 {
                     Featuredata.map( (data) => {
                         return (
-                            <div key={data.id} className='hover:shadow-2xl shadow-indigo-500 hover:scale-105  cursor-pointer transition-all duration-200 text-white bg-[#BCC2FF]/20 w-60 h-48 rounded-lg flex flex-col items-center justify-center space-y-2'>
-                                <p className='text-center h-10 w-10'><Image src={data.icon} alt='icon' width="300" height={'400'} quality={100} className='w-full h-full'/></p>
-                                <p className='text-[#FFFFFF]'>{data.title}</p>
-                                <p className='text-sm text-center font-normal p-2 text-[#F5F2FA]'>{data.text}</p>
+                            <div key={data.id} className='hover:shadow-2xl shadow-indigo-500 hover:scale-105  cursor-pointer transition-all duration-200 text-white bg-[#BCC2FF]/20 md:w-[24.5rem] h-[21rem] md:h-[20rem] rounded-lg flex flex-col items-center justify-center space-y-4'>
+                                <p className='text-center h-[5.1rem] w-[5.1rem]'><Image src={data.icon} alt='icon' quality={100} className='w-full h-full object-cover'/></p>
+                                <p className='text-[#FFFFFF] text-[1.75rem] leading-[2.25rem] font-semibold'>{data.title}</p>
+                                <p className='text-[0.87rem] md:text-[1rem] md:leading-[1.37rem] text-center font-semibold  p-2 text-[#F5F2FA]'>{data.text}</p>
                             </div>
                         )
                     })
