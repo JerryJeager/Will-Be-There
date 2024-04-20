@@ -32,7 +32,7 @@ const Navbar = () => {
             <Image src={logo} alt="logo" />
           </Link>
         </li>
-        <li className="gap-10 hidden md:flex transition-all">
+        <li className="gap-10 hidden md:flex transition-all font-semibold">
           <Link href="/dashboard" className="flex items-center space-x-1">
             <span>Features</span>
             <svg
@@ -55,9 +55,9 @@ const Navbar = () => {
             <span>Pricing</span>
           </Link>
         </li>
-        <li className=" hidden md:flex transition-all">
+        <li className=" hidden md:flex transition-all ">
           <Link href="/signup">
-            <Button text="signup" />
+            <Button text="Sign Up" />
           </Link>
         </li>
         {/* hamburger-menu */}
