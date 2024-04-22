@@ -1,9 +1,49 @@
 import { Account, User as AuthUser } from "next-auth";
+import Providers from "next-auth/providers";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import User from "../models/User";
 import connect from "../utils/db.js";
+
+const mockUsers = [
+  {
+    id: 1,
+    name: 'Keisha White',
+    email: 'keisha@example.com',
+    password: 'password123',
+  },
+];
+
+export const mockAuthOptions: any = {
+  providers: [
+    CredentialsProvider({
+      // Configuration for the credentials provider (email/password)
+      id: "credentials", 
+      name: "Credentials", 
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" }, 
+      },
+      async authorize(credentials) {
+        // Simulate user authentication
+        const user = mockUsers.find(
+          (user) =>
+            user.email === credentials.email &&
+            user.password === credentials.password // Compare passwords
+        );
+
+        if (user) {
+          // If user is found, return the user object
+          return Promise.resolve(user);
+        } else {
+          // If user is not found, return null
+          return Promise.resolve(null);
+        }
+      },
+    }),
+  ],
+};
 
 export const authOptions: any = {
   // Configure one or more authentication providers
