@@ -14,7 +14,7 @@ export default function Layout({ children }) {
     console.log(pathname);
 
     return (
-        <main className='bg-[#F2EFF7] p-20'>
+        <main className='bg-[#F2EFF7] p-20 col-span-10'>
             <div className='mb-20 grid grid-cols-4 grid-rows-1 items-center justify-between'>
                 <Link
                     href='/dashboard/onboarding/step-one'
