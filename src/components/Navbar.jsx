@@ -84,6 +84,7 @@ const Navbar = () => {
                 <p>
                   <Link href="/">Pricing</Link>
                 </p>
+          
                 <p className="text-[#0d35fb] font-semibold">
                   <Link href="/">Sign Up</Link>
                 </p>
