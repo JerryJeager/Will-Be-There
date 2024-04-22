@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Wrapper } from "../../shared/Wrapper";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 export const FaqData = [
   {
@@ -60,9 +60,9 @@ export const Faq = () => {
                     className="flex justify-between items-center cursor-pointer"
                     onClick={() => handleToggle(index)}
                   >
-                    <p>{data.title}</p>
-                    <span>
-                      <IoIosArrowDown />
+                    <p className="text-[1.1rem] pr-2">{data.title}</p>
+                    <span className="transition-all duration-200">
+                      {isOpen === index ? <IoIosArrowDown /> : <IoIosArrowUp />}
                     </span>
                   </div>
                   <div className="p-2 text-gray-500 ease-in-out transition-all duration-300">
