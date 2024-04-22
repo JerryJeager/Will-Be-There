@@ -84,7 +84,10 @@ const Navbar = () => {
                 <p>
                   <Link href="/">Pricing</Link>
                 </p>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9edf89383f1a69331b67533bd6b93cfaa310bc80
                 <p className="text-[#0d35fb] font-semibold">
                   <Link href="/">Sign Up</Link>
                 </p>

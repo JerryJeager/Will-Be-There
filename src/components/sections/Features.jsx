@@ -52,19 +52,19 @@ export const Features = () => {
     <section className="">
       <div className="bg-[#0D154B] flex flex-col justify-center items-center p-5 pb-12">
         <div className="text-center space-y-5 p-5 pt-10 ">
-          <p className="text-[#BCC2FF] text-3xl">Features</p>
-          <p className="text-white">
+          <p className="text-[#BCC2FF] text-4xl font-bold">Features</p>
+          <p className="text-white text-lg  md:text-xl">
             Essential Tools for Seamless Planning and Delighted Guests.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 m-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:m-6">
           {Featuredata.map((data) => {
             return (
               <div
                 key={data.id}
-                className="hover:shadow-2xl shadow-indigo-500 hover:scale-105  cursor-pointer transition-all duration-200 text-white bg-[#BCC2FF]/20 md:w-[23rem] md:h-[16rem] rounded-lg flex flex-col items-center justify-center space-y-2 p-4 md:p-8"
+                className="hover:shadow-2xl shadow-indigo-500 hover:scale-105  cursor-pointer transition-all duration-200 text-white bg-[#BCC2FF]/20 min-w-full lg:w-[23rem] h-[16rem] md:h-[20rem] lg:h-[16rem] rounded-lg flex flex-col items-center justify-center space-y-2 p-4 lg:p-8"
               >
-                <p className="text-center h-10 w-10">
+                <p className="text-center h-[4rem] w-[4rem]">
                   <Image
                     src={data.icon}
                     alt="icon"
@@ -75,7 +75,7 @@ export const Features = () => {
                   />
                 </p>
                 <p className="text-[#FFFFFF] font-bold">{data.title}</p>
-                <p className="text-[1rem] font-[500] text-center font-normal p-2 text-[#F5F2FA]">
+                <p className="text-[1rem] font-[500] text-center p-2 text-[#F5F2FA]">
                   {data.text}
                 </p>
               </div>
