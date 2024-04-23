@@ -53,35 +53,32 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="p-8 rounded w-[28rem]">
-        <h1 className="text-4xl text-center font-semibold mb-8 text-blue-500">
+    <div>
+      <div className="p-8">
+        <h1 className="font-semibold mb-8 text-blue-500">
           Register
         </h1>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            className="rounded-md appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
             placeholder="Enter you email"
             required
           />
           <input
             type="password"
-            className="rounded-md appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
             placeholder="Enter you password"
             required
           />
           <button
             type="submit"
-            className="w-full bg-blue-500 rounded-lg text-white py-2 hover:bg-blue-600 text-lg"
           >
             Register
           </button>
           <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
         </form>
-        <Link href="/login" className="block text-center text-blue-500 hover:underline mt-2 text-lg">
+        {/* <Link href="/login" className="block text-center text-blue-500 hover:underline mt-2 text-lg">
           Login with an existing account
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
