@@ -14,7 +14,8 @@ An online RSVP service that allows registered users to create events, share the 
     GOOGLE_ID = 
     GOOGLE_SECRET = 
     NEXTAUTH_URL = http://localhost:3000
-    NEXTAUTH_SECRET = 
+    NEXTAUTH_SECRET =
+    NODE_ENV = development
   ```
 - Install Dependencies
   ```
