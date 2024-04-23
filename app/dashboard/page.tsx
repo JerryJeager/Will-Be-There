@@ -8,19 +8,11 @@ const Dashboard = () => {
     const { data: session, status: sessionStatus } = useSession();
     const router = useRouter();
 
-<<<<<<< HEAD
-  // Redirect to login if not authenticated
-  if (sessionStatus !== 'authenticated') {
-    router.push('/auth/login');
-    return null; // Return null while redirecting
-  }
-=======
     // Redirect to login if not authenticated
     if (sessionStatus !== 'authenticated') {
         router.push('/login');
         return null; // Return null while redirecting
     }
->>>>>>> f18486879bd4c0cfe6f14c5bade64218a93ac56b
 
     if (mockData.length === 0) {
         return (
