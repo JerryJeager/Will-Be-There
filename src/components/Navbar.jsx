@@ -72,7 +72,7 @@ const Navbar = () => {
               }  h-screen top-0 pt-4 rounded-l-lg shadow-2xl bg-white z-50 transition-all duration-700 ease-linear `}
             >
               <div className=" flex justify-end p-3" onClick={handleSideBar}>
-                <IoMdClose size={20} />
+                <IoMdClose size={30} />
               </div>
               <div className="ml-3  space-y-4">
                 <p>
