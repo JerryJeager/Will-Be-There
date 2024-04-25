@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const router = useRouter();
@@ -63,39 +65,53 @@ const Login = () => {
   return (
     // Render login form if user is not authenticated
     sessionStatus !== "authenticated" && (
-      <div className="flex min-h-screen flex-col items-center justify-between p-24">
-        <div className="p-8 rounded w-[28rem]">
-          <h1 className="text-4xl text-center font-semibold mb-8 text-blue-500">
-            Login
-          </h1>
-          <form onSubmit={handleSubmit}>
+      <div className="flex flex-col justify-start min-h-screen">
+        <div className="flex flex-col justify-stretch gap-[1rem] items-start p-4 sm:px-24">
+          <div className="flex flex-col justify-center items-center mb-4 mx-auto">
+            <h1 className="text-4xl text-center font-bold mb-2 text-[#000000]">
+              Welcome Back!
+            </h1>
+            <p className="text-[1rem] text-center text-[rgb(119,118,128)] font-medium">Kindly enter your login details</p>            
+          </div>
+
+          <form onSubmit={handleSubmit} className="w-full flex flex-col justify-center">
             {/* Email input field */}
-            <input
-              type="text"
-              className="rounded-md appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
-              placeholder="Email"
-              required
-            />
+            <label htmlFor="email" className="text-[#1f1f1f] flex flex-col  sm:text-sm">
+              Email
+              <input
+                type="text"
+                className="rounded-md shadow appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
+                placeholder="Enter Your Email"
+                required
+              />
+            </label>
             {/* Password input field */}
+            <label htmlFor="password" className="text-[#1f1f1f] flex flex-col  sm:text-sm">
+              Password
             <input
               type="password"
-              className="rounded-md appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
-              placeholder="Password"
+              className="rounded-md shadow appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+              placeholder="Enter Your Password"
               required
             />
+            </label>
+            <Link href="#" className="flex flex-row justify-end items-center text-[0.75rem] mb-4">
+              <p className="hover:text-blue-500">Forgot password?</p>
+            </Link>
             {/* Submit button */}
             <button
               type="submit"
-              className="w-full bg-blue-500 rounded-lg text-white py-2 hover:bg-blue-600 text-lg"
+              className="w-full bg-[#0D35FB] rounded-lg text-white py-2 hover:bg-blue-600 text-lg"
             >
-              Sign In
+              Log In
             </button>
             {/* Error message */}
             <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
           </form>
+          <div className="w-full flex flex-row justify-center items-center text-gray-500 pb-4">- or -</div>
           {/* Sign in with Google button */}
           <button
-            className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 text-lg"
+            className="w-full bg-white text-[#0B195B] py-2 border-2 rounded-lg border-blue-600 text-lg"
             onClick={() => {
               signIn("google"); // Sign in with Google
             }}
@@ -103,13 +119,12 @@ const Login = () => {
             Sign In with Google
           </button>
           {/* Or register link */}
-          <div className="text-center text-gray-500 mt-4">- OR -</div>
-          <Link
+          {/* <div className="w-full flex flex-row justify-center items-center text-gray-500 mt-4">- OR -</div> */}
+          {/* <Link
             className="block text-center text-blue-500 hover:underline mt-2 text-lg"
-            href="/signup"
-          >
+            href="/signup">
             Register Here
-          </Link>
+          </Link> */}
         </div>
       </div>
     )
