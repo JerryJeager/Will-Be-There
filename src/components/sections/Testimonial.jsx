@@ -44,15 +44,20 @@ export const Testimonial = () => {
     <section>
         <div className='flex flex-col items-center justify-center text-center py-5 sm:p-10'>
             <div>
-                <p className='text-xl sm:text-3xl text-center font-semibold'>Hear From Our Amazing Clients</p>
-                <p className='text-gray-500 text-sm sm:text-lg py-2'>Review from our customers shows how stunning invites for all event using a reliable and sustainable</p>
+                <p className="text-xl sm:text-3xl text-center font-semibold">
+                    Hear From Our Amazing Clients
+                </p>
+                <p className="text-gray-500 text-sm sm:text-lg p-4">
+                    Review from our customers shows how stunning invites for all event
+                    using a reliable and sustainable
+                </p>
             </div>
             <div id='slider' className='w-full h-full overflow-x-auto whitespace-nowrap scrollbar-hide scroll-smooth relative py-10 transition-all'>
                 {
                     testimonialData.map((data)=> {
                         return (
                             <div key={data.id} className='md:w-96 inline-block cursor-pointer relative p-2 text-center mx-5 space-y-5 py-5'>
-                                <p className='bg-[#0D154B] rounded-2xl text-[#FFFFFF] p-4 text-sm hover:shadow-lg shadow-[#0D154B] transition-all duration-200 whitespace-normal' style={{backgroundColor: `${data?.bgColor}`}}>"{data.comment}"</p>
+                                <p                   className="bg-[#0D154B] rounded-2xl text-[#FFFFFF] leading-[1.5rem] p-6 text-sm hover:shadow-lg shadow-[#0D154B] transition-all duration-200 whitespace-normal" style={{backgroundColor: `${data?.bgColor}`}}>"{data.comment}"</p>
                                 <div className='text-sm'>
                                     <p className='font-semibold'>{data.name}</p>
                                     <p className='text-[#636363]'>{data.occupation}</p>
