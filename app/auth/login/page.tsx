@@ -65,7 +65,7 @@ const Login = () => {
   return (
     // Render login form if user is not authenticated
     sessionStatus !== "authenticated" && (
-      <div className="flex flex-col justify-start min-h-screen">
+      <div className="flex flex-col justify-start lg:min-h-screen">
         <div className="flex flex-col justify-stretch gap-[1rem] items-start p-4 sm:px-24">
           <div className="flex flex-col justify-center items-center mb-4 mx-auto">
             <h1 className="text-4xl text-center font-bold mb-2 text-[#000000]">
@@ -120,11 +120,11 @@ const Login = () => {
           </button>
           {/* Or register link */}
           {/* <div className="w-full flex flex-row justify-center items-center text-gray-500 mt-4">- OR -</div> */}
-          {/* <Link
-            className="block text-center text-blue-500 hover:underline mt-2 text-lg"
-            href="/signup">
+          <Link
+            className="block text-center mx-auto text-blue-500 hover:underline mt-2 text-lg"
+            href="/auth/signup">
             Register Here
-          </Link> */}
+          </Link>
         </div>
       </div>
     )

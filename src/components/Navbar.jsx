@@ -48,15 +48,15 @@ const Navbar = () => {
               />
             </svg>
           </Link>
-          <Link href="/login">
+          <Link href="/">
             <span>Overview</span>
           </Link>
-          <Link href="/signup">
+          <Link href="/">
             <span>Pricing</span>
           </Link>
         </li>
         <li className=" hidden md:flex transition-all ">
-          <Link href="/signup">
+          <Link href="/auth/signup">
             <Button text="Sign Up" />
           </Link>
         </li>
