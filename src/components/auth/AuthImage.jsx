@@ -9,7 +9,7 @@ const AuthImage = () => {
     const pathname = usePathname()
   return (
     <div>
-        {pathname == "/auth/login" ? <Image src={authImg2} width={450} /> : <Image src={authImg1} width={450} /> }
+        {pathname == "/auth/login" ? <Image placeholder="blur" src={authImg2} width={450} /> : <Image placeholder="blur" src={authImg1} width={450} /> }
     </div>
   )
 }
