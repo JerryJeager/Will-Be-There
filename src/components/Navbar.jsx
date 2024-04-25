@@ -32,7 +32,7 @@ const Navbar = () => {
             <Image src={logo} alt="logo" />
           </Link>
         </li>
-        <li className="gap-10 hidden md:flex transition-all">
+        <li className="gap-10 hidden md:flex transition-all font-semibold">
           <Link href="/dashboard" className="flex items-center space-x-1">
             <span>Features</span>
             <svg
@@ -55,9 +55,9 @@ const Navbar = () => {
             <span>Pricing</span>
           </Link>
         </li>
-        <li className=" hidden md:flex transition-all">
+        <li className=" hidden md:flex transition-all ">
           <Link href="/signup">
-            <Button text="signup" />
+            <Button text="Sign Up" />
           </Link>
         </li>
         {/* hamburger-menu */}
@@ -72,7 +72,7 @@ const Navbar = () => {
               }  h-screen top-0 pt-4 rounded-l-lg shadow-2xl bg-white z-50 transition-all duration-700 ease-linear `}
             >
               <div className=" flex justify-end p-3" onClick={handleSideBar}>
-                <IoMdClose size={20} />
+                <IoMdClose size={30} />
               </div>
               <div className="ml-3  space-y-4">
                 <p>
@@ -83,6 +83,10 @@ const Navbar = () => {
                 </p>
                 <p>
                   <Link href="/">Pricing</Link>
+                </p>
+          
+                <p className="text-[#0d35fb] font-semibold">
+                  <Link href="/">Sign Up</Link>
                 </p>
               </div>
             </div>
