@@ -7,32 +7,32 @@ export const FaqData = [
   {
     id: 1,
     title: "What Is Will Be There About",
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    details: "Will Be There is standard online event planning, guest tracking and management platform making it easy for event organizers to  manage their guest in real time.",
   },
   {
     id: 2,
     title: "Is it free to use?",
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+    details: "Will Be There has different pricing structure that fits individual peculiar needs beginning from the free plan to basic and premium.",
   },
   {
     id: 3,
     title: "Do I need to download any software to use Will Be There?",
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+    details: "Users do not necessarily need to download additional software as our website is web base and responsive on various devices",
   },
   {
     id: 4,
     title: "Can I manage my guest list?",
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+    details: "Yes, our RSVP app lets you easily handle your guest list. Add, update, and track RSVPs hassle-free, ensuring your event planning runs smoothly.",
   },
   {
     id: 5,
     title: "Can I send follow-up reminders?",
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+    details: "Yes, our RSVP platform allows you to schedule and send follow-up reminders with ease. Keep your guests informed and ensure maximum attendance with our convenient reminder feature.",
   },
   {
     id: 6,
     title: "Can guests update their RSVP after they respond?",
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+    details: "Yes, guests can update their RSVP responses at any point, giving them the flexibility they need for your event.",
   },
 ];
 
