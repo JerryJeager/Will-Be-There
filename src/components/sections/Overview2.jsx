@@ -15,9 +15,9 @@ export const Overview2 = () => {
                 </div>
                 {/* right */}
                 <div className='space-y-4 md:w-[50%] order-first md:order-last text-center md:text-start'>
-                    <p className='font-bold sm:text-3xl text-xl'>Streamline your event journey from start to finish</p>
+                    <p className='font-bold sm:text-3xl text-xl'>Elevate your event planning journey!</p>
                     <p className='text-gray-500 text-lg'>
-                        Begin with effortlessly compile a list of  for guests and items to contribute to your event, ensuring every detail is accounted for.
+                        Effortlessly organize guest lists and contributions, ensuring a seamless and stress-free experience every step of the way.
                     </p>
                     <div>
                         <Button text="Try Now For Free"/>
