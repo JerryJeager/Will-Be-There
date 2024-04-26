@@ -20,6 +20,7 @@ const Signup = () => {
     const email = e.target[1].value;
     const password = e.target[2].value;
 
+
     // if (!isValEmail(email)) {
     //   setError("This email is invalid");
     //   return;
