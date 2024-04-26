@@ -8,7 +8,7 @@ export default async function RootLayout({ children }) {
   return (
     <section className={inter.className}>
       <div className="flex">
-        <div className="bg-authBg bg-cover bg-center bg-[#0D35FB] h-screen lg:w-1/2 hidden lg:flex justify-center items-end">
+        <div className="bg-authBg bg-cover bg-center bg-[#0D35FB] h-full lg:w-1/2 hidden lg:flex justify-center items-end">
           <AuthImage />
         </div>
         <div className="w-full lg:w-1/2">{children}</div>
