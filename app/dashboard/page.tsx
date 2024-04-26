@@ -10,7 +10,7 @@ const Dashboard = () => {
 
     // Redirect to login if not authenticated
     if (sessionStatus !== 'authenticated') {
-        router.push('/auth/login');
+        router.push('/login');
         return null; // Return null while redirecting
     }
 
