@@ -8,7 +8,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#0D35FB",
+      },
       backgroundImage: {
+        "authBg": "url(../public/assets/authBg.png)",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",

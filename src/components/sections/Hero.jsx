@@ -8,9 +8,9 @@ export const Hero = () => {
   return (
     <section className="">
       <Wrapper>
-        <div className="flex flex-col md:flex-row gap-2 p-2 sm:p-4 items-center justify-between py-10">
+        <div className="flex flex-col md:flex-row gap-2 p-2 sm:p-4 items-center justify-between pb-10">
           {/* left side */}
-          <div className="space-y-5 py-5 md:w-[50%] flex flex-col items-center md:items-start">
+          <div className="space-y-5 py-5 md:w-[50%] flex flex-col items-center md:items-start text-center md:text-start">
             <p className="text-4xl font-semibold">
               Instantly Create{" "}
               <strong className="text-[#0D35FB]">Custom</strong> Invite For Any
