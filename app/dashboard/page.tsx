@@ -12,7 +12,7 @@ const Dashboard = () => {
     if (sessionStatus !== 'authenticated') {
         router.push('/login');
         return null; // Return null while redirecting
-    }
+    }   
 
     if (mockData.length === 0) {
         return (
@@ -29,7 +29,7 @@ const Dashboard = () => {
                     Welcome, {session.user.name}.
                 </h1>
             </header>
-              
+            
             <section className='mb-8'>
                 <h2 className='text-2xl font-bold mb-2'>Recent Event</h2>
                 <div className='w-full grid grid-cols-12 gap-4'>
