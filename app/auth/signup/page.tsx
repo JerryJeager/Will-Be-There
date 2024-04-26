@@ -92,7 +92,7 @@ const Signup = () => {
             Email
             <input
               className="px-3 py-3 shadow border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md w-full flex appearance-none focus:outline-none focus:shadow-outline focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
-              type="text"
+              type="email"
               id="email"
               placeholder="Enter Your Email"
               required
