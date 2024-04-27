@@ -11,8 +11,8 @@ export default function StepOne() {
     const { stepOne, setData } = useFormStore();
 
     return (
-        <section className='container mx-auto'>
-            <h1 className='text-center font-bold mb-5 text-[#1B1B21] text-[40px]'>
+        <section className='container mx-auto leading-tight'>
+            <h1 className='text-center font-bold mb-5 text-[#1B1B21] text-[40px] '>
                 Enter your event name
             </h1>
 

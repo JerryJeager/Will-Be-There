@@ -14,7 +14,7 @@ export default function StepTwo() {
     const today = dayjs().format('YYYY-MM-DD');
 
     return (
-        <section className='container mx-auto'>
+        <section className='container mx-auto leading-tight'>
             <h1 className='text-center font-bold mb-5 text-[#1B1B21] text-[40px]'>
                 Enter your event date
             </h1>
@@ -47,8 +47,8 @@ export default function StepTwo() {
                                 Event Start
                             </label>
 
-                            <div className='grid grid-cols-3 justify-between gap-x-14 items-center'>
-                                <div className='col-span-2'>
+                            <div className='grid md:grid-cols-3 grid-cols-1 justify-between md:gap-x-14 gap-y-12 items-center'>
+                                <div className='md:col-span-2'>
                                     <Field
                                         type='date'
                                         id='eventStart'
@@ -115,8 +115,8 @@ export default function StepTwo() {
                                 Event End
                             </label>
 
-                            <div className='grid grid-cols-3 justify-between gap-x-14 items-center'>
-                                <div className='col-span-2'>
+                            <div className='grid md:grid-cols-3 grid-cols-1 justify-between md:gap-x-14 gap-y-12 items-center'>
+                                <div className='md:col-span-2'>
                                     <Field
                                         type='date'
                                         id='eventEnd'

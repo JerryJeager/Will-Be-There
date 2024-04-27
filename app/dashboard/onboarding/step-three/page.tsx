@@ -25,7 +25,7 @@ export default function StepThree() {
     const { stepOne, stepTwo, stepThree, setData } = useFormStore();
 
     return (
-        <section className='container mx-auto'>
+        <section className='container mx-auto leading-tight'>
             <h1 className='text-center font-bold mb-5 text-[#1B1B21] text-[40px]'>
                 Generate your event url
             </h1>
