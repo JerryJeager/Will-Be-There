@@ -12,7 +12,7 @@ const Dashboard = () => {
     if (sessionStatus !== 'authenticated') {
         router.push('/login');
         return null; // Return null while redirecting
-    }   
+    }
 
     if (mockData.length === 0) {
         return (
