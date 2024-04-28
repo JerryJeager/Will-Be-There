@@ -9,7 +9,7 @@ async function getEventDetails(id) {
     return data;
 }
 
-export default async function RSVPTrackingPage({ params }: { params: { id: string } }) {
+export default async function EventDashboardPage({ params }: { params: { id: string } }) {
 
     const event = process.env.NODE_ENV === 'development' ? mockEventDetails : await getEventDetails(params.id);
     
@@ -20,7 +20,7 @@ export default async function RSVPTrackingPage({ params }: { params: { id: strin
                     <h1 className='text-2l mb-4'>RSVP Tracking</h1>
                     <h2 className='text-3xl font-medium'>Stephanie's Wedding Invitation</h2>
                 </div>
-                <div className='grid grid-cols-12 w-full gap-8 '>
+                <div className='grid grid-cols-12 w-full gap-x-0 md:gap-x-8 gap-y-4 md:gap-y-0'>
                     <AttendanceStatusCard status={event.attendanceStatus} />
                     <EmailStatusCard status={event.emailStatus} />
                 </div>
