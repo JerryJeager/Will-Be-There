@@ -22,7 +22,7 @@ export default function Sidebar() {
     {
       href: "/dashboard/invitations",
       label: "Invitations",
-      icon: <CgMail size={iconSize} />,
+      icon: <CgMail size={iconSize}/>,
     },
     {
       href: "/dashboard/settings",
