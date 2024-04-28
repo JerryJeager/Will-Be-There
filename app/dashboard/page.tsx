@@ -10,7 +10,7 @@ const Dashboard = () => {
 
     // Redirect to login if not authenticated
     if (sessionStatus !== 'authenticated') {
-        router.push('/login');
+        router.push('/auth/login');
         return null; // Return null while redirecting
     }
 
@@ -23,9 +23,9 @@ const Dashboard = () => {
     }
 
     return (
-        <main className='w-full col-span-10 flex flex-col px-24 py-8 bg-[#F2EFF7] flex-grow'>
-            <header className=''>
-                <h1 className='text-[#777680] text-2xl'>
+        <main className='dashboard'>
+            <header className='mb-8'>
+                <h1 className='text-[#777680] text-lg md:text-2xl'>
                     Welcome, {session.user.name}.
                 </h1>
             </header>
@@ -34,7 +34,8 @@ const Dashboard = () => {
                 <h2 className='text-2xl font-bold mb-2'>Recent Event</h2>
                 <div className='w-full grid grid-cols-12 gap-4'>
                     {mockData &&
-                        mockData.map((event) => <EventCard data={event} />)}
+                        mockData.map((event) => <EventCard data={event} />
+                    )}
                 </div>
             </section>
             <section className='w-full'>
