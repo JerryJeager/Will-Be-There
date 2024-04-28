@@ -12,8 +12,11 @@
     "@nextui-org/tooltip": "^2.0.33",
     "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
+    "dayjs": "^1.11.10",
     "dotenv": "^16.4.5",
+    "formik": "^2.4.6",
     "mongoose": "^8.3.0",
+    "nanoid": "^5.0.7",
     "next": "14.1.4",
     "next-auth": "^4.24.7",
     "next-themes": "^0.3.0",
@@ -21,7 +24,9 @@
     "react-countup": "^6.5.3",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
-    "react-scroll-trigger": "^0.6.14"
+    "react-scroll-trigger": "^0.6.14",
+    "yup": "^1.4.0",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/node": "20.12.7",
