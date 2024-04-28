@@ -9,10 +9,10 @@ const Dashboard = () => {
   const router = useRouter();
 
   // Redirect to login if not authenticated
-  // if (sessionStatus !== 'authenticated') {
-  //     router.push('/login');
-  //     return null; // Return null while redirecting
-  // }
+  if (sessionStatus !== 'authenticated') {
+      router.push('/auth/login');
+      return null; // Return null while redirecting
+  }
 
   if (mockData.length === 0) {
     return (
@@ -27,7 +27,7 @@ const Dashboard = () => {
       <header className="">
         <h1 className="text-[#777680] text-2xl ">
           Welcome,{" "}
-          <span className="font-bold"> {session?.user.name}Victory</span>
+          <span className="font-bold"> {session.user.name}Victory</span>
         </h1>
       </header>
         
