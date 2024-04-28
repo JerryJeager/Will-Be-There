@@ -30,10 +30,6 @@ export default async function RSVPTrackingPage({
             ? mockEventDetails
             : await getEventDetails(params.id);
 
-    const event =
-        process.env.NODE_ENV === 'development'
-            ? mockEventDetails
-            : await getEventDetails(params.id);
     const guests =
         process.env.NODE_ENV === 'development'
             ? mockEventDetails.guestList
