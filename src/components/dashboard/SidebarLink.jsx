@@ -2,16 +2,10 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-/**
- * 
- * @param {*} href - The URL path for the sidebar link
- * @returns 
- */
-export default function SidebarLink({ href, label, icon }) {
 
-    const pathname= usePathname();
-    // Check if the current route matches the href
-    const isActive = pathname.endsWith(href);
+export default function SidebarLink({ ...props }) {
+
+  const { href, label, icon, isActive, isDisplayed } = props;
 
     return (
       <li>

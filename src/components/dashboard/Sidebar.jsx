@@ -1,40 +1,25 @@
-import SidebarLink from "./SidebarLink";
-import { CgHome, CgMail, CgLogOut } from "react-icons/cg";
-import {
-  IoChatbubblesOutline,
-  IoCalendarOutline,
-  IoSettingsOutline,
-} from "react-icons/io5";
+"use client"
+import SidebarLink from './SidebarLink'
+import { usePathname } from 'next/navigation';
+import { CgHome, CgMail, CgLogOut } from 'react-icons/cg';
+import { IoChatbubblesOutline, IoCalendarOutline, IoSettingsOutline } from 'react-icons/io5';
 /**
  * Used for the main dashboard
  * @returns {JSX.Element} - The completed Sidebar component
  */
 export default function Sidebar() {
-  const iconSize = 24;
 
-  const asideLinks = [
-    { href: "/dashboard", label: "Home", icon: <CgHome size={iconSize} /> },
-    {
-      href: "/dashboard/events",
-      label: "Events",
-      icon: <IoCalendarOutline size={iconSize} />,
-    },
-    {
-      href: "/dashboard/invitations",
-      label: "Invitations",
-      icon: <CgMail size={iconSize}/>,
-    },
-    {
-      href: "/dashboard/settings",
-      label: "Settings",
-      icon: <IoSettingsOutline />,
-    },
-    {
-      href: "/dashboard/chat",
-      label: "Chat",
-      icon: <IoChatbubblesOutline size={iconSize} />,
-    },
-  ];
+    const pathname = usePathname();
+
+    const iconSize = 24;
+
+    const asideLinks = [
+        { href: '/dashboard', label: 'Home', icon: <CgHome size={iconSize} /> },
+        { href: '/dashboard/events', label: 'Events', icon: <IoCalendarOutline size={iconSize} /> },
+        { href: '/dashboard/invitations', label: 'Invitations', icon: <CgMail size={iconSize} /> },
+        { href: '/dashboard/settings', label: 'Settings', icon: <IoSettingsOutline /> },
+        { href: '/dashboard/chat', label: 'Chat', icon: <IoChatbubblesOutline size={iconSize} /> }
+    ];
 
   return (
     <>

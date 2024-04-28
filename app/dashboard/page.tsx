@@ -22,6 +22,26 @@ const Dashboard = () => {
     );
   }
 
+    return (
+        <main className='w-full col-span-10 flex flex-col px-24 py-8 bg-[#F2EFF7] flex-grow'>
+            <header className=''>
+                <h1 className='text-[#777680] text-2xl'>
+                    Welcome, {session.user.name}.
+                </h1>
+            </header>
+            
+            <section className='mb-8'>
+                <h2 className='text-2xl font-bold mb-2'>Recent Event</h2>
+                <div className='w-full grid grid-cols-12 gap-4'>
+                    {mockData &&
+                        mockData.map((event) => <EventCard data={event} />)}
+                </div>
+            </section>
+            <section className='w-full'>
+                <NewEvent />
+            </section>
+        </main>
+    );
   return (
     <main className="w-full col-span-12 md:col-span-10 px-3  md:px-5 lg:px-24 py-8 bg-[#F2EFF7] flex-grow">
       <header className="">
