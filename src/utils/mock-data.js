@@ -18,3 +18,5 @@ export const mockEventDetails = {
         { id: 9, name: "Moses Osei", email: "mosesosei@outlook.com", status: "attending", plusOnes: ["Sophia Silva"] }
     ],
 };
+
+export const mockMessages = []
