@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { CgHome, CgMail, CgLogOut } from 'react-icons/cg';
 import { IoChatbubblesOutline, IoCalendarOutline, IoSettingsOutline } from 'react-icons/io5';
 /**
- * Used for the main dashboard 
+ * Used for the main dashboard
  * @returns {JSX.Element} - The completed Sidebar component
  */
 export default function Sidebar() {
