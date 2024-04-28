@@ -63,24 +63,24 @@ const Navbar = () => {
                                 <div className=" flex justify-end p-3 text-white" onClick={handleDashboardMenu}   >
                                     <IoMdClose size={30} />
                                 </div>
-                                <div className="ml-3  space-y-4 text-white text-xl">
+                                <div className="mx-3  space-y-4 text-white text-xl">
                                     <p>
-                                        <Link href="/dashboard" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2`}> <CgHome size={iconSize} />Home</Link>
+                                        <Link href="/dashboard" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2 hover:bg-[#525E94]`}> <CgHome size={iconSize} />Home</Link>
                                     </p>
                                     <p>
-                                        <Link href="/dashboard/events" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2`}><IoCalendarOutline size={iconSize} />Events</Link>
+                                        <Link href="/dashboard/events" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2 hover:bg-[#525E94]`}><IoCalendarOutline size={iconSize} />Events</Link>
                                     </p>
                                     <p>
-                                        <Link href="/dashboard/invitations" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2`}><CgMail size={iconSize}/>Invitations</Link>
+                                        <Link href="/dashboard/invitations" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2 hover:bg-[#525E94]`}><CgMail size={iconSize}/>Invitations</Link>
                                     </p>
                                     <p>
-                                        <Link href="/dashboard/settings" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2`}> <IoSettingsOutline />Settings</Link>
+                                        <Link href="/dashboard/settings" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2 hover:bg-[#525E94]`}> <IoSettingsOutline />Settings</Link>
                                     </p>
                                     <p>
-                                        <Link href="/dashboard/chat" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2`}> <IoChatbubblesOutline size={iconSize} />Chat</Link>
+                                        <Link href="/dashboard/chat" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2 hover:bg-[#525E94]`}> <IoChatbubblesOutline size={iconSize} />Chat</Link>
                                     </p>
                                     <p>
-                                        <Link href="/dashboard/logout" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2`}> <CgLogOut size={iconSize} />Logout</Link>
+                                        <Link href="/dashboard/logout" className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2 hover:bg-[#525E94]`}> <CgLogOut size={iconSize} />Logout</Link>
                                     </p>
                                     
                                 </div>
