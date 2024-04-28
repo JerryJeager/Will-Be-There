@@ -3,7 +3,6 @@ import "./globals.css";
 import { getServerSession } from "next-auth";
 
 const inter = Inter({ subsets: ["latin"] });
-import SessionProvider from "../src/utils/SessionProvider";
 import Navbar from "../src/components/Navbar";
 
 
@@ -21,12 +20,10 @@ export default async function RootLayout({
   return (
     <html lang="en" style={{scrollBehavior: "smooth"}}>
       <body className={inter.className}>
-        <SessionProvider session={session}>
         <div className="mx-auto text-xl gap-10 ">
           <Navbar />
           {children}
         </div>
-        </SessionProvider>
       </body>
     </html>
   );
