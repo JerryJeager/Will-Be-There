@@ -12,7 +12,8 @@ export default function Signup() {
 
   const [formData, setFormData] = useState({
     email: "",
-    name: "",
+    first_name: "",
+    last_name: "",
     password: "",
   });
 
@@ -39,6 +40,7 @@ export default function Signup() {
         "https://will-be-there.onrender.com/api/v1/users/signup",
         formData
       );
+      console.log(res.data)
 
       if (res.status === 400) {
         setError("This email is already registered");
@@ -46,7 +48,7 @@ export default function Signup() {
         const { token } = res.data; // Extract token from response
         console.log("Token received", token);
 
-        localStorage.setItem("token", token); // Store token in local storage
+        sessionStorage.setItem("token", token); // Store token in local storage
 
         router.push("/auth/login");
       }
@@ -76,14 +78,30 @@ export default function Signup() {
             htmlFor="name"
             className="text-[#1f1f1f] flex flex-col  sm:text-sm"
           >
-            Name
+            First Name
             <input
               className="px-3 py-3 shadow border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md w-full flex appearance-none focus:outline-none focus:shadow-outline focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
               type="text"
-              name="name"
-              value={formData.name}
+              name="first_name"
+              value={formData.first_name}
               onChange={handleChange}
-              placeholder="Enter Your Name"
+              placeholder="Enter Your First Name"
+              required
+            />
+          </label>
+
+          <label
+            htmlFor="name"
+            className="text-[#1f1f1f] flex flex-col  sm:text-sm"
+          >
+            Last Name
+            <input
+              className="px-3 py-3 shadow border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md w-full flex appearance-none focus:outline-none focus:shadow-outline focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
+              type="text"
+              name="last_name"
+              value={formData.last_name}
+              onChange={handleChange}
+              placeholder="Enter Your Last Name"
               required
             />
           </label>
@@ -120,7 +138,7 @@ export default function Signup() {
             <button
               type="button"
               onClick={togglePasswordVisibility}
-              className="absolute right-[7rem] mt-9 flex items-center z-10"
+              className="absolute right-[2rem] lg:right-[7rem] mt-10 lg:mt-9 md:right-[8rem] flex items-center z-10"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>

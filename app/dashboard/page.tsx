@@ -7,12 +7,14 @@ const Dashboard = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem("token");
+    const user_id = sessionStorage.getItem("user_id");
+
 
     if (!token) {
       router.push('/auth/login');
     } else {
-      console.log('Token found:', token);
+      // console.log('Token found:', token);
     }
   }, []);
 

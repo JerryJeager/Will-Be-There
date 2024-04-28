@@ -34,17 +34,13 @@ const Login = () => {
         "https://will-be-there.onrender.com/api/v1/users/login",
         formData
       );
-      console.log(response.data)
+      const { token, user_id } = response.data;
+    sessionStorage.setItem("token", token);
+    sessionStorage.setItem("user_id", user_id);
+
+      router.push("/dashboard");
       if (response.status === 200) {
-        
-        const { token } = response.data;
-        console.log("Token received:", token);
-
-        localStorage.setItem("token", token);
-
-        router.push("/dashboard");
-      } else {
-        setError("Unable to login");
+        alert("login successful");
       }
       if (response.status === 401) {
         setError("Token is missing");
@@ -68,8 +64,14 @@ const Login = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="w-full flex flex-col justify-center">
-          <label htmlFor="email" className="text-[#1f1f1f] flex flex-col  sm:text-sm">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full flex flex-col justify-center"
+        >
+          <label
+            htmlFor="email"
+            className="text-[#1f1f1f] flex flex-col  sm:text-sm"
+          >
             Email
             <input
               type="text"
@@ -82,7 +84,10 @@ const Login = () => {
             />
           </label>
           {/* Password input field */}
-          <label htmlFor="password" className="text-[#1f1f1f] flex flex-col  sm:text-sm">
+          <label
+            htmlFor="password"
+            className="text-[#1f1f1f] flex flex-col  sm:text-sm"
+          >
             Password
             <div className="relative">
               <input
@@ -103,7 +108,10 @@ const Login = () => {
               </button>
             </div>
           </label>
-          <Link href="#" className="flex flex-row justify-end items-center text-[0.75rem] mb-4">
+          <Link
+            href="#"
+            className="flex flex-row justify-end items-center text-[0.75rem] mb-4"
+          >
             <p className="hover:text-blue-500">Forgot password?</p>
           </Link>
           {/* Submit button */}
@@ -116,7 +124,9 @@ const Login = () => {
           {/* Error message */}
           <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
         </form>
-        <div className="w-full flex flex-row justify-center items-center text-gray-500 pb-4">- or -</div>
+        <div className="w-full flex flex-row justify-center items-center text-gray-500 pb-4">
+          - or -
+        </div>
         {/* Sign in with Google button */}
         <button className="w-full bg-white text-[#0B195B] py-2 border-2 rounded-lg border-blue-600 text-lg">
           Sign In with Google
