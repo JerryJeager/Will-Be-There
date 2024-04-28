@@ -1,5 +1,6 @@
 export const mockEventDetails = {
-    title: "Stephanie's Wedding Invitation",
+    id: 'fah819-38110-da-1232',
+    name: "Stephanie's Wedding Invitation",
     description: "This is a description of the event",
     date: "2021-09-21",
     time: "12:00 PM",
@@ -7,15 +8,15 @@ export const mockEventDetails = {
     attendanceStatus: { attending: 287, notAttending: 100, pending: 30 },
     emailStatus: { sent: 23, notSent: 10, pending: 15 },
     guestList: [
-        { id: 1, name: "Tolu Adebayo", email: "toluadebayo@gmail.com", status: "attending", plusOnes: ["Hassan Ibrahim", "Amelia Jones", "Carlos Silva"] },
-        { id: 2, name: "Akira Tanaka", email: "akira@outlook.com", status: "not attending", plusOnes: ["Sophia Kim", "Fatima Ali"] },
-        { id: 3, name: "Yousef Al-Farsi", email: "yousefal-farsi@protonmail.com", status: "attending", plusOnes: [] },
-        { id: 4, name: "Matteo Rossi", email: "matteo@rossi@hotmail.com,", status: "pending", plusOnes: ["Mohammed Ahmed", "Alejandro Lopez"] },
-        { id: 5, name: "Emily Johnson", email: "emily.johnson@aol.com", status: "attending", plusOnes: ["Sophie Martin", "Ahmed Hassan", "Mia Thompson"] },
-        { id: 6, name: "Maha Khalifa", email: "maha@khalifa@gmail.com", status: "not attending", plusOnes: ["Aaliyah Brown", "Daniel Garcia", "Maria Lopez"] },
-        { id: 7, name: "Marcelo Lopez", email: "marcelolopez@yahoo.com", status: "attending", plusOnes: ["Lucas Nguyen"] },
-        { id: 8, name: "Sofia Costa", email: "scosta@gmail.com", status: "pending", plusOnes: ["Olivia Rodriguez", "Liam Martinez", "Yara Nasser"] },
-        { id: 9, name: "Moses Osei", email: "mosesosei@outlook.com", status: "attending", plusOnes: ["Sophia Silva"] }
+        { id: 1, first_name: "Tolu", last_name: "Adebayo", email: "toluadebayo@gmail.com", status: "attending", plus_ones: ["Hassan Ibrahim", "Amelia Jones", "Carlos Silva"] },
+        { id: 2, first_name: "Akira", last_name: "Tanaka", email: "akira@outlook.com", status: "not attending", plus_ones: ["Sophia Kim", "Fatima Ali"] },
+        { id: 3, first_name: "Yousef", last_name: "Al-Farsi", email: "yousefal-farsi@protonmail.com", status: "attending", plus_ones: [] },
+        { id: 4, first_name: "Matteo", last_name: "Rossi", email: "matteo@rossi@hotmail.com,", status: "pending", plus_ones: ["Mohammed Ahmed", "Alejandro Lopez"] },
+        { id: 5, first_name: "Emily", last_name: "Johnson", email: "emily.johnson@aol.com", status: "attending", plus_ones: ["Sophie Martin", "Ahmed Hassan", "Mia Thompson"] },
+        { id: 6, first_name: "Maha", last_name: "Khalifa", email: "maha@khalifa@gmail.com", status: "not attending", plus_ones: ["Aaliyah Brown", "Daniel Garcia", "Maria Lopez"] },
+        { id: 7, first_name: "Marcelo", last_name: "Lopez", email: "marcelolopez@yahoo.com", status: "attending", plus_ones: ["Lucas Nguyen"] },
+        { id: 8, first_name: "Sofia", last_name: "Costa", email: "scosta@gmail.com", status: "pending", plus_ones: ["Olivia Rodriguez", "Liam Martinez", "Yara Nasser"] },
+        { id: 9, first_name: "Moses", last_name: "Osei", email: "mosesosei@outlook.com", status: "attending", plus_ones: ["Sophia Silva"] }
     ],
 };
 
