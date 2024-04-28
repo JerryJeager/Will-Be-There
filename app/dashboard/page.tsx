@@ -1,18 +1,20 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { CreateEventButton, EventCard } from "../../src/components/dashboard";
 
 const Dashboard = () => {
-  const { data: session, status: sessionStatus } = useSession();
   const router = useRouter();
 
-  // Redirect to login if not authenticated
-  if (sessionStatus !== 'authenticated') {
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
       router.push('/auth/login');
-      return null; // Return null while redirecting
-  }
+    } else {
+      console.log('Token found:', token);
+    }
+  }, []);
 
   if (mockData.length === 0) {
     return (
@@ -26,7 +28,7 @@ const Dashboard = () => {
         <main className='w-full col-span-10 flex flex-col px-24 py-8 bg-[#F2EFF7] flex-grow'>
             <header className=''>
                 <h1 className='text-[#777680] text-2xl'>
-                    Welcome, {session.user.name}.
+                    Welcome, .
                 </h1>
             </header>
             
@@ -47,7 +49,7 @@ const Dashboard = () => {
       <header className="">
         <h1 className="text-[#777680] text-2xl ">
           Welcome,{" "}
-          <span className="font-bold"> {session.user.name}Victory</span>
+          <span className="font-bold"> Victory</span>
         </h1>
       </header>
         
