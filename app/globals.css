@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 
+  @layer components {
+    .dashboard {
+      @apply w-full col-span-12 md:col-span-10 flex flex-col px-12 md:px-24 py-8 bg-[#F2EFF7] flex-grow;
+    }
+
+    .event-dashboard {
+      @apply w-full col-span-12 md:col-span-9 flex flex-col px-14 py-8 bg-[#F2EFF7] flex-grow
+    }
+  }
+
   /*No scrollBar */
   @layer utilities {
     @variants responsive {

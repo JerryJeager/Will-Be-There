@@ -1,18 +1,22 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { CreateEventButton, EventCard } from "../../src/components/dashboard";
 
 const Dashboard = () => {
-  const { data: session, status: sessionStatus } = useSession();
   const router = useRouter();
 
-  // Redirect to login if not authenticated
-  if (sessionStatus !== 'authenticated') {
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    const user_id = sessionStorage.getItem("user_id");
+
+
+    if (!token) {
       router.push('/auth/login');
-      return null; // Return null while redirecting
-  }
+    } else {
+      // console.log('Token found:', token);
+    }
+  }, []);
 
   if (mockData.length === 0) {
     return (
@@ -23,10 +27,11 @@ const Dashboard = () => {
   }
 
     return (
-        <main className='w-full col-span-10 flex flex-col px-24 py-8 bg-[#F2EFF7] flex-grow'>
-            <header className=''>
-                <h1 className='text-[#777680] text-2xl'>
-                    Welcome, {session.user.name}.
+        <main className='dashboard'>
+            <header className='mb-8'>
+                <h1 className='text-[#777680] text-lg md:text-2xl'>
+                  Welcome
+                    {/* Welcome, {session.user.name} */}
                 </h1>
             </header>
             
@@ -34,7 +39,8 @@ const Dashboard = () => {
                 <h2 className='text-2xl font-bold mb-2'>Recent Event</h2>
                 <div className='w-full grid grid-cols-12 gap-4'>
                     {mockData &&
-                        mockData.map((event) => <EventCard data={event} />)}
+                        mockData.map((event) => <EventCard data={event} />
+                    )}
                 </div>
             </section>
             <section className='w-full'>
@@ -47,7 +53,7 @@ const Dashboard = () => {
       <header className="">
         <h1 className="text-[#777680] text-2xl ">
           Welcome,{" "}
-          <span className="font-bold"> {session.user.name}Victory</span>
+          <span className="font-bold"> Victory</span>
         </h1>
       </header>
         

@@ -3,7 +3,7 @@ import { IoEllipsisVertical } from "react-icons/io5";
 
 export default function GuestSummary({ guest }) {
     
-    const { id, name, email, status, plusOnes } = guest;
+    const { id, first_name, last_name, email, status, plus_ones } = guest;
 
     const attendanceBadges = [
         { label: 'attending', color: '#007105'},
@@ -14,18 +14,22 @@ export default function GuestSummary({ guest }) {
     const matchingBadge = attendanceBadges.find(badge => badge.label === status);
 
     return (
-        <div className="bg-white grid grid-cols-12 w-full items-center justify-between w-full text-sm border-b-black last:border-b-none py-2">
+        <div className="bg-white grid grid-cols-12 w-full text-xs md:text-sm border border-b-black last:border-none py-2 gap-x-8">
             <div className="col-span-1 text-center">{id}</div>
-            <div className="col-span-2">{name}</div>
-            <div className="col-span-3">{email}</div>
-            <div className="col-span-2">
+            <div className="tracking-tight md:tracking-normal col-span-2">
+                {first_name} {last_name}
+            </div>
+            <div className="tracking-tight md:tracking-normal col-span-4 md:col-span-3">
+                {email}
+            </div>
+            <div className="col-span-3 md:col-span-2 text-xs">
                 {matchingBadge && (
-                    <div className={`p-2 text-white rounded-md text-xs inline-block`} style={{ backgroundColor: matchingBadge.color }}>
+                    <div className={`scale-75 md:scale-100 font-semibold p-2 text-white rounded-md text-xs inline-block`} style={{ backgroundColor: matchingBadge.color }}>
                         {matchingBadge.label}
                     </div>
                 )}
             </div>
-            <div className="col-span-3">{plusOnes.length}</div>
+            <div className="col-span-1 md:col-span-3">{plus_ones.length}</div>
             <div className="col-span-1">
                 <button className="rounded-sm border-gray border p-1">
                     <IoEllipsisVertical />

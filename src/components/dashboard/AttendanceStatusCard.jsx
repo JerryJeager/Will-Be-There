@@ -11,7 +11,7 @@ export default function AttendanceStatusCard({ status }) {
     const notAttendingPercentage = (notAttending / totalGuest) * 100;
 
     return (
-        <div className="bg-white col-span-6 w-full p-4 rounded-lg">
+        <div className="bg-white col-span-12 md:col-span-6 w-full p-4 rounded-lg">
             <h2 className="text-3xl mb-4 font-medium">{totalGuest} Guests</h2>
             <div className="flex flex-row gap-4 w-full justify-between mb-4">
                 <CardColumn icon={<IoCheckmark className="text-green-500"/>} title={attending} subtitle="Attending" alignItems="start" />

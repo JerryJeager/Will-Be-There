@@ -42,9 +42,15 @@ export default function Sidebar() {
 
     return (
         <>
-            <aside className='bg-[#0B195B] text-white col-span-2 p-8'>
+            <aside
+                className={`bg-[#0B195B] text-white col-span-0 ${
+                    !pathname.startsWith('/dashboard/events/')
+                        ? 'hidden md:flex flex-col md:col-span-2'
+                        : 'hidden md:flex flex-col md:col-span-1'
+                } p-8  items-center transition-all ease-in`}
+            >
                 <div className='flex flex-col justify-between h-4/5'>
-                    <ul className='space-y-4'>
+                    <ul className='space-y-4 flex flex-col items-center justify-start'>
                         {asideLinks &&
                             asideLinks.map((link) => (
                                 <SidebarLink
@@ -52,6 +58,12 @@ export default function Sidebar() {
                                     href={link.href}
                                     label={link.label}
                                     icon={link.icon}
+                                    isActive={pathname.endsWith(link.href)}
+                                    isDisplayed={
+                                        !pathname.startsWith(
+                                            '/dashboard/events/'
+                                        )
+                                    }
                                 />
                             ))}
                     </ul>
@@ -60,6 +72,9 @@ export default function Sidebar() {
                             href='/logout'
                             label='Logout'
                             icon={<CgLogOut size={iconSize} />}
+                            isDisplayed={
+                                !pathname.startsWith('/dashboard/events/')
+                            }
                         />
                     </ul>
                 </div>

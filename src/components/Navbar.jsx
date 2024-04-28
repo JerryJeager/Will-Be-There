@@ -15,6 +15,7 @@ import {
   IoCalendarOutline,
   IoSettingsOutline,
 } from "react-icons/io5";
+import EventForm from './dashboard/EventForm'
 
 
 
@@ -22,6 +23,7 @@ const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
   const [sideBar, setSideBar] = useState(false);
   const [dashboardSidemenu, setDashboardSideMenu] = useState(false)
+  const [ open, setOpen ] = useState(false);
 
   const pathname = usePathname();
   const iconSize = 24;
@@ -49,7 +51,7 @@ const Navbar = () => {
         } z-[999] h-24 bg-white flex items-center justify-center w-[100%] m-0 p-0 `}
       >
         {
-           pathname == "/dashboard"? (
+           pathname.includes('/dashboard') ?  (
             <div className="flex justify-between m-5 md:m-10 items-center w-full text-[1rem] lg:text-lg transition-all ease-in ">
                 <div onClick={handleDashboardMenu} className="flex md:hidden">
                     <RiMenu2Fill size={30}/>
@@ -104,7 +106,7 @@ const Navbar = () => {
                     <div>
                         <Link href="#">
                             <div className="hidden md:flex">
-                                <Button text="Create event"/>
+                                <Button onClick={() => setOpen(true)} text="Create event"/>
                             </div>
                             <span  className="md:hidden"><IoMdAdd size={30}/></span>
                         </Link>
@@ -196,6 +198,7 @@ const Navbar = () => {
             </li>
           </ul>
         }
+        <EventForm open={open} handleClose={() => setOpen(false)} />
       </div>
   );
 };
