@@ -16,9 +16,9 @@ export default function Page({ params } : { params : { id }}) {
             <h1>Feedback Messages</h1>
             
             <div>
-                {/* {messages && messages.map((message) => (
+                {messages && messages.map((message) => (
                     <FeedbackCard key={message.id} feedback={message} />
-                ))} */}
+                ))}
                 {messages.length <= 0 && (
                     <h2 className='flex flex-col w-full h-full justify-center items-center text-center'>No feedback has been added yet.</h2>
                 )}
@@ -26,4 +26,3 @@ export default function Page({ params } : { params : { id }}) {
         </div>
     )
 }
-
