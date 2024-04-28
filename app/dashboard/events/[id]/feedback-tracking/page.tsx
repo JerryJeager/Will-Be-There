@@ -17,7 +17,7 @@ export default function Page({ params } : { params : { id }}) {
             
             <div>
                 {messages && messages.map((message) => (
-                    <FeedbackCard key={message.id} feedback={message} />
+                    <FeedbackCard key={message.id} message={message} />
                 ))}
                 {messages.length <= 0 && (
                     <h2 className='flex flex-col w-full h-full justify-center items-center text-center'>No feedback has been added yet.</h2>
