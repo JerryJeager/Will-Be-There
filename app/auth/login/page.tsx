@@ -53,7 +53,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col justify-start lg:min-h-screen">
+    <div className="flex flex-col justify-start mt-10">
       <div className="flex flex-col justify-stretch gap-[1rem] items-start p-4 sm:px-24">
         <div className="flex flex-col justify-center items-center mb-4 mx-auto">
           <h1 className="text-4xl text-center font-bold mb-2 text-[#000000]">
@@ -124,18 +124,17 @@ const Login = () => {
           {/* Error message */}
           <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
         </form>
-        <div className="w-full flex flex-row justify-center items-center text-gray-500 pb-4">
+        {/* <div className="w-full flex flex-row justify-center items-center text-gray-500 pb-4">
           - or -
         </div>
-        {/* Sign in with Google button */}
         <button className="w-full bg-white text-[#0B195B] py-2 border-2 rounded-lg border-blue-600 text-lg">
           Sign In with Google
-        </button>
+        </button> */}
         <Link
-          className="block text-center mx-auto text-blue-500 hover:underline mt-2 text-lg"
+          className="block text-center mx-auto text-blue-500 hover:underline text-lg"
           href="/auth/signup"
         >
-          Register Here
+          New user? Register Here
         </Link>
       </div>
     </div>

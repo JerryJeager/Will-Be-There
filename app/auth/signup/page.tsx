@@ -59,8 +59,8 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex flex-col justify-start items-center lg:min-h-screen">
-      <div className="flex flex-col justify-stretch items-center p-4 sm:px-24">
+    <div className="flex flex-col justify-start items-center ">
+      <div className="flex flex-col justify-stretch items-center p-4 sm:px-24 overflow-y-auto">
         <div className="flex flex-col mb-8">
           <h1 className="text-[2.5rem] text-center font-bold mb-4 text-[#000000]">
             Sign up
@@ -151,12 +151,12 @@ export default function Signup() {
           </button>
           <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
         </form>
-        <div className="w-full flex flex-row justify-center items-center text-gray-500 pb-4">
+        {/* <div className="w-full flex flex-row justify-center items-center text-gray-500 pb-4">
           - or -
         </div>
         <button className="w-full border-2 border-blue-600 py-2 rounded-lg bg-white text-lg text-[#0B195B] hover:border-[#0B195B]">
           Continue with Google
-        </button>
+        </button> */}
         <Link
           href="/auth/login"
           className="block text-center text-blue-500 hover:underline mt-2 text-lg"
