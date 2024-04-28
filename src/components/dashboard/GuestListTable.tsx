@@ -21,7 +21,7 @@ export default function GuestListTable({ guest }) {
             <div className='col-span-3 min-[800px]:block hidden'>
                 {matching && (
                     <div
-                        className={`p-2 text-white rounded-md text-xs inline-block ${matching.color}`}
+                        className={`p-2 rounded-md text-xs inline-block ${matching.color}`}
                     >
                         {matching.label}
                     </div>

@@ -14,7 +14,7 @@ export default function EventListPage({ params }: { params: { id: string } }) {
             </header>
 
             <section className='space-y-6'>
-                <div className='flex justify-between items-center'>
+                <div className='flex justify-between items-center md:flex-nowrap flex-wrap md:gap-y-0 gap-y-5'>
                     <AddNewGuest />
                     <Searchbar />
                 </div>

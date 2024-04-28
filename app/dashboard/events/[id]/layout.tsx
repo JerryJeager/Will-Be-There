@@ -4,7 +4,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <>
             <EventSidebar eventId={1234} />
-            <main className='w-full col-span-9 flex flex-col xl:px-24 lg:px-16 md:px-12 py-8 bg-[#F2EFF7] flex-grow'>
+            <main className='w-full col-span-9 flex flex-col xl:px-24 lg:px-16 px-12 py-8 bg-[#F2EFF7] flex-grow'>
                 {children}
             </main>
         </>
