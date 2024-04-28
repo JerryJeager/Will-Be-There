@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/tooltip": "^2.0.33",
     "bcryptjs": "^2.4.3",
     "dayjs": "^1.11.10",
     "dotenv": "^16.4.5",

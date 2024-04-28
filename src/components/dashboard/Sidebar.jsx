@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { CgHome, CgMail, CgLogOut } from 'react-icons/cg';
 import { IoChatbubblesOutline, IoCalendarOutline, IoSettingsOutline } from 'react-icons/io5';
 /**
- * Used for the main dashboard 
+ * Used for the main dashboard
  * @returns {JSX.Element} - The completed Sidebar component
  */
 export default function Sidebar() {
@@ -21,23 +21,30 @@ export default function Sidebar() {
         { href: '/dashboard/chat', label: 'Chat', icon: <IoChatbubblesOutline size={iconSize} /> }
     ];
 
-    return (
-        <>
-            <aside className={`bg-[#0B195B] text-white ${!pathname.startsWith('/dashboard/events/') ? 'col-span-2' : 'col-span-1' } p-8 flex flex-col items-center transition-all ease-in`}>
-                <div className='flex flex-col justify-between h-4/5'>
-                    <ul className='space-y-4 flex flex-col items-center justify-start'>
-                        {asideLinks && asideLinks.map((link) => (
-                            <SidebarLink key={link.href} href={link.href} label={link.label} icon={link.icon} 
-                            isActive={pathname.endsWith(link.href)}
-                            isDisplayed={!pathname.startsWith('/dashboard/events/')} />
-                        ))}
-                    </ul>
-                    <ul>
-                        <SidebarLink href="/logout" label="Logout" icon={<CgLogOut size={iconSize} />} 
-                        isDisplayed={!pathname.startsWith('/dashboard/events/')} />
-                    </ul>
-                </div>
-            </aside>
-        </>
-    )
+  return (
+    <>
+      <aside className="bg-[#0B195B] text-white col-span-2 p-8 hidden md:block">
+        <div className="flex flex-col justify-between h-4/5">
+          <ul className="space-y-4">
+            {asideLinks &&
+              asideLinks.map((link) => (
+                <SidebarLink
+                  key={link.href}
+                  href={link.href}
+                  label={link.label}
+                  icon={link.icon}
+                />
+              ))}
+          </ul>
+          <ul>
+            <SidebarLink
+              href="/logout"
+              label="Logout"
+              icon={<CgLogOut size={iconSize} />}
+            />
+          </ul>
+        </div>
+      </aside>
+    </>
+  );
 }
