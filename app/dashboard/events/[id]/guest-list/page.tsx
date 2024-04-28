@@ -1,10 +1,24 @@
 'use client';
 
+import axios from 'axios';
 import Searchbar from '../../../../../src/components/Searchbar';
 import AddNewGuest from '../../../../../src/components/dashboard/AddNewGuest';
 import GuestListTable from '../../../../../src/components/dashboard/GuestListTable';
 
-export default function EventListPage({ params }: { params: { id: string } }) {
+const url = 'https://will-be-there.onrender.com';
+
+// async function getEventDetails(id, url) {
+//     try {
+//         const response = await axios.get(`${url}/api/v1/invitation/guests/${id}`);
+
+//     } catch (error: any) {
+//         console.error('Error signing up:', error);
+
+//         throw error;
+//     }
+// }
+
+export default function GuestListPage({ params }: { params: { id: string } }) {
     return (
         <main className='space-y-6'>
             <header className='text-[#303036]'>
