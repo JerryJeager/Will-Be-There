@@ -51,7 +51,7 @@ const Navbar = () => {
         } z-[999] h-24 bg-white flex items-center justify-center w-[100%] m-0 p-0 `}
       >
         {
-           pathname == "/dashboard"? (
+           pathname.includes('/dashboard') ?  (
             <div className="flex justify-between m-5 md:m-10 items-center w-full text-[1rem] lg:text-lg transition-all ease-in ">
                 <div onClick={handleDashboardMenu} className="flex md:hidden">
                     <RiMenu2Fill size={30}/>

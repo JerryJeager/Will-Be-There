@@ -30,7 +30,8 @@ const Dashboard = () => {
         <main className='dashboard'>
             <header className='mb-8'>
                 <h1 className='text-[#777680] text-lg md:text-2xl'>
-                    Welcome, {session.user.name}.
+                  Welcome
+                    {/* Welcome, {session.user.name} */}
                 </h1>
             </header>
             
