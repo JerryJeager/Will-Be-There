@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 const localizedFormat = require('dayjs/plugin/localizedFormat');
 dayjs.extend(localizedFormat);
 
-export default function EventCard({ data }) {
+export default function EventCard({ data, setOpen }) {
     const { id, name, description, country, state, venue, image_url, date } =
         data;
     const handleClick = (id) => {
@@ -29,19 +29,19 @@ export default function EventCard({ data }) {
                         <div className='bg-gray-200 w-full flex flex-col gap-y-4 h-full justify-center items-center'>
                             No Image available
                             <br />
-                            <Link
-                                href='/dashboard/onboarding/add-image'
+                            <button
+                                onClick={() => setOpen(true)}
                                 className='underline text-sm'
                             >
                                 Add Image here
-                            </Link>
+                            </button>
                         </div>
                     )}
                 </figure>
                 <div className=' justify-between h-[50%]'>
                     <div className='w-full flex flex-col items-start '>
                         <h2 className='font-bold text-lg lg:text-2xl py-2'>
-                            {title}
+                            {name}
                         </h2>
                         <p className='text-[#777680] text-sm md:text-base w-full px-2'>
                             {description}
@@ -69,7 +69,9 @@ export default function EventCard({ data }) {
                             </Link>
                             <Link
                                 className='text-[#0D3dFB]'
-                                onClick={() => handleClick(id)}
+                                onClick={() => {
+                                    handleClick(id);
+                                }}
                                 href={`/dashboard/events/${id}`}
                             >
                                 <Button text='View' />

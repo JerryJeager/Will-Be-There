@@ -120,12 +120,12 @@ export default function StepThree() {
                             </div>
                         )}
                         <div className='grid'>
-                            <button
-                                type='submit'
-                                className='p-[18px] rounded-[10px] bg-[#0D35FB] text-white font-semibold text-base'
+                            <Link
+                                href='/dashboard'
+                                className='text-center p-[18px] rounded-[10px] bg-[#0D35FB] text-white font-semibold text-base'
                             >
                                 Continue
-                            </button>
+                            </Link>
                         </div>
                     </Form>
                 )}

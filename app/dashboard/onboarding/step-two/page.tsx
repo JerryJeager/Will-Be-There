@@ -67,20 +67,27 @@ export default function StepTwo() {
                         ...stepOne,
                         ...stepTwo,
                         date: date,
-                        time: '',
                         user_id: user_id
                     });
+
+                    // console.log({
+                    //     ...stepOne,
+                    //     ...stepTwo,
+                    //     date: date,
+                    //     time: '',
+                    //     user_id: user_id
+                    // });
                 }}
             >
                 {({ errors, touched }) => (
                     <Form className='pt-14 space-y-5 md:space-y-10'>
                         <div className='space-y-2'>
-                            <label
+                            {/* <label
                                 htmlFor='eventStart'
                                 className='text-[#46464F] font-semibold text-xl md:text-[28px] pl-2'
                             >
                                 Event Start
-                            </label>
+                            </label> */}
 
                             <div className='grid md:grid-cols-3 grid-cols-1 justify-between md:gap-x-14 gap-y-5 items-center'>
                                 <div className='md:col-span-2'>
@@ -134,10 +141,11 @@ export default function StepTwo() {
                                         : ''
                                 }`}
                                         placeholder='Enter the event time'
+                                        name='time'
                                     />
 
                                     <ErrorMessage
-                                        name='startTime.time'
+                                        name='time'
                                         component='span'
                                         className='text-red-500 font-medium min-[992px]:text-base text-sm lowercase pl-2'
                                     />
@@ -146,12 +154,12 @@ export default function StepTwo() {
                         </div>
 
                         <div className='space-y-3'>
-                            <label
+                            {/* <label
                                 htmlFor='eventEnd'
                                 className='text-[#46464F] font-semibold text-xl md:text-[28px] pl-2'
                             >
                                 Event End
-                            </label>
+                            </label> */}
 
                             <div className='grid md:grid-cols-3 grid-cols-1 justify-between md:gap-x-14 gap-y-5 items-center'>
                                 <div className='md:col-span-2'>
@@ -162,7 +170,7 @@ export default function StepTwo() {
                                         State
                                     </label>
                                     <Field
-                                        type='date'
+                                        type='text'
                                         id='eventEnd'
                                         className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
@@ -192,7 +200,7 @@ export default function StepTwo() {
                                         Country
                                     </label>
                                     <Field
-                                        type='time'
+                                        type='text'
                                         id='eventStart'
                                         className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            

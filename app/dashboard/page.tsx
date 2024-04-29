@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { CreateEventButton, EventCard } from '../../src/components/dashboard';
+import ImageUpload from '../../src/components/dashboard/ImageUpload';
 
 interface User {
     id: string;
@@ -19,6 +20,7 @@ const Dashboard = () => {
     const router = useRouter();
     const [events, setEvents] = useState([]);
     const [user, setUser] = useState<User>();
+    const [open, setOpen] = useState(false);
 
     const getEvents = async (id: string, url: string, token: string) => {
         try {
@@ -77,7 +79,7 @@ const Dashboard = () => {
     // }
 
     return (
-        <main className='dashboar w-full sm:p-7  p-5   bg-[#F2EFF7]'>
+        <main className='w-full sm:p-7  p-5   bg-[#F2EFF7]'>
             <header className='mb-8'>
                 <h1 className='text-[#777680] text-lg md:text-2xl'>
                     Welcome,{' '}
@@ -95,33 +97,16 @@ const Dashboard = () => {
                     {events.length === 0 ? (
                         <span>Loading....</span>
                     ) : (
-                        events.map((event) => <EventCard data={event} />)
+                        events.map((event) => (
+                            <EventCard data={event} setOpen={setOpen} />
+                        ))
                     )}
                 </div>
             </section>
             <section className='w-full'>
                 <NewEvent />
             </section>
-        </main>
-    );
-    return (
-        <main className='w-full col-span-12 md:col-span-10 px-3  md:px-5 lg:px-24 py-8 bg-[#F2EFF7] flex-grow'>
-            <header className=''>
-                <h1 className='text-[#777680] text-2xl '>
-                    Welcome, <span className='font-bold'> Victory</span>
-                </h1>
-            </header>
-              
-            <section className='mb-8'>
-                <h2 className='text-2xl font-bold mb-2'>Recent Event</h2>
-                <div className='w-full grid grid-cols-1 md:grid-cols-12 gap-4'>
-                    {mockData &&
-                        mockData.map((event) => <EventCard data={event} />)}
-                </div>
-            </section>
-            <section className='w-full'>
-                <NewEvent />
-            </section>
+            <ImageUpload open={open} setOpen={setOpen} />
         </main>
     );
 };
