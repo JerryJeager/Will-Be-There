@@ -68,13 +68,13 @@ const Dashboard = () => {
 
     console.log(events, user);
 
-    if (events.length === 0) {
-        return (
-            <main className='w-full col-span-10 flex flex-col p-8 bg-[#F2EFF7] flex-grow items-center justify-center'>
-                <NoEventAvailable />
-            </main>
-        );
-    }
+    // if (events.length === 0) {
+    //     return (
+    //         <main className='w-full col-span-10 flex flex-col p-8 bg-[#F2EFF7] flex-grow items-center justify-center'>
+    //             <NoEventAvailable />
+    //         </main>
+    //     );
+    // }
 
     return (
         <main className='dashboard'>
