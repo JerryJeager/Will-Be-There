@@ -1,17 +1,14 @@
 export type StepOneData = {
     name: string;
+    description: string;
 };
 
 export type StepTwoData = {
-    startTime: {
-        date: string;
-        time: string;
-    };
-    endTime: {
-        date: string;
-        time: string;
-    };
+    date: string;
+    time: string;
     venue: string;
+    state: string;
+    country: string;
 };
 
 export type StepThreeData = {

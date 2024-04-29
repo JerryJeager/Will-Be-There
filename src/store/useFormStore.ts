@@ -21,18 +21,17 @@ interface CustomStore {
 
 const useFormStore = create<CustomStore>((set) => ({
     stepOne: {
-        name: ''
+        name: '',
+        description: ''
     },
     stepTwo: {
-        startTime: {
-            date: '',
-            time: ''
-        },
-        endTime: {
-            date: '',
-            time: ''
-        },
-        venue: ''
+        date: '',
+        time: '',
+
+        venue: '',
+
+        state: '',
+        country: ''
     },
     stepThree: {
         extras: null

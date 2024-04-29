@@ -1,29 +1,89 @@
 'use client';
 
-import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import Searchbar from '../../../../../src/components/Searchbar';
 import AddNewGuest from '../../../../../src/components/dashboard/AddNewGuest';
 import GuestListTable from '../../../../../src/components/dashboard/GuestListTable';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const url = 'https://will-be-there.onrender.com';
 
-// async function getEventDetails(id, url) {
-//     try {
-//         const response = await axios.get(`${url}/api/v1/invitation/guests/${id}`);
-
-//     } catch (error: any) {
-//         console.error('Error signing up:', error);
-
-//         throw error;
-//     }
-// }
+interface Event {
+    id: string;
+    created_at: string;
+    name: string;
+    description: string;
+    user_id: string;
+    country: string;
+    state: string;
+    date: string;
+    venue: string;
+    image_url: string;
+}
 
 export default function GuestListPage({ params }: { params: { id: string } }) {
+    const router = useRouter();
+    const [guests, setGuests] = useState([]);
+    const [event, setEvent] = useState<Event>();
+
+    const getEventByID = async (id: string, url: string, token: string) => {
+        try {
+            const response = await axios.get(`${url}/api/v1/event/${id}`, {
+                headers: { Authorization: 'Bearer ' + token }
+            });
+
+            console.log('Events:', response.data);
+            setEvent(response.data);
+            return response.data;
+        } catch (error: any) {
+            console.error('Error signing up:', error);
+            setEvent({} as Event);
+            return [];
+        }
+    };
+    const getGuests = async (id: string, url: string, token: string) => {
+        try {
+            const response = await axios.get(
+                `${url}/api/v1/invitation/guests/${id}`,
+                {
+                    headers: { Authorization: 'Bearer ' + token }
+                }
+            );
+
+            console.log('Events:', response.data);
+            setGuests(response.data);
+            return response.data;
+        } catch (error: any) {
+            console.error('Error signing up:', error);
+            setGuests([]);
+            return [];
+        }
+    };
+
+    useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            router.push('/auth/login');
+        } else {
+            console.log('Token found:', token);
+        }
+
+        getGuests(params.id, url, token);
+        getEventByID(params.id, url, token);
+    }, [0]);
     return (
         <main className='space-y-6'>
             <header className='text-[#303036]'>
                 <h1 className='font-medium text-2xl leading-9 capitalize'>
-                    Guest list
+                    Guest list for{' '}
+                    {event && event.name ? (
+                        event.name
+                    ) : (
+                        <div className='animate-pulse inline-block w-fit rounded-full'>
+                            ...
+                        </div>
+                    )}
                 </h1>
             </header>
 
@@ -34,7 +94,7 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className='rounded-lg overflow-hidden'>
-                    <div className='bg-[#DFE0FF] grid grid-cols-12 p-4'>
+                    <div className='bg-[#DFE0FF] text-[#0B195B] grid grid-cols-12 p-4'>
                         <div className='min-[800px]:col-span-1 col-span-2'>
                             SN.
                         </div>
@@ -51,68 +111,21 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
                         </div>
                     </div>
 
-                    {mockGuestList.map((guest) => (
-                        <GuestListTable key={guest.id} guest={guest} />
-                    ))}
+                    {guests.length !== 0 ? (
+                        guests.map((guest, index) => (
+                            <GuestListTable
+                                key={guest.id}
+                                guest={guest}
+                                index={index}
+                            />
+                        ))
+                    ) : (
+                        <div className='animate-pulse w-fit rounded-full'>
+                            Loading ...
+                        </div>
+                    )}
                 </div>
             </section>
         </main>
     );
 }
-
-const mockGuestList = [
-    {
-        id: 1,
-        name: 'Tolu Adebayo',
-        email: 'toluadebayo@gmail.com',
-        status: 'invite sent'
-    },
-    {
-        id: 2,
-        name: 'Akira Tanaka',
-        email: 'akira@outlook.com',
-        status: 'pending invite'
-    },
-    {
-        id: 3,
-        name: 'Yousef Al-Farsi',
-        email: 'yousefal-farsi@protonmail.com',
-        status: 'invite sent'
-    },
-    {
-        id: 4,
-        name: 'Matteo Rossi',
-        email: 'matteo@rossi@hotmail.com,',
-        status: 'pending invite'
-    },
-    {
-        id: 5,
-        name: 'Emily Johnson',
-        email: 'emily.johnson@aol.com',
-        status: 'invite sent'
-    },
-    {
-        id: 6,
-        name: 'Maha Khalifa',
-        email: 'maha@khalifa@gmail.com',
-        status: 'pending invite'
-    },
-    {
-        id: 7,
-        name: 'Marcelo Lopez',
-        email: 'marcelolopez@yahoo.com',
-        status: 'invite sent'
-    },
-    {
-        id: 8,
-        name: 'Sofia Costa',
-        email: 'scosta@gmail.com',
-        status: 'pending invite'
-    },
-    {
-        id: 9,
-        name: 'Moses Osei',
-        email: 'mosesosei@outlook.com',
-        status: 'invite sent'
-    }
-];

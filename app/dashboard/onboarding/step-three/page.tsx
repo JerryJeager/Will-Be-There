@@ -3,12 +3,9 @@ import Link from 'next/link';
 import { stepThreeSchema } from '../../../../src/lib/yup';
 import { StepThreeData } from '../../../../src/store/eventTypes';
 import useFormStore from '../../../../src/store/useFormStore';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { nanoid } from 'nanoid';
 import { useState } from 'react';
-
-const eventID = nanoid();
 
 export default function StepThree() {
     const [generatedUrl, setGeneratedUrl] = useState('');
@@ -22,7 +19,11 @@ export default function StepThree() {
         }, 3000);
     };
     const router = useRouter();
-    const { stepOne, stepTwo, stepThree, setData } = useFormStore();
+    const searchParams = useSearchParams();
+
+    const eventID = searchParams.get('eventId');
+
+    const { stepThree, setData } = useFormStore();
 
     return (
         <section className='container mx-auto leading-tight py-10'>
@@ -45,12 +46,12 @@ export default function StepThree() {
                 onSubmit={(data: StepThreeData) => {
                     console.log(data);
                     setData({ step: 3, data });
-                    console.log({
-                        id: eventID,
-                        ...stepOne,
-                        ...stepTwo,
-                        ...stepThree
-                    });
+                    // console.log({
+                    //     id: eventID,
+                    //     ...stepOne,
+                    //     ...stepTwo,
+                    //     ...stepThree
+                    // });
 
                     // router.push('/dashboard');
                 }}
@@ -92,7 +93,7 @@ export default function StepThree() {
                         />
 
                         {generatedUrl && (
-                            <div className='flex justify-between items-center'>
+                            <div className='flex justify-between items-center gap-x-6'>
                                 <div className=''>
                                     Copy this link and send to your guests:
                                     <br />
@@ -119,12 +120,12 @@ export default function StepThree() {
                             </div>
                         )}
                         <div className='grid'>
-                            <button
-                                type='submit'
-                                className='p-[18px] rounded-[10px] bg-[#0D35FB] text-white font-semibold text-base'
+                            <Link
+                                href='/dashboard'
+                                className='text-center p-[18px] rounded-[10px] bg-[#0D35FB] text-white font-semibold text-base'
                             >
                                 Continue
-                            </button>
+                            </Link>
                         </div>
                     </Form>
                 )}
