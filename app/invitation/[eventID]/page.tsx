@@ -2,9 +2,6 @@
 
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import Image from "next/image";
-import logo from "../../../public/assets/logo.png";
-import Link from "next/link";
 
 export default function Page({ params }: { params: { eventID: string } }) {
   const searchParams = useSearchParams();
@@ -69,9 +66,6 @@ export default function Page({ params }: { params: { eventID: string } }) {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg">
         <form onSubmit={handleSubmit} className="space-y-6">
-        <Link href="/">
-    <Image src={logo} alt="logo" height={100} className="mx-auto w-[10rem]" />
-  </Link>
           <h2 className="text-2xl font-semibold text-gray-900">RSVP Form</h2>
           <p className="text-sm text-gray-600">
             This information will be displayed publicly so be careful what you share.
@@ -184,7 +178,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
                       name={`guestName-${index}`}
                       value={guest}
                       onChange={handleChange}
-                      className="block w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none sm:text-sm"
+                      className="block w-full px-4 py-2 mb-3 mt-1 rounded-md border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none sm:text-sm"
                       placeholder={`Guest ${index + 1} Name`}
                     />
                     {index > 0 && (
@@ -203,7 +197,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
                     <button
                       type="button"
                       onClick={handleAddGuest}
-                      className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+                      className="bg-indigo-600 text-white px-4 py-2 text-[16px] rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
                     >
                       Add Another Guest
                     </button>
