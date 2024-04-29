@@ -164,13 +164,13 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div>
-                        <Link href="/">
+                        <Link href="#">
                             <p className="hidden md:flex">notification</p>
                             <span className="md:hidden flex"><IoMdNotificationsOutline size={20}/></span>
                         </Link>
                     </div>
                     <div>
-                        <Link href="/">
+                        <Link href="#">
                             <p className="hidden md:flex">profile</p>
                             <span className="md:hidden flex"><FaRegUserCircle size={20}/></span>
                         </Link>
@@ -186,7 +186,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="gap-10 hidden md:flex transition-all font-semibold">
-              <Link href="/dashboard" className="flex items-center space-x-1">
+              <Link href="#feature" className="flex items-center space-x-1">
                 <span>Features</span>
               </Link>
               <Link href="/">
