@@ -1,39 +1,84 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import {
     AttendanceStatusCard,
     EmailStatusCard,
     GuestSummary
 } from '../../../../../src/components/dashboard';
 import Searchbar from '../../../../../src/components/Searchbar';
-import { mockEventDetails } from '../../../../../src/utils/mock-data';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-async function getEventDetails(id) {
-    const res = await fetch(`${process.env.BACKEND_API}/api/v1/event/${id}`);
+const url = 'https://will-be-there.onrender.com';
 
-    return await res.json();
+interface Event {
+    id: string;
+    created_at: string;
+    name: string;
+    description: string;
+    user_id: string;
+    country: string;
+    state: string;
+    date: string;
+    venue: string;
+    image_url: string;
 }
 
-async function getGuestsByEventId(event_id) {
-    const res = await fetch(
-        `${process.env.BACKEND_API}/api/v1/invitation/guests/${event_id}`
-    );
-
-    return await res.json();
-}
-
-export default async function RSVPTrackingPage({
+export default function RSVPTrackingPage({
     params
 }: {
     params: { id: string };
 }) {
-    const event =
-        process.env.NODE_ENV === 'development'
-            ? mockEventDetails
-            : await getEventDetails(params.id);
+    const router = useRouter();
+    const [guests, setGuests] = useState([]);
+    const [event, setEvent] = useState<Event>();
 
-    const guests =
-        process.env.NODE_ENV === 'development'
-            ? mockEventDetails.guestList
-            : await getGuestsByEventId(params.id);
+    const getEventByID = async (id: string, url: string, token: string) => {
+        try {
+            const response = await axios.get(`${url}/api/v1/event/${id}`, {
+                headers: { Authorization: 'Bearer ' + token }
+            });
+
+            console.log('Events:', response.data);
+            setEvent(response.data);
+            return response.data;
+        } catch (error: any) {
+            console.error('Error signing up:', error);
+            setEvent({} as Event);
+            return [];
+        }
+    };
+    const getGuests = async (id: string, url: string, token: string) => {
+        try {
+            const response = await axios.get(
+                `${url}/api/v1/invitation/guests/${id}`,
+                {
+                    headers: { Authorization: 'Bearer ' + token }
+                }
+            );
+
+            console.log('Events:', response.data);
+            setGuests(response.data);
+            return response.data;
+        } catch (error: any) {
+            console.error('Error signing up:', error);
+            setGuests([]);
+            return [];
+        }
+    };
+
+    useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            router.push('/auth/login');
+        } else {
+            console.log('Token found:', token);
+        }
+
+        getGuests(params.id, url, token);
+        getEventByID(params.id, url, token);
+    }, [0]);
 
     return (
         <div className='flex flex-col w-full'>
@@ -41,12 +86,24 @@ export default async function RSVPTrackingPage({
                 <div className='mb-8'>
                     <h1 className='text-2l mb-4'>RSVP Tracking</h1>
                     <h2 className='text-3xl font-medium'>
-                        Stephanie's Wedding Invitation
+                        {event && event.name ? (
+                            event.name
+                        ) : (
+                            <div className='animate-pulse w-fit rounded-full'>
+                                ...
+                            </div>
+                        )}
                     </h2>
                 </div>
                 <div className='grid grid-cols-12 w-full gap-x-0 gap-y-4 md:gap-x-8 md:gap-y-0'>
-                    <AttendanceStatusCard status={event.attendanceStatus} />
-                    <EmailStatusCard status={event.emailStatus} />
+                    {guests.length !== 0 ? (
+                        <AttendanceStatusCard guests={guests} />
+                    ) : (
+                        <div className='animate-pulse w-fit rounded-full'>
+                            Loading ...
+                        </div>
+                    )}
+                    {/* <EmailStatusCard status={event.emailStatus} /> */}
                 </div>
             </header>
             <section className='flex flex-col w-full'>
@@ -73,9 +130,19 @@ export default async function RSVPTrackingPage({
                             </div>
                         </div>
                         <div className='w-full'>
-                            {guests.map((guest) => (
-                                <GuestSummary key={guest.id} guest={guest} />
-                            ))}
+                            {guests.length !== 0 ? (
+                                guests.map((guest, index) => (
+                                    <GuestSummary
+                                        key={guest.id}
+                                        guest={guest}
+                                        index={index}
+                                    />
+                                ))
+                            ) : (
+                                <div className='animate-pulse w-fit rounded-full'>
+                                    Loading ...
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
