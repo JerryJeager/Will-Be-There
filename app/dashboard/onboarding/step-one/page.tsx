@@ -11,8 +11,8 @@ export default function StepOne() {
     const { stepOne, setData } = useFormStore();
 
     return (
-        <section className='container mx-auto leading-tight'>
-            <h1 className='text-center font-bold mb-5 text-[#1B1B21] text-[40px] '>
+        <section className='container mx-auto leading-tight py-10'>
+            <h1 className='text-center font-bold  text-[#1B1B21] text-3xl md:text-[40px] py-5 '>
                 Enter your event name
             </h1>
 
@@ -35,16 +35,16 @@ export default function StepOne() {
                 }}
             >
                 {({ errors, touched }) => (
-                    <Form className='pt-14 space-y-16'>
+                    <Form className='pt-14 space-y-10'>
                         <Field
                             type='text'
-                            className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg px-4 py-5 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                            className={`w-full border-[1.5px] border-[#0D35FB] text-lg bg-white rounded-lg p-4 font-semibold placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.name && touched.name
                                         ? 'border-red-500 text-red-500 placeholder:text-red-500 focus:border-red-500 focus-within:border-red-500 focus-visible:border-red-500'
                                         : touched.name
-                                        ? 'border-green-500 text-green-500 placeholder:text-green-500 focus:border-green-500 focus-within:border-green-500 focus-visible:border-green-500'
+                                        ? 'border-[#0D35FB] focus-within:border-[#0D35FB] focus-visible:border-[#0D35FB]'
                                         : ''
                                 }`}
                             placeholder='Enter your event name'
@@ -54,7 +54,7 @@ export default function StepOne() {
                         <ErrorMessage
                             name='name'
                             component='span'
-                            className='text-red-500 font-medium min-[992px]:text-base text-sm'
+                            className='text-red-500 font-medium min-[992px]:text-base text-sm lowercase pl-2'
                         />
 
                         <div className='grid'>

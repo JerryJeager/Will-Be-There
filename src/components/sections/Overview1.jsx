@@ -3,6 +3,7 @@ import { Wrapper } from '../../shared/Wrapper'
 import { Button } from '../../shared/Button'
 import Image from 'next/image'
 import image from '../../../public/assets/Rectangle 5.png'
+import Link from 'next/link'
 
 export const Overview1 = () => {
   return (
@@ -16,6 +17,7 @@ export const Overview1 = () => {
                         Begin with effortlessly compile a list of  for guests and items to contribute to your event, ensuring every detail is accounted for.
                     </p>
                     <div>
+                        <Link href="/auth/login"></Link>
                         <Button text="Try Now For Free"/>
                     </div>
                 </div>

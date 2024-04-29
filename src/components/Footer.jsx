@@ -19,7 +19,7 @@ export const Footer = () => {
             </Link>
           </p>
           <p className="leading-8 text-sm md:text-medium ">
-            Email: willbethere@gmail.com <br />
+            Email: will.be.there.24@gmail.com <br />
             Phone: +2348140732549
           </p>
           <div className="flex items-start gap-2 mt-2">

@@ -25,8 +25,8 @@ export default function StepThree() {
     const { stepOne, stepTwo, stepThree, setData } = useFormStore();
 
     return (
-        <section className='container mx-auto leading-tight'>
-            <h1 className='text-center font-bold mb-5 text-[#1B1B21] text-[40px]'>
+        <section className='container mx-auto leading-tight py-10'>
+            <h1 className='text-center font-bold  text-[#1B1B21] text-3xl md:text-[40px] py-5'>
                 Generate your event url
             </h1>
 
@@ -56,17 +56,17 @@ export default function StepThree() {
                 }}
             >
                 {({ errors, touched, handleChange, handleBlur }) => (
-                    <Form className='pt-16 space-y-10'>
+                    <Form className='pt-10 md:pt-16 space-y-6'>
                         <label
                             htmlFor='extras'
-                            className='text-[#46464F] font-medium text-[28px]'
+                            className='text-[#46464F] font-semibold md:text-[28px] text-center flex px-2'
                         >
                             How many plus ones can your guests bring?
                         </label>
                         <Field
                             type='number'
                             id='extras'
-                            className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg px-4 py-5 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                            className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.extras && touched.extras
@@ -88,7 +88,7 @@ export default function StepThree() {
                         <ErrorMessage
                             name='extras'
                             component='span'
-                            className='text-red-500 font-medium min-[992px]:text-base text-sm'
+                            className='text-red-500 font-medium min-[992px]:text-base text-sm lowercase pl-2'
                         />
 
                         {generatedUrl && (
@@ -121,7 +121,7 @@ export default function StepThree() {
                         <div className='grid'>
                             <button
                                 type='submit'
-                                className='p-[18px] rounded-[10px] bg-[#0D35FB] text-white font-medium text-base'
+                                className='p-[18px] rounded-[10px] bg-[#0D35FB] text-white font-semibold text-base'
                             >
                                 Continue
                             </button>

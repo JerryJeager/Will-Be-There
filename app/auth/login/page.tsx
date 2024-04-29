@@ -70,15 +70,15 @@ const Login = () => {
         >
           <label
             htmlFor="email"
-            className="text-[#1f1f1f] flex flex-col  sm:text-sm"
+            className="text-[#1f1f1f] sm:text-sm"
           >
-            Email
+             <span className="font-semibold">Email</span>
             <input
               type="text"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="rounded-md shadow appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
+              className="rounded-md appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 outline-none focus:border-[#0D35FB] sm:text-sm mb-4"
               placeholder="Enter Your Email"
               required
             />
@@ -86,23 +86,23 @@ const Login = () => {
           {/* Password input field */}
           <label
             htmlFor="password"
-            className="text-[#1f1f1f] flex flex-col  sm:text-sm"
+            className="text-[#1f1f1f] sm:text-sm"
           >
-            Password
-            <div className="relative">
+             <span className="font-semibold">Password</span>
+            <div className="relative ">
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="rounded-md shadow appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+                className="rounded-md appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 outline-none focus:border-[#0D35FB] sm:text-sm mb-4"
                 placeholder="Enter Your Password"
                 required
               />
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute inset-y-0 right-0 flex items-center pr-3 z-10"
+                className="absolute top-[28%] flex justify-end self-center right-4 z-10"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
@@ -117,19 +117,13 @@ const Login = () => {
           {/* Submit button */}
           <button
             type="submit"
-            className="w-full bg-[#0D35FB] rounded-lg text-white py-2 hover:bg-blue-600 text-lg"
+            className="w-full bg-[#0D35FB] rounded-lg text-white py-2 hover:bg-blue-600 text-lg font-semibold transition-all ease-in"
           >
             Log In
           </button>
           {/* Error message */}
           <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
         </form>
-        {/* <div className="w-full flex flex-row justify-center items-center text-gray-500 pb-4">
-          - or -
-        </div>
-        <button className="w-full bg-white text-[#0B195B] py-2 border-2 rounded-lg border-blue-600 text-lg">
-          Sign In with Google
-        </button> */}
         <Link
           className="block text-center mx-auto text-blue-500 hover:underline text-lg"
           href="/auth/signup"
