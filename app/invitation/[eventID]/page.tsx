@@ -1,12 +1,13 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import CongratulationsMessage from "./CongratulationsMessage";
 
 export default function Page({ params }: { params: { eventID: string } }) {
   const searchParams = useSearchParams();
+  const router = useRouter()
   const extras = searchParams.get("extras");
   const [showCongratulations, setShowCongratulations] = useState(false);
 
@@ -114,21 +115,21 @@ export default function Page({ params }: { params: { eventID: string } }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-5">
+      <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center mt-28 md:mt-32 ">
         <div className="mb-8">
           {eventData && (
             <div className="">
               <img
                 src={eventData.image_url}
                 alt={eventData.name}
-                className="mb-2 max-w-[400px]"
+                className="mb-2  md:max-w-[400px] rounded"
               />
-              <h2 className="text-2xl font-semibold text-gray-900">
+              <h2 className="text-2xl text-center font-semibold text-gray-900 capitalize">
                 {eventData.name}
               </h2>
               <p className="text-sm text-gray-600 text-center">
-                {eventData.description}
+                {eventData?.description}
               </p>
             </div>
           )}
@@ -335,23 +336,26 @@ export default function Page({ params }: { params: { eventID: string } }) {
           </div>
 
           <div className="flex justify-end">
-            <button
+            {/* <button
               type="button"
               className="text-sm font-semibold text-gray-900 mr-4"
             >
               Cancel
-            </button>
+            </button> */}
             <button
               type="submit"
-              className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+              className="bg-[#0D35FB] text-white px-4 py-2 rounded-md hover:bg-[#0D35FB] focus:outline-none focus:ring-2 focus:ring-[#0D35FB]focus:ring-opacity-50"
             >
-              Save
+              Submit
             </button>
           </div>
         </form>
         {showCongratulations && (
             <CongratulationsMessage
-              onClose={() => setShowCongratulations(false)}
+              onClose={() => {
+                setShowCongratulations(false)
+                router.push(`/`)
+              }}
             />
           )}
       </div>

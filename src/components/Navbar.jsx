@@ -186,7 +186,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="gap-10 hidden md:flex transition-all font-semibold">
-              <Link href="/dashboard" className="flex items-center space-x-1">
+              <Link href="#feature" className="flex items-center space-x-1">
                 <span>Features</span>
               </Link>
               <Link href="/">

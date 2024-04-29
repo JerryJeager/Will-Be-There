@@ -49,7 +49,7 @@ export const Featuredata = [
 
 export const Features = () => {
   return (
-    <section className="">
+    <section id="feature" className="">
       <div className="bg-[#0D154B] flex flex-col justify-center items-center p-5 pb-12">
         <div className="text-center space-y-5 p-5 pt-10 ">
           <p className="text-[#BCC2FF] text-4xl font-bold">Features</p>
