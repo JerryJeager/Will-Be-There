@@ -33,18 +33,9 @@ export default function Page({ params }: { params: { eventID: string } }) {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const token = sessionStorage.getItem('token');
-        if (!token) {
-          throw new Error('Access token is missing');
-        }
-
         const response = await axios.get(
           `https://will-be-there.onrender.com/api/v1/event/${params.eventID}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`
-            },
-          }
+        
         );
         setEventData(response.data);
       } catch (error) {
