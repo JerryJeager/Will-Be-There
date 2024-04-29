@@ -112,13 +112,13 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div>
-                        <Link href="/">
+                        <Link href="#">
                             <p className="hidden md:flex">notification</p>
                             <span className="md:hidden flex"><IoMdNotificationsOutline size={30}/></span>
                         </Link>
                     </div>
                     <div>
-                        <Link href="/">
+                        <Link href="#">
                             <p className="hidden md:flex">profile</p>
                             <span className="md:hidden flex"><FaRegUserCircle size={30}/></span>
                         </Link>
