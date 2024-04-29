@@ -9,7 +9,7 @@
     }*/
 
     .event-dashboard {
-      @apply w-full col-span-12 md:col-span-9 flex flex-col px-5 sm:px-7 py-8 bg-[#F2EFF7] flex-grow
+      @apply w-full col-span-12 md:col-span-9 flex flex-col px-2 sm:px-7 py-8 bg-[#F2EFF7] flex-grow
     } 
   }
 

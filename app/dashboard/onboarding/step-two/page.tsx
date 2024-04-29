@@ -14,8 +14,8 @@ export default function StepTwo() {
     const today = dayjs().format('YYYY-MM-DD');
 
     return (
-        <section className='container mx-auto leading-tight'>
-            <h1 className='text-center font-bold mb-5 text-[#1B1B21] text-[40px]'>
+        <section className='container mx-auto leading-tight py-10'>
+            <h1 className='text-center font-bold  text-[#1B1B21] text-3xl md:text-[40px] py-5 '>
                 Enter your event date
             </h1>
 
@@ -38,21 +38,21 @@ export default function StepTwo() {
                 }}
             >
                 {({ errors, touched }) => (
-                    <Form className='pt-14 space-y-14'>
-                        <div className='space-y-5'>
+                    <Form className='pt-14 space-y-5 md:space-y-10'>
+                        <div className='space-y-2'>
                             <label
                                 htmlFor='eventStart'
-                                className='text-[#46464F] font-medium text-[28px]'
+                                className='text-[#46464F] font-semibold text-xl md:text-[28px] pl-2'
                             >
                                 Event Start
                             </label>
 
-                            <div className='grid md:grid-cols-3 grid-cols-1 justify-between md:gap-x-14 gap-y-12 items-center'>
+                            <div className='grid md:grid-cols-3 grid-cols-1 justify-between md:gap-x-14 gap-y-5 items-center'>
                                 <div className='md:col-span-2'>
                                     <Field
                                         type='date'
                                         id='eventStart'
-                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg px-4 py-5 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.startTime &&
@@ -73,7 +73,7 @@ export default function StepTwo() {
                                     <ErrorMessage
                                         name='startTime.date'
                                         component='span'
-                                        className='text-red-500 font-medium min-[992px]:text-base text-sm'
+                                        className='text-red-500 font-medium min-[992px]:text-base text-sm lowercase pl-2'
                                     />
                                 </div>
 
@@ -81,7 +81,7 @@ export default function StepTwo() {
                                     <Field
                                         type='time'
                                         id='eventStart'
-                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg px-4 py-5 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.startTime &&
@@ -101,26 +101,26 @@ export default function StepTwo() {
                                     <ErrorMessage
                                         name='startTime.time'
                                         component='span'
-                                        className='text-red-500 font-medium min-[992px]:text-base text-sm'
+                                        className='text-red-500 font-medium min-[992px]:text-base text-sm lowercase pl-2'
                                     />
                                 </div>
                             </div>
                         </div>
 
-                        <div className='space-y-5'>
+                        <div className='space-y-3'>
                             <label
                                 htmlFor='eventEnd'
-                                className='text-[#46464F] font-medium text-[28px]'
+                                className='text-[#46464F] font-semibold text-xl md:text-[28px] pl-2'
                             >
                                 Event End
                             </label>
 
-                            <div className='grid md:grid-cols-3 grid-cols-1 justify-between md:gap-x-14 gap-y-12 items-center'>
+                            <div className='grid md:grid-cols-3 grid-cols-1 justify-between md:gap-x-14 gap-y-5 items-center'>
                                 <div className='md:col-span-2'>
                                     <Field
                                         type='date'
                                         id='eventEnd'
-                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg px-4 py-5 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.endTime &&
@@ -140,7 +140,7 @@ export default function StepTwo() {
                                     <ErrorMessage
                                         name='endTime.date'
                                         component='span'
-                                        className='text-red-500 font-medium min-[992px]:text-base text-sm'
+                                        className='text-red-500 font-medium min-[992px]:text-base text-sm lowercase pl-2'
                                     />
                                 </div>
 
@@ -148,7 +148,7 @@ export default function StepTwo() {
                                     <Field
                                         type='time'
                                         id='eventStart'
-                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg px-4 py-5 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.endTime &&
@@ -167,16 +167,16 @@ export default function StepTwo() {
                                     <ErrorMessage
                                         name='endTime.time'
                                         component='span'
-                                        className='text-red-500 font-medium min-[992px]:text-base text-sm'
+                                        className='text-red-500 font-medium min-[992px]:text-base text-sm lowercase pl-2'
                                     />
                                 </div>
                             </div>
                         </div>
 
-                        <div className='space-y-5'>
+                        <div className='space-y-3'>
                             <label
                                 htmlFor='eventVenue'
-                                className='text-[#46464F] font-medium text-[28px]'
+                                className='text-[#46464F] font-semibold text-xl md:text-[28px] pl-2'
                             >
                                 Event Venue
                             </label>
@@ -184,7 +184,7 @@ export default function StepTwo() {
                             <Field
                                 type='text'
                                 id='eventVenue'
-                                className={`block w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg px-4 py-5 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                                className={`block w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 gap-y-5 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.venue && touched.venue
@@ -199,14 +199,14 @@ export default function StepTwo() {
                             <ErrorMessage
                                 name='venue'
                                 component='span'
-                                className='text-red-500 font-medium min-[992px]:text-base text-sm'
+                                className='text-red-500 font-medium min-[992px]:text-base text-sm lowercase pl-2'
                             />
                         </div>
 
-                        <div className='grid'>
+                        <div className='grid py-5'>
                             <button
                                 type='submit'
-                                className='p-[18px] rounded-[10px] bg-[#0D35FB] text-white font-medium text-base'
+                                className='p-[18px] rounded-[10px] bg-[#0D35FB] text-white font-semibold text-base hover:bg-opacity-80 transition-all '
                             >
                                 Continue
                             </button>
