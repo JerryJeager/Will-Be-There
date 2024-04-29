@@ -77,7 +77,7 @@ const Dashboard = () => {
     // }
 
     return (
-        <main className='dashboard'>
+        <main className='dashboar w-full sm:p-7  p-5   bg-[#F2EFF7]'>
             <header className='mb-8'>
                 <h1 className='text-[#777680] text-lg md:text-2xl'>
                     Welcome,{' '}
@@ -90,8 +90,8 @@ const Dashboard = () => {
             </header>
 
             <section className='mb-8'>
-                <h2 className='text-2xl font-bold mb-2'>Recent Event</h2>
-                <div className='w-full grid grid-cols-auto lg:grid-cols-2 grid-rows-auto gap-4'>
+                <h2 className='text-2xl font-bold p-2'>Recent Event</h2>
+                <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-4 h-auto '>
                     {events.length === 0 ? (
                         <span>Loading....</span>
                     ) : (
@@ -126,35 +126,6 @@ const Dashboard = () => {
     );
 };
 
-const mockData = [
-    {
-        id: '1jkdjfieiaadfa',
-        image_url:
-            'https://images.pexels.com/photos/1071879/pexels-photo-1071879.jpeg?auto=compress&cs=tinysrgb&w=800',
-        name: "Stephanie's Wedding Invitation",
-        description:
-            'Join Stephanie and David as they tie the knot under a canopy of wisteria, followed by an evening of dancing and delicious food under the Tuscan sun.',
-        date: '2024-08-02T15:04:05Z',
-        venue: 'Times Square',
-        state: 'New York',
-        country: 'USA',
-        slug: '/invitation/1jkdjfieiaadfa'
-    },
-    {
-        id: '2jkdjfieiaadfa',
-        image_url:
-            'https://images.pexels.com/photos/7723715/pexels-photo-7723715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        name: 'Homewarming Party',
-        description:
-            'Get ready to dance the night away and reconnect with old friends at our lively Homecoming Bash',
-        date: '2024-08-02T15:04:05Z',
-        venue: 'Golden Gate Bridge',
-        state: 'San Francisco',
-        country: 'USA',
-        slug: '/invitation/2jkdjfieiaadfa'
-    }
-];
-
 const NoEventAvailable = () => (
     <div className='w-3/5 bg-white flex flex-row items-center justify-center p-4 rounded-lg'>
         <div className='w-4/5'>
@@ -172,11 +143,10 @@ const NoEventAvailable = () => (
 
 const NewEvent = () => (
     <div>
-        <h2 className='text-2xl font-bold mb-2'>Create New Event</h2>
+        <h2 className='text-2xl font-bold p-2'>Create New Event</h2>
         <div className='bg-white rounded-lg shadow-md  p-3 md:p-4 flex flex-col md:flex-row items-center justify-center md:justify-between text-center md:text-start gap-6'>
-            <p>
-                Need more events? Click the "Create New Event" button to get
-                started.
+            <p className='text-lg'>
+                Create a new event and share with your friends...
             </p>
             <CreateEventButton />
         </div>

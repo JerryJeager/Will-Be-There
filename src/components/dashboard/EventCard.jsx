@@ -38,10 +38,12 @@ export default function EventCard({ data }) {
                         </div>
                     )}
                 </figure>
-                <div className='flex flex-col justify-between'>
-                    <div className='w-full flex flex-col items-start mt-4'>
-                        <h2 className='font-bold text-2xl'>{name}</h2>
-                        <p className='text-[#777680] text-sm md:text-base w-full h-16'>
+                <div className=' justify-between h-[50%]'>
+                    <div className='w-full flex flex-col items-start '>
+                        <h2 className='font-bold text-lg lg:text-2xl py-2'>
+                            {title}
+                        </h2>
+                        <p className='text-[#777680] text-sm md:text-base w-full px-2'>
                             {description}
                         </p>
                     </div>

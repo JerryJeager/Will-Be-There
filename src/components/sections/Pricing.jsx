@@ -48,7 +48,7 @@ export const PricingData = [
 
 export const Pricing = () => {
   return (
-    <section>
+    <section id='pricing'>
         <Wrapper>
             <div className="flex flex-col items-center justify-center py-10">
                 <p className="text-xl sm:text-3xl text-center font-semibold">

@@ -16,7 +16,7 @@ export default function EventSidebar({ eventId }) {
     ];
 
     return (
-        <aside className='hidden md:block md:col-span-2 py-8 bg-[#BAC3FF]'>
+        <aside className='hidden md:block md:col-span-2 py-8 bg-[#BAC3FF] w-80'>
             <ul className='space-y-4 px-2'>
                 {eventSidebarMenuLinks &&
                     eventSidebarMenuLinks.map((link) => (
