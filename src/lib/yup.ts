@@ -2,20 +2,17 @@ import * as yup from 'yup';
 import { StepOneData, StepThreeData, StepTwoData } from '../store/eventTypes';
 
 export const stepOneSchema: yup.ObjectSchema<StepOneData> = yup.object({
-    name: yup.string().required('Event Name is required')
+    name: yup.string().required('Event Name is required'),
+    description: yup.string().required('Description is required')
 });
 
 // @ts-ignore - file type still not found
 export const stepTwoSchema: yup.ObjectSchema<StepTwoData> = yup.object({
-    startTime: yup.object({
-        date: yup.string().required('Start date is required'),
-        time: yup.string().required('Start time is required')
-    }),
-    endTime: yup.object({
-        date: yup.string().required('End date is required'),
-        time: yup.string().required('End time is required')
-    }),
-    venue: yup.string().required('Venue is required')
+    date: yup.string().required('Date is required'),
+    time: yup.string().required('Time is required'),
+    venue: yup.string().required('Venue is required'),
+    state: yup.string().required('State is required'),
+    country: yup.string().required('Country is required')
 });
 
 // // @ts-ignore - override correct yup type
