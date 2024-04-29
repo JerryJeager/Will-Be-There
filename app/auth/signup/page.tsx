@@ -76,11 +76,11 @@ export default function Signup() {
         >
           <label
             htmlFor="name"
-            className="text-[#1f1f1f] flex flex-col  sm:text-sm"
+            className="text-[#1f1f1f] sm:text-sm "
           >
-            First Name
+            <span className="font-semibold pl-2">First Name</span>
             <input
-              className="px-3 py-3 shadow border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md w-full flex appearance-none focus:outline-none focus:shadow-outline focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
+              className="rounded-md appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 outline-none focus:border-[#0D35FB] sm:text-sm mb-4"
               type="text"
               name="first_name"
               value={formData.first_name}
@@ -92,11 +92,11 @@ export default function Signup() {
 
           <label
             htmlFor="name"
-            className="text-[#1f1f1f] flex flex-col  sm:text-sm"
+            className="text-[#1f1f1f] sm:text-sm"
           >
-            Last Name
+             <span className="font-semibold pl-2">Last Name</span>
             <input
-              className="px-3 py-3 shadow border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md w-full flex appearance-none focus:outline-none focus:shadow-outline focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
+              className="rounded-md appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 outline-none focus:border-[#0D35FB] sm:text-sm mb-4"
               type="text"
               name="last_name"
               value={formData.last_name}
@@ -108,11 +108,11 @@ export default function Signup() {
 
           <label
             htmlFor="email"
-            className="text-[#1f1f1f] flex flex-col  sm:text-sm"
+            className="text-[#1f1f1f]  sm:text-sm"
           >
-            Email
+             <span className="font-semibold pl-2">Email</span>
             <input
-              className="px-3 py-3 shadow border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md w-full flex appearance-none focus:outline-none focus:shadow-outline focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
+              className="rounded-md appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 outline-none focus:border-[#0D35FB] sm:text-sm mb-4"
               type="email"
               name="email"
               value={formData.email}
@@ -125,38 +125,34 @@ export default function Signup() {
             htmlFor="password"
             className="text-[#1f1f1f] flex flex-col  sm:text-sm"
           >
-            Password
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter Your Password"
-              className="px-3 py-3 shadow border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md w-full flex appearance-none focus:outline-none focus:shadow-outline focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm mb-4"
-              required
-            />
-            <button
-              type="button"
-              onClick={togglePasswordVisibility}
-              className="absolute right-[2rem] lg:right-[7rem] mt-10 lg:mt-9 md:right-[8rem] flex items-center z-10"
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </button>
+             <span className="font-semibold pl-2">Password</span>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter Your Password"
+                className="rounded-md appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 outline-none focus:border-[#0D35FB] sm:text-sm mb-4"
+                required
+              />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="absolute top-[28%] flex justify-end self-center right-4 z-10"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
           </label>
           <button
             type="submit"
-            className="w-full bg-[#0D35FB] rounded-lg text-white py-2 hover:bg-blue-600 text-lg"
+            className="w-full bg-[#0D35FB] rounded-lg text-white py-2 hover:bg-blue-600 text-lg font-semibold transition-all ease-in"
           >
             Create Account
           </button>
           <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
         </form>
-        {/* <div className="w-full flex flex-row justify-center items-center text-gray-500 pb-4">
-          - or -
-        </div>
-        <button className="w-full border-2 border-blue-600 py-2 rounded-lg bg-white text-lg text-[#0B195B] hover:border-[#0B195B]">
-          Continue with Google
-        </button> */}
         <Link
           href="/auth/login"
           className="block text-center text-blue-500 hover:underline mt-2 text-lg"

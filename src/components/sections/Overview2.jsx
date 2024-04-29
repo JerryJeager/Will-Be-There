@@ -3,6 +3,7 @@ import { Wrapper } from '../../shared/Wrapper'
 import { Button } from '../../shared/Button'
 import Image from 'next/image'
 import image from '../../../public/assets/overview2.png'
+import Link from 'next/link'
 
 export const Overview2 = () => {
   return (
@@ -20,7 +21,9 @@ export const Overview2 = () => {
                         Effortlessly organize guest lists and contributions, ensuring a seamless and stress-free experience every step of the way.
                     </p>
                     <div>
-                        <Button text="Try Now For Free"/>
+                        <Link href="/auth/login">
+                            <Button text="Try Now For Free"/>
+                        </Link>
                     </div>
                 </div>
             </div>

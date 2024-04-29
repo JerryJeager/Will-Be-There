@@ -11,8 +11,8 @@ export default function Layout({ children }) {
     const activeThree = pathname === '/dashboard/onboarding/step-three';
 
     return (
-        <main className='bg-[#F2EFF7] sm:py-20 min-[991px]:px-20  max-[991px]:px-12 py-14  col-span-10'>
-            <div className='mb-20 grid sm:grid-cols-3 sm:grid-rows-1 grid-cols-1 gap-y-7 items-center justify-between'>
+        <main className='bg-[#F2EFF7] sm:py-16 min-[991px]:px-20  max-[991px]:px-12 py-14 w-full  col-span-12'>
+            <div className='grid sm:grid-cols-3 sm:grid-rows-1 grid-cols-1 gap-y-7 items-center justify-between'>
                 <Link
                     href='/dashboard/onboarding/step-one'
                     className='font-medium text-[22px] flex items-center gap-x-4 text-[#0D35FB] sm:justify-start justify-center'
