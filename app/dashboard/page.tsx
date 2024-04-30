@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { CreateEventButton, EventCard } from '../../src/components/dashboard';
 import ImageUpload from '../../src/components/dashboard/ImageUpload';
 
+
 interface User {
     id: string;
     created_at: string;
@@ -21,8 +22,15 @@ const Dashboard = () => {
     const [events, setEvents] = useState([]);
     const [user, setUser] = useState<User>();
     const [open, setOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
+    const token = sessionStorage.getItem('token')
+    const [image, setImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState('')
+    const id = sessionStorage.getItem('event_id')
+
 
     const getEvents = async (id: string, url: string, token: string) => {
+        setIsLoading(true)
         try {
             const response = await axios.get(`${url}/api/v1/event/user/${id}`, {
                 headers: { Authorization: 'Bearer ' + token }
@@ -44,6 +52,9 @@ const Dashboard = () => {
             setEvents([]);
             return [];
         }
+        finally{
+            setIsLoading(false)
+        }
     };
 
     const getUser = async (id: string, url: string, token: string) => {
@@ -61,6 +72,26 @@ const Dashboard = () => {
             return [];
         }
     };
+
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.put(`https://will-be-there.onrender.com/api/v1/event/${id}/image`, imageUrl, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: 'Bearer ' + token
+                }
+            })
+            console.log(response.data)
+
+        } catch (error) {
+            console.log(error)
+        }
+        finally{
+            window.location.reload()
+        }
+        
+    }
 
     useEffect(() => {
         const token = sessionStorage.getItem('token');
@@ -93,9 +124,12 @@ const Dashboard = () => {
             <section className='mb-8'>
                 <h2 className='text-2xl font-bold p-2'>Recent Event</h2>
                 <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-4 h-auto '>
-                    {events.length === 0 ? (
+                    {events.length === 0 && isLoading ? (
                         <span>Loading....</span>
-                    ) : (
+                    ) : events.length == 0 && !isLoading ?(
+                        <NoEventAvailable />
+                    ) :
+                     (
                         events.map((event) => (
                             <EventCard data={event} setOpen={setOpen} />
                         ))
@@ -105,21 +139,29 @@ const Dashboard = () => {
             <section className='w-full'>
                 <NewEvent />
             </section>
-            <ImageUpload open={open} setOpen={setOpen} />
+            <ImageUpload 
+                open={open} 
+                setOpen={setOpen} 
+                handleSubmit={handleSubmit} 
+                image={image} 
+                imageUrl={imageUrl} 
+                setImage={setImage} 
+                setImageUrl={setImageUrl} 
+            />
         </main>
     );
 };
 
 const NoEventAvailable = () => (
-    <div className='w-3/5 bg-white flex flex-row items-center justify-center p-4 rounded-lg'>
-        <div className='w-4/5'>
-            <h2 className='text-2xl font-bold mb-2'>No event available</h2>
-            <p>
+    <div className='w-full min-h-full bg-white items-center justify-center p-4 rounded-lg'>
+        <div className=''>
+            <h2 className='text-2xl font-bold'>No event available</h2>
+            <p className='text-lg py-2'>
                 You haven't created any events yet. Click the "Create New Event"
                 button to get started.
             </p>
         </div>
-        <div className='flex h-full justify-center items-center  lg:w-1/5'>
+        <div className=' my-4'>
             <CreateEventButton />
         </div>
     </div>

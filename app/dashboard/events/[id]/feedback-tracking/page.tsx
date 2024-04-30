@@ -23,7 +23,8 @@ export default function Page({ params }: { params: { id } }) {
 
             const filteredData = response.data.filter(
                 (entry) => entry.message.trim() !== ''
-            );
+            ).reverse();
+
             setGuests(filteredData);
             console.log(filteredData);
 

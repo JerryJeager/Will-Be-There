@@ -36,19 +36,19 @@ export default function Sidebar() {
             icon: <Image src={eventIcon} alt='icon' height={20} width={20} />
         },
         {
-            href: '/dashboard/invitations',
+            href: '#',
             label: 'Invitations',
             icon: (
                 <Image src={invitationIcon} alt='icon' height={20} width={20} />
             )
         },
         {
-            href: '/dashboard/settings',
+            href: '#',
             label: 'Settings',
             icon: <Image src={settingsIcon} alt='icon' height={20} width={20} />
         },
         {
-            href: '/dashboard/chat',
+            href: '#',
             label: 'Chat',
             icon: <IoChatbubblesOutline size={iconSize} />
         }
@@ -68,7 +68,7 @@ export default function Sidebar() {
                         {asideLinks &&
                             asideLinks.map((link) => (
                                 <SidebarLink
-                                    key={link.href}
+                                    key={link.label}
                                     href={link.href}
                                     label={link.label}
                                     icon={link.icon}

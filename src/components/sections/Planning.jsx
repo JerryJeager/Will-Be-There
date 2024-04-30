@@ -3,6 +3,8 @@ import { Button } from "../../shared/Button";
 import { Wrapper } from "../../shared/Wrapper";
 import linkIcon from "../../../public/assets/link.png";
 import Image from "next/image";
+import Link from "next/link";
+
 export const Planning = () => {
   return (
     <div>
@@ -13,10 +15,10 @@ export const Planning = () => {
             online invite today!
           </p>
 
-          <button className=" gap-2 flex items-center p-3 text-white bg-[#0D35FB] rounded-lg text-[16px] hover:bg-opacity-80 transition-all">
+          <Link href="/auth/signup"  className=" gap-2 flex items-center p-3 text-white bg-[#0D35FB] rounded-lg text-[16px] hover:bg-opacity-80 transition-all">
             Get started for free
             <Image src={linkIcon} alt="link" height={10} width={10} />
-          </button>
+          </Link>
         </div>
       </Wrapper>
     </div>
