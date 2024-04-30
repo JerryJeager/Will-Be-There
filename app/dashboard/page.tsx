@@ -88,7 +88,7 @@ const Dashboard = () => {
             console.log(error)
         }
         finally{
-            router.refresh()
+            window.location.reload()
         }
         
     }
