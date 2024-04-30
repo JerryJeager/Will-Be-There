@@ -39,7 +39,7 @@ export default function GuestListTable({ guest, index }) {
     return (
         <div
             id={id}
-            className='bg-white grid grid-cols-12 w-full items-center justify-between w-full text-sm border-b-black last:border-b-none py-2'
+            className='bg-white grid grid-cols-12 items-center justify-between w-full text-sm border-b-black last:border-b-none py-2'
         >
             <div className='min-[800px]:col-span-1 col-span-2 text-center'>
                 {index + 1}
