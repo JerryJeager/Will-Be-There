@@ -83,14 +83,12 @@ const Dashboard = () => {
                 }
             })
             console.log(response.data)
-            // if(response.data){
-            //     setOpen(false)
-            // }
+
         } catch (error) {
             console.log(error)
         }
         finally{
-            router.push('/dashboard')
+            router.refresh()
         }
         
     }

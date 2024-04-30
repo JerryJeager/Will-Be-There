@@ -5,7 +5,6 @@ import { IoClose } from 'react-icons/io5';
 export default function ImageUpload({ open, setOpen, handleSubmit, image, imageUrl, setImage, setImageUrl}) {
     const [imagePreview, setImagePreview] = useState(null);
    const inputRef = useRef()
-    
   
     const handleDrop = (e) => {
         e.preventDefault();
