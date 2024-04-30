@@ -59,6 +59,7 @@ export default function RSVPTrackingPage({
             );
 
             console.log('Guests:', response.data);
+            
             setGuests(response.data);
             return response.data;
         } catch (error: any) {

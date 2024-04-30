@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 const localizedFormat = require('dayjs/plugin/localizedFormat');
 dayjs.extend(localizedFormat);
+import { FaTrash } from 'react-icons/fa';
 
 const url = 'https://will-be-there.onrender.com';
 
@@ -107,7 +108,7 @@ export default function EventCard({ data, setOpen }) {
 
                     <button
                         onClick={() => handleDelete(id)}
-                        className='bg-red-500 w-full text-sm text-white p-3 px-4 col-span-2 rounded-lg hover:shadow-xl shadow-red-200 duration-200 active:scale-100 font-semibold'
+                        className='flex items-center text-red-500 text-[16px] p-3 pr-2 rounded-lg hover:shadow-xl shadow-red-200 duration-200 active:scale-100 font-semibold'
                     >
                         Delete Event
                     </button>
