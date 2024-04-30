@@ -1,30 +1,40 @@
+
 import React, { useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 
-export default function ImageUpload({ open, setOpen }) {
+export default function ImageUpload({ open, setOpen, handleSubmit, image, imageUrl, setImage, setImageUrl}) {
     const [imagePreview, setImagePreview] = useState(null);
+   
+    
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    };
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    // };
+  
     const handleDrop = (e) => {
         e.preventDefault();
         const file = e.dataTransfer.files[0];
+        setImage(file)
         handleFile(file);
     };
 
     const handleFileSelect = (e) => {
         const file = e.target.files[0];
+        setImage(file)
         handleFile(file);
     };
 
     const handleFile = (file) => {
-        const reader = new FileReader();
+        let reader = new FileReader()
+        let formData = new FormData()
+        // setImagePreview(reader);
         reader.onload = () => {
             setImagePreview(reader.result);
-            handleImageUpload(reader.result);
+            // handleImageUpload(reader.result);
         };
         reader.readAsDataURL(file);
+        formData.append('file', file)
+        setImageUrl(formData)
     };
 
     const preventDefault = (e) => {
@@ -47,7 +57,8 @@ export default function ImageUpload({ open, setOpen }) {
                     <div>
                         <button
                             className='text-[#9A9A9A] hover:text-[#1f1f1f]'
-                            onClick={() => setOpen(false)}
+                            onClick={() => {setOpen(false)
+                            }}
                         >
                             <IoClose />
                         </button>
@@ -86,13 +97,14 @@ export default function ImageUpload({ open, setOpen }) {
                         <input
                             type='file'
                             accept='image/*'
-                            onChange={handleFileSelect}
+                            onChange={() => handleFileSelect}
                             className='hidden'
                             id='eventImageInput'
                         />
                         <button
                             type='submit'
                             className='bg-[#0D35FB] hover:bg-blue-700 text-white text-sm p-4 rounded-md w-full'
+
                         >
                             Next
                         </button>

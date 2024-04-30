@@ -30,7 +30,9 @@ export default function EventCard({ data, setOpen }) {
                             No Image available
                             <br />
                             <button
-                                onClick={() => setOpen(true)}
+                                onClick={() => {setOpen(true)
+                                    handleClick(id)
+                                }}
                                 className='underline text-sm'
                             >
                                 Add Image here
