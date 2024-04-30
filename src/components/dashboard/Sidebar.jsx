@@ -8,12 +8,18 @@ import invitationIcon from '../../../public/assets/mail-01.png';
 import settingsIcon from '../../../public/assets/setting-07.png';
 import logoutIcon from '../../../public/assets/logout-02.png';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 /**
  * Used for the main dashboard
  * @returns {JSX.Element} - The completed Sidebar component
  */
 export default function Sidebar() {
+    const [eventID, setEventID] = useState('');
+    useEffect(() => {
+        const id = sessionStorage.getItem('event_id');
+        setEventID(id);
+    });
     const pathname = usePathname();
 
     const iconSize = 24;
@@ -25,7 +31,7 @@ export default function Sidebar() {
             icon: <Image src={homeIcon} alt='icon' height={20} width={20} />
         },
         {
-            href: '/dashboard/events',
+            href: `/dashboard/events/${eventID}`,
             label: 'Events',
             icon: <Image src={eventIcon} alt='icon' height={20} width={20} />
         },
