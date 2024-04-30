@@ -68,22 +68,35 @@ export default function Page({ params }: { params: { eventID: string } }) {
                 [name]: value
             }));
         }
+        if (name === 'isAttending' && value === 'yes') {
+          // User is attending, reset plus_ones to an empty array
+          setFormData((prevState) => ({
+              ...prevState,
+              isAttending: value,
+              plus_ones: []
+          }));
+      } else {
+          // For other fields, update as usual
+          setFormData((prevState) => ({
+              ...prevState,
+              [name]: value
+          }));
+      }
     };
 
     const handleAddPlusOne = () => {
-        if (formData.plus_ones.length < Number(extras)) {
-            setFormData((prevState) => ({
-                ...prevState,
-                plus_ones: [...prevState.plus_ones, { name: '' }]
-            }));
-        } else {
-            setFormData((prevState) => ({
-                ...prevState,
-                plus_ones: []
-            }));
-        }
-    };
-
+      if (Number(extras) > 0 && formData.plus_ones.length < Number(extras)) {
+          setFormData((prevState) => ({
+              ...prevState,
+              plus_ones: [...prevState.plus_ones, { name: '' }]
+          }));
+      } else {
+          setFormData((prevState) => ({
+              ...prevState,
+              plus_ones: []
+          }));
+      }
+  };
     const handleRemovePlusOne = (index: number) => {
         const newPlusOnes = [...formData.plus_ones];
         newPlusOnes.splice(index, 1);
@@ -118,19 +131,14 @@ export default function Page({ params }: { params: { eventID: string } }) {
                     }
                 }
             );
-            console.log(
-                'showCongratulations before setting to true:',
-                showCongratulations
-            );
+
 
             console.log('Form data submitted successfully');
             setShowCongratulations(true);
-            console.log(
-                'showCongratulations after setting to true:',
-                showCongratulations
-            );
+
         } catch (error) {
             console.error('Error submitting form data:', error);
+            alert("Your email has already been added, check your mail.")
         }
     };
 
@@ -273,7 +281,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
                             formData.isAttending === 'yes' && (
                                 <fieldset>
                                     <legend className='text-sm font-semibold text-gray-900'>
-                                        Are you bringing additional people?
+                                        Are you bringing additional people ({extras} only)?
                                     </legend>
                                     <div className='flex items-center gap-4'>
                                         <label
@@ -305,10 +313,10 @@ export default function Page({ params }: { params: { eventID: string } }) {
                                                 id='noExtras'
                                                 name='status'
                                                 type='radio'
-                                                value='not_attending'
+                                                value='attending'
                                                 checked={
                                                     formData.status ===
-                                                    'not_attending'
+                                                    'attending'
                                                 }
                                                 onChange={handleChange}
                                                 required
