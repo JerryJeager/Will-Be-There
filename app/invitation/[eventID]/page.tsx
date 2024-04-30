@@ -93,6 +93,16 @@ export default function Page({ params }: { params: { eventID: string } }) {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    if (formData.isAttending === "yes" && formData.status === "attending") {
+      if (formData.plus_ones.length === 0) {
+        setFormData((prevState) => ({
+          ...prevState,
+          plus_ones: [], // Ensure plus_ones is an empty array
+        }));
+      }
+    }
+    
     try {
       const response = await axios.post(
         `https://will-be-there.onrender.com/api/v1/invitation/guest?${params.eventID}`,

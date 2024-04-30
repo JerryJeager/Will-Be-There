@@ -5,9 +5,11 @@ import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
+import ButtonSpinner from "../../../src/components/auth/ButtonSpinner"
 
 export default function Signup() {
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -34,6 +36,7 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
+    setLoading(true);
 
     try {
       const res = await axios.post(
@@ -49,12 +52,13 @@ export default function Signup() {
         console.log("Token received", token);
 
         sessionStorage.setItem("token", token); // Store token in local storage
-
+        setLoading(false);
         router.push("/auth/login");
       }
     } catch (error) {
       setError("Error, try again");
       console.log("Axios error:", error);
+      setLoading(false);
     }
   };
 
@@ -149,7 +153,7 @@ export default function Signup() {
             type="submit"
             className="w-full bg-[#0D35FB] rounded-lg text-white py-2 hover:bg-blue-600 text-lg font-semibold transition-all ease-in"
           >
-            Create Account
+            {loading ? <ButtonSpinner /> : 'Create Account'}
           </button>
           <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
         </form>
@@ -160,6 +164,7 @@ export default function Signup() {
           Login with an existing account
         </Link>
       </div>
+      
     </div>
   );
 }
