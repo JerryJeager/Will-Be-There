@@ -28,7 +28,8 @@ export default function EventDashboardPage({
 }) {
     const router = useRouter();
     const [event, setEvent] = useState<Event>();
-    const [guests, setGuests] = useState([]);
+    const [ guests, setGuests] = useState([]);
+    const [isLoading, setIsLoading] = useState(false)
 
     const getEventByID = async (id: string, url: string, token: string) => {
         try {
@@ -47,6 +48,7 @@ export default function EventDashboardPage({
     };
 
     const getGuests = async (id: string, url: string, token: string) => {
+        setIsLoading(true)
         try {
             const response = await axios.get(
                 `${url}/api/v1/invitation/guests/${id}`,
@@ -62,6 +64,9 @@ export default function EventDashboardPage({
             console.error('Error signing up:', error);
             setGuests([]);
             return [];
+        }
+        finally{
+            setIsLoading(false)
         }
     };
 
@@ -82,7 +87,7 @@ export default function EventDashboardPage({
             <header className='mb-8'>
                 <div className='mb-8'>
                     <h1 className='text-2l mb-4'>Dashboard</h1>
-                    <h2 className='text-3xl font-medium'>
+                    <h2 className='text-3xl font-medium capitalize'>
                         {event && event.name ? (
                             event.name
                         ) : (
@@ -93,12 +98,12 @@ export default function EventDashboardPage({
                     </h2>
                 </div>
                 <div className='grid grid-cols-12 w-full gap-x-0 md:gap-x-8 gap-y-4 md:gap-y-0'>
-                    {guests.length !== 0 ? (
-                        <AttendanceStatusCard guests={guests} />
-                    ) : (
+                    {guests.length === 0 && isLoading ? (
                         <div className='animate-pulse w-fit rounded-full'>
                             Loading ...
                         </div>
+                    ) : (
+                        <AttendanceStatusCard guests={guests} />
                     )}
                     {/* <EmailStatusCard status={event.emailStatus} /> */}
                 </div>
@@ -126,7 +131,11 @@ export default function EventDashboardPage({
                         </div>
                     </div>
 
-                    {guests.length !== 0 ? (
+                    {guests.length == 0 && isLoading ? (
+                        <div className='animate-pulse w-fit rounded-full'>
+                           Loading ...
+                        </div>
+                    ) : (
                         guests.map((guest, index) => (
                             <GuestListTable
                                 key={guest.id}
@@ -134,10 +143,6 @@ export default function EventDashboardPage({
                                 index={index}
                             />
                         ))
-                    ) : (
-                        <div className='animate-pulse w-fit rounded-full'>
-                            Loading ...
-                        </div>
                     )}
                 </div>
             </section>

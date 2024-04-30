@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { CreateEventButton, EventCard } from '../../src/components/dashboard';
 import ImageUpload from '../../src/components/dashboard/ImageUpload';
 
@@ -27,6 +27,7 @@ const Dashboard = () => {
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState('')
     const id = sessionStorage.getItem('event_id')
+
 
     const getEvents = async (id: string, url: string, token: string) => {
         setIsLoading(true)
@@ -74,7 +75,9 @@ const Dashboard = () => {
                 }
             })
             console.log(response.data)
-
+            // if(response.data){
+            //     setOpen(false)
+            // }
         } catch (error) {
             console.log(error)
         }
@@ -139,8 +142,15 @@ const Dashboard = () => {
             <section className='w-full'>
                 <NewEvent />
             </section>
-            <ImageUpload open={open} setOpen={setOpen} handleSubmit={handleSubmit} image={image} imageUrl={imageUrl} setImage={setImage} setImageUrl={setImageUrl} />
-            {/* <UploadImage/> */}
+            <ImageUpload 
+                open={open} 
+                setOpen={setOpen} 
+                handleSubmit={handleSubmit} 
+                image={image} 
+                imageUrl={imageUrl} 
+                setImage={setImage} 
+                setImageUrl={setImageUrl} 
+            />
         </main>
     );
 };
