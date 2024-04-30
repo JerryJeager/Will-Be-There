@@ -67,13 +67,13 @@ export default function StepThree() {
                         <Field
                             type='number'
                             id='extras'
-                            className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                            className={`w-full border-[1.5px] border-[#0D35FB] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.extras && touched.extras
                                         ? 'border-red-500 text-red-500 placeholder:text-red-500 focus:border-red-500 focus-within:border-red-500 focus-visible:border-red-500'
                                         : touched.extras
-                                        ? 'border-green-500 text-green-500 placeholder:text-green-500 focus:border-green-500 focus-within:border-green-500 focus-visible:border-green-500'
+                                        ? 'border-[#0D35FB]   focus:border-[#0D35FB] focus-within:border-[#0D35FB] focus-visible:border-[#0D35FB]'
                                         : ''
                                 }`}
                             placeholder='Enter a number'
@@ -103,6 +103,7 @@ export default function StepThree() {
                                 </div>
                                 <div>
                                     <button
+                                        type='button'
                                         className='bg-[#0D35FB] text-white font-medium text-base px-3 py-1 rounded-lg'
                                         onClick={() =>
                                             copyToClipboard(generatedUrl)

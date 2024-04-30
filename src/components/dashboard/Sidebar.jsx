@@ -1,39 +1,46 @@
 'use client';
 import SidebarLink from './SidebarLink';
 import { usePathname } from 'next/navigation';
-import {
-    IoChatbubblesOutline,
-} from 'react-icons/io5';
-import homeIcon from '../../../public/assets/home-06.png'
-import eventIcon from '../../../public/assets/calendar-03.png'
-import invitationIcon from '../../../public/assets/mail-01.png'
-import settingsIcon from '../../../public/assets/setting-07.png'
-import logoutIcon from '../../../public/assets/logout-02.png'
+import { IoChatbubblesOutline } from 'react-icons/io5';
+import homeIcon from '../../../public/assets/home-06.png';
+import eventIcon from '../../../public/assets/calendar-03.png';
+import invitationIcon from '../../../public/assets/mail-01.png';
+import settingsIcon from '../../../public/assets/setting-07.png';
+import logoutIcon from '../../../public/assets/logout-02.png';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 /**
  * Used for the main dashboard
  * @returns {JSX.Element} - The completed Sidebar component
  */
 export default function Sidebar() {
+    const [eventID, setEventID] = useState('');
+    useEffect(() => {
+        const id = sessionStorage.getItem('event_id');
+        setEventID(id);
+    });
     const pathname = usePathname();
 
     const iconSize = 24;
 
     const asideLinks = [
-        {   href: '/dashboard',
-            label: 'Home', 
-            icon: <Image src={homeIcon} alt='icon' height={20} width={20} />
-         },
         {
-            href: '/dashboard/events',
+            href: '/dashboard',
+            label: 'Home',
+            icon: <Image src={homeIcon} alt='icon' height={20} width={20} />
+        },
+        {
+            href: `/dashboard/events/${eventID}`,
             label: 'Events',
             icon: <Image src={eventIcon} alt='icon' height={20} width={20} />
         },
         {
             href: '/dashboard/invitations',
             label: 'Invitations',
-            icon: <Image src={invitationIcon} alt='icon' height={20} width={20} />
+            icon: (
+                <Image src={invitationIcon} alt='icon' height={20} width={20} />
+            )
         },
         {
             href: '/dashboard/settings',
@@ -76,9 +83,19 @@ export default function Sidebar() {
                     </ul>
                     <ul>
                         <SidebarLink
-                            href='/logout'
+                            href='/'
+                            onClick={() => {
+                                sessionStorage.clear();
+                            }}
                             label='Logout'
-                            icon={<Image src={logoutIcon} alt='icon' height={20} width={20} />}
+                            icon={
+                                <Image
+                                    src={logoutIcon}
+                                    alt='icon'
+                                    height={20}
+                                    width={20}
+                                />
+                            }
                             isDisplayed={
                                 !pathname.startsWith('/dashboard/events/')
                             }
