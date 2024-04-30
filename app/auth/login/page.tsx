@@ -4,10 +4,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import ButtonSpinner from "../../../src/components/auth/ButtonSpinner"
 
 const Login = () => {
   const router = useRouter();
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -28,6 +31,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -37,7 +41,7 @@ const Login = () => {
       const { token, user_id } = response.data;
     sessionStorage.setItem("token", token);
     sessionStorage.setItem("user_id", user_id);
-
+    setLoading(false);
       router.push("/dashboard");
       if (response.status === 200) {
         alert("login successful");
@@ -48,7 +52,8 @@ const Login = () => {
     } catch (error) {
       console.error("Error logging in:", error);
       // Handle error (e.g., show error message to the user)
-      setError("Error logging in");
+      setError("Invalid Email or Password");
+      setLoading(false);
     }
   };
 
@@ -119,7 +124,7 @@ const Login = () => {
             type="submit"
             className="w-full bg-[#0D35FB] rounded-lg text-white py-2 hover:bg-blue-600 text-lg font-semibold transition-all ease-in"
           >
-            Log In
+            {loading ? <ButtonSpinner /> : 'Login'}
           </button>
           {/* Error message */}
           <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
