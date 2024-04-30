@@ -52,7 +52,7 @@ const Login = () => {
     } catch (error) {
       console.error("Error logging in:", error);
       // Handle error (e.g., show error message to the user)
-      setError("Error logging in");
+      setError("Invalid Email or Password");
       setLoading(false);
     }
   };
