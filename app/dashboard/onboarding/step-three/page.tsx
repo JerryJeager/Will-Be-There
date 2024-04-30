@@ -103,6 +103,7 @@ export default function StepThree() {
                                 </div>
                                 <div>
                                     <button
+                                        type='button'
                                         className='bg-[#0D35FB] text-white font-medium text-base px-3 py-1 rounded-lg'
                                         onClick={() =>
                                             copyToClipboard(generatedUrl)

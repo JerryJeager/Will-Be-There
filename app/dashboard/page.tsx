@@ -30,8 +30,8 @@ const Dashboard = () => {
 
             const sortedEvents = response.data.sort((a: any, b: any) => {
                 // Convert date strings to Date objects for comparison
-                const dateA = new Date(a.created_at);
-                const dateB = new Date(b.created_at);
+                const dateA: any = new Date(a.created_at);
+                const dateB: any = new Date(b.created_at);
 
                 // Compare the dates
                 return dateB - dateA;
