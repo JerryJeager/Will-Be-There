@@ -26,6 +26,7 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
     const router = useRouter();
     const [guests, setGuests] = useState([]);
     const [event, setEvent] = useState<Event>();
+    const [isLoading, setIsLoading] = useState(false)
 
     const getEventByID = async (id: string, url: string, token: string) => {
         try {
@@ -43,6 +44,7 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
         }
     };
     const getGuests = async (id: string, url: string, token: string) => {
+        setIsLoading(true)
         try {
             const response = await axios.get(
                 `${url}/api/v1/invitation/guests/${id}`,
@@ -59,6 +61,9 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
             setGuests([]);
             return [];
         }
+        finally{
+            setIsLoading(false)
+        }
     };
 
     useEffect(() => {
@@ -73,10 +78,10 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
     return (
         <main className='space-y-6'>
             <header className='text-[#303036]'>
-                <h1 className='font-medium text-2xl leading-9 capitalize'>
+                <h1 className='font-medium text-2xl leading-9 capitalize '>
                     Guest list for{' '}
                     {event && event.name ? (
-                        event.name
+                        <span className='font-bold'>{event.name}</span>
                     ) : (
                         <div className='animate-pulse inline-block w-fit rounded-full'>
                             ...
@@ -109,7 +114,11 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
                         </div>
                     </div>
 
-                    {guests.length !== 0 ? (
+                    {guests.length === 0  && isLoading ? (
+                        <div className='animate-pulse w-fit rounded-full'>
+                            Loading ...
+                        </div>
+                    ) : (
                         guests.map((guest, index) => (
                             <GuestListTable
                                 key={guest.id}
@@ -117,10 +126,6 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
                                 index={index}
                             />
                         ))
-                    ) : (
-                        <div className='animate-pulse w-fit rounded-full'>
-                            Loading ...
-                        </div>
                     )}
                 </div>
             </section>

@@ -92,7 +92,7 @@ const Navbar = () => {
                                     </p>
                                     <p>
                                         <Link
-                                            href='/dashboard/events'
+                                            href='/dashboard/'
                                             className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2 hover:bg-[#525E94] text-lg`}
                                         >
                                             <Image
@@ -106,7 +106,7 @@ const Navbar = () => {
                                     </p>
                                     <p>
                                         <Link
-                                            href='/dashboard/invitations'
+                                            href='#'
                                             className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2 hover:bg-[#525E94] text-lg`}
                                         >
                                             <Image
@@ -120,7 +120,7 @@ const Navbar = () => {
                                     </p>
                                     <p>
                                         <Link
-                                            href='/dashboard/settings'
+                                            href='#'
                                             className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2 hover:bg-[#525E94] text-lg`}
                                         >
                                             {' '}
@@ -135,7 +135,7 @@ const Navbar = () => {
                                     </p>
                                     <p>
                                         <Link
-                                            href='/dashboard/chat'
+                                            href='#'
                                             className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2 hover:bg-[#525E94] text-lg`}
                                         >
                                             {' '}
@@ -227,7 +227,7 @@ const Navbar = () => {
                                         </li>
                                         <li>
                                             <Link
-                                                href={`${path}/event-settings`}
+                                                href={`#`}
                                                 className={`px-4 py-2 h-12 tracking-tighter flex flex-row items-center justify-start rounded-md transition-all ease-in hover:bg-[#525E94] hover:text-white`}
                                             >
                                                 Event Settings

@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation';
 import {
     AttendanceStatusCard,
-    EmailStatusCard,
     GuestSummary
 } from '../../../../../src/components/dashboard';
 import Searchbar from '../../../../../src/components/Searchbar';
@@ -33,6 +32,7 @@ export default function RSVPTrackingPage({
     const router = useRouter();
     const [guests, setGuests] = useState([]);
     const [event, setEvent] = useState<Event>();
+    const [isLoading, setIsLoading] = useState(false)
 
     const getEventByID = async (id: string, url: string, token: string) => {
         try {
@@ -50,6 +50,7 @@ export default function RSVPTrackingPage({
         }
     };
     const getGuests = async (id: string, url: string, token: string) => {
+        setIsLoading(true)
         try {
             const response = await axios.get(
                 `${url}/api/v1/invitation/guests/${id}`,
@@ -66,6 +67,9 @@ export default function RSVPTrackingPage({
             console.error('Error with Guests:', error);
             setGuests([]);
             return [];
+        }
+        finally{
+            setIsLoading(false)
         }
     };
 
@@ -84,7 +88,7 @@ export default function RSVPTrackingPage({
             <header className='mb-8'>
                 <div className='mb-8'>
                     <h1 className='text-2l mb-4'>RSVP Tracking</h1>
-                    <h2 className='text-3xl font-medium'>
+                    <h2 className='text-3xl font-medium capitalize'>
                         {event && event.name ? (
                             event.name
                         ) : (
@@ -95,12 +99,12 @@ export default function RSVPTrackingPage({
                     </h2>
                 </div>
                 <div className='grid grid-cols-12 w-full gap-x-0 gap-y-4 md:gap-x-8 md:gap-y-0'>
-                    {guests.length !== 0 ? (
-                        <AttendanceStatusCard guests={guests} />
-                    ) : (
+                    {guests.length === 0 && isLoading ? (
                         <div className='animate-pulse w-fit rounded-full'>
                             Loading ...
                         </div>
+                    ) : (
+                        <AttendanceStatusCard guests={guests} />
                     )}
                     {/* <EmailStatusCard status={event.emailStatus} /> */}
                 </div>
@@ -129,7 +133,11 @@ export default function RSVPTrackingPage({
                             </div>
                         </div>
                         <div className='w-full'>
-                            {guests.length !== 0 ? (
+                            {guests.length === 0 && isLoading ? (
+                                <div className='animate-pulse w-fit rounded-full'>
+                                    Loading ...
+                                </div>
+                            ) : (
                                 guests.map((guest, index) => (
                                     <GuestSummary
                                         key={guest.id}
@@ -137,10 +145,7 @@ export default function RSVPTrackingPage({
                                         index={index}
                                     />
                                 ))
-                            ) : (
-                                <div className='animate-pulse w-fit rounded-full'>
-                                    Loading ...
-                                </div>
+                                
                             )}
                         </div>
                     </div>

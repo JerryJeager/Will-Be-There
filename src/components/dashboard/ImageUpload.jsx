@@ -1,30 +1,36 @@
-import React, { useState } from 'react';
+
+import React, { useRef, useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 
-export default function ImageUpload({ open, setOpen }) {
+export default function ImageUpload({ open, setOpen, handleSubmit, image, imageUrl, setImage, setImageUrl}) {
     const [imagePreview, setImagePreview] = useState(null);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    };
+   const inputRef = useRef()
+  
     const handleDrop = (e) => {
         e.preventDefault();
         const file = e.dataTransfer.files[0];
+        setImage(file)
         handleFile(file);
     };
 
     const handleFileSelect = (e) => {
         const file = e.target.files[0];
+        console.log(file)
+        setImage(file)
         handleFile(file);
     };
 
     const handleFile = (file) => {
-        const reader = new FileReader();
+        let reader = new FileReader()
+        let formData = new FormData()
+        // setImagePreview(reader);
         reader.onload = () => {
             setImagePreview(reader.result);
-            handleImageUpload(reader.result);
+            // handleImageUpload(reader.result);
         };
         reader.readAsDataURL(file);
+        formData.append('file', file)
+        setImageUrl(formData)
     };
 
     const preventDefault = (e) => {
@@ -33,7 +39,9 @@ export default function ImageUpload({ open, setOpen }) {
     };
 
     const handleClick = () => {
-        document.getElementById('eventImageInput').click();
+        // document.getElementById('eventImageInput').click();
+        inputRef.current.click()
+        
     };
 
     return (
@@ -47,7 +55,8 @@ export default function ImageUpload({ open, setOpen }) {
                     <div>
                         <button
                             className='text-[#9A9A9A] hover:text-[#1f1f1f]'
-                            onClick={() => setOpen(false)}
+                            onClick={() => {setOpen(false)
+                            }}
                         >
                             <IoClose />
                         </button>
@@ -71,11 +80,11 @@ export default function ImageUpload({ open, setOpen }) {
                             onDragOver={preventDefault}
                             onClick={handleClick}
                         >
-                            {imagePreview ? (
+                            {image ? (
                                 <img
-                                    src={imagePreview}
-                                    alt='Event'
-                                    className='max-h-full max-w-full'
+                                    src={URL.createObjectURL(image)}
+                                    alt='eventImage'
+                                    className='max-h-full max-w-full rounded'
                                 />
                             ) : (
                                 <p className='text-gray-500'>
@@ -89,6 +98,7 @@ export default function ImageUpload({ open, setOpen }) {
                             onChange={handleFileSelect}
                             className='hidden'
                             id='eventImageInput'
+                            ref={inputRef}
                         />
                         <button
                             type='submit'
