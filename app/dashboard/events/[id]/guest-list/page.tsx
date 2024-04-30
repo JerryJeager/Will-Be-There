@@ -33,11 +33,11 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
                 headers: { Authorization: 'Bearer ' + token }
             });
 
-            console.log('Events:', response.data);
+            console.log('Event:', response.data);
             setEvent(response.data);
             return response.data;
         } catch (error: any) {
-            console.error('Error signing up:', error);
+            console.error('Error:', error);
             setEvent({} as Event);
             return [];
         }
@@ -51,11 +51,11 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
                 }
             );
 
-            console.log('Events:', response.data);
+            console.log('Guests:', response.data);
             setGuests(response.data);
             return response.data;
         } catch (error: any) {
-            console.error('Error signing up:', error);
+            console.error('Error:', error);
             setGuests([]);
             return [];
         }
@@ -65,8 +65,6 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
         const token = sessionStorage.getItem('token');
         if (!token) {
             router.push('/auth/login');
-        } else {
-            console.log('Token found:', token);
         }
 
         getGuests(params.id, url, token);

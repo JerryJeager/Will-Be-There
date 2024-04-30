@@ -8,6 +8,7 @@ import { stepTwoSchema } from '../../../../src/lib/yup';
 import { StepTwoData } from '../../../../src/store/eventTypes';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import axios from 'axios';
+import { useState } from 'react';
 
 const url = 'https://will-be-there.onrender.com';
 
@@ -17,6 +18,12 @@ export default function StepTwo() {
     const today = dayjs().format('YYYY-MM-DD');
     const token = sessionStorage.getItem('token');
     const user_id = sessionStorage.getItem('user_id');
+    const formData = {
+        ...stepOne,
+        ...stepTwo,
+        date: stepTwo.date + 'T' + stepTwo.time + ':00Z',
+        user_id: user_id
+    };
 
     if (!token) {
         router.push('/auth/login');
@@ -61,22 +68,16 @@ export default function StepTwo() {
                 validationSchema={stepTwoSchema}
                 handle
                 onSubmit={async (data: StepTwoData) => {
-                    setData({ step: 2, data });
-                    const date = stepTwo.date + 'T' + stepTwo.time + ':00Z';
-                    await createEvent(url, token, {
+                    const updatedFormData = {
                         ...stepOne,
-                        ...stepTwo,
-                        date: date,
+                        ...data,
+                        date: data.date + 'T' + data.time + ':00Z',
                         user_id: user_id
-                    });
+                    };
 
-                    // console.log({
-                    //     ...stepOne,
-                    //     ...stepTwo,
-                    //     date: date,
-                    //     time: '',
-                    //     user_id: user_id
-                    // });
+                    setData({ step: 2, data: updatedFormData });
+
+                    await createEvent(url, token, updatedFormData);
                 }}
             >
                 {({ errors, touched }) => (
@@ -100,13 +101,13 @@ export default function StepTwo() {
                                     <Field
                                         type='date'
                                         id='eventStart'
-                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                                        className={`w-full border-[1.5px] border-[#0D35FB] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.date && touched.date
                                         ? 'border-red-500 text-red-500 placeholder:text-red-500 focus:border-red-500 focus-within:border-red-500 focus-visible:border-red-500'
                                         : touched.date
-                                        ? 'border-green-500 text-green-500 placeholder:text-green-500 focus:border-green-500 focus-within:border-green-500 focus-visible:border-green-500'
+                                        ? 'border-[#0D35FB]   focus:border-[#0D35FB] focus-within:border-[#0D35FB] focus-visible:border-[#0D35FB]'
                                         : ''
                                 }`}
                                         placeholder='Enter the start date'
@@ -131,13 +132,13 @@ export default function StepTwo() {
                                     <Field
                                         type='time'
                                         id='eventStart'
-                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                                        className={`w-full border-[1.5px] border-[#0D35FB] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.time && touched.time
                                         ? 'border-red-500 text-red-500 placeholder:text-red-500 focus:border-red-500 focus-within:border-red-500 focus-visible:border-red-500'
                                         : touched.time
-                                        ? 'border-green-500 text-green-500 placeholder:text-green-500 focus:border-green-500 focus-within:border-green-500 focus-visible:border-green-500'
+                                        ? 'border-[#0D35FB]   focus:border-[#0D35FB] focus-within:border-[#0D35FB] focus-visible:border-[#0D35FB]'
                                         : ''
                                 }`}
                                         placeholder='Enter the event time'
@@ -172,13 +173,13 @@ export default function StepTwo() {
                                     <Field
                                         type='text'
                                         id='eventEnd'
-                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                                        className={`w-full border-[1.5px] border-[#0D35FB] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.state && touched.state
                                         ? 'border-red-500 text-red-500 placeholder:text-red-500 focus:border-red-500 focus-within:border-red-500 focus-visible:border-red-500'
                                         : touched.state
-                                        ? 'border-green-500 text-green-500 placeholder:text-green-500 focus:border-green-500 focus-within:border-green-500 focus-visible:border-green-500'
+                                        ? 'border-[#0D35FB]   focus:border-[#0D35FB] focus-within:border-[#0D35FB] focus-visible:border-[#0D35FB]'
                                         : ''
                                 }`}
                                         placeholder='Enter the state'
@@ -202,13 +203,13 @@ export default function StepTwo() {
                                     <Field
                                         type='text'
                                         id='eventStart'
-                                        className={`w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                                        className={`w-full border-[1.5px] border-[#0D35FB] text-base bg-white rounded-lg p-4 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.country && touched.country
                                         ? 'border-red-500 text-red-500 placeholder:text-red-500 focus:border-red-500 focus-within:border-red-500 focus-visible:border-red-500'
                                         : touched.country
-                                        ? 'border-green-500 text-green-500 placeholder:text-green-500 focus:border-green-500 focus-within:border-green-500 focus-visible:border-green-500'
+                                        ? 'border-[#0D35FB]   focus:border-[#0D35FB] focus-within:border-[#0D35FB] focus-visible:border-[#0D35FB]'
                                         : ''
                                 }`}
                                         placeholder='Enter the country'
@@ -234,13 +235,13 @@ export default function StepTwo() {
                             <Field
                                 type='text'
                                 id='eventVenue'
-                                className={`block w-full border-[1.5px] border-[#C7C5D0] text-base bg-white rounded-lg p-4 gap-y-5 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
+                                className={`block w-full border-[1.5px] border-[#0D35FB] text-base bg-white rounded-lg p-4 gap-y-5 placeholder:text-[#C7C5D0] focus:border-[#0D154B] focus-within:border-[#0D154B] focus-visible:border-[#0D154B] focus-visible:outline-none 
                            
                                 ${
                                     errors.venue && touched.venue
                                         ? 'border-red-500 text-red-500 placeholder:text-red-500 focus:border-red-500 focus-within:border-red-500 focus-visible:border-red-500'
                                         : touched.venue
-                                        ? 'border-green-500 text-green-500 placeholder:text-green-500 focus:border-green-500 focus-within:border-green-500 focus-visible:border-green-500'
+                                        ? 'border-[#0D35FB]   focus:border-[#0D35FB] focus-within:border-[#0D35FB] focus-visible:border-[#0D35FB]'
                                         : ''
                                 }`}
                                 placeholder='Enter the event venue'

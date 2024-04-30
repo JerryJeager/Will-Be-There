@@ -44,7 +44,7 @@ export default function RSVPTrackingPage({
             setEvent(response.data);
             return response.data;
         } catch (error: any) {
-            console.error('Error signing up:', error);
+            console.error('Error for Events:', error);
             setEvent({} as Event);
             return [];
         }
@@ -58,11 +58,11 @@ export default function RSVPTrackingPage({
                 }
             );
 
-            console.log('Events:', response.data);
+            console.log('Guests:', response.data);
             setGuests(response.data);
             return response.data;
         } catch (error: any) {
-            console.error('Error signing up:', error);
+            console.error('Error with Guests:', error);
             setGuests([]);
             return [];
         }
@@ -72,8 +72,6 @@ export default function RSVPTrackingPage({
         const token = sessionStorage.getItem('token');
         if (!token) {
             router.push('/auth/login');
-        } else {
-            console.log('Token found:', token);
         }
 
         getGuests(params.id, url, token);

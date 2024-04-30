@@ -147,7 +147,10 @@ const Navbar = () => {
                                     </p>
                                     <p>
                                         <Link
-                                            href='/dashboard/logout'
+                                            href='/'
+                                            onClick={() => {
+                                                sessionStorage.clear();
+                                            }}
                                             className={`px-4 py-2 h-12 flex items-center justify-start rounded-md transition-all ease-in gap-2 hover:bg-[#525E94] text-lg`}
                                         >
                                             {' '}

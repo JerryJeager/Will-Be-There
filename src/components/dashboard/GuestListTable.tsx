@@ -1,9 +1,13 @@
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import React from 'react';
-import { IoEllipsisVertical } from 'react-icons/io5';
+import { IoTrashBin } from 'react-icons/io5';
+const url = 'https://will-be-there.onrender.com';
 
 export default function GuestListTable({ guest, index }) {
     const { id, first_name, last_name, email, status } = guest;
-
+    const router = useRouter();
+    const token = sessionStorage.getItem('token');
     const attendance = [
         { label: 'attending', color: 'text-black', text: 'Invite Accepted' },
         { label: 'pending', color: 'text-[#EE9611]', text: 'Invite Pending' },
@@ -12,6 +16,25 @@ export default function GuestListTable({ guest, index }) {
     ];
 
     const matching = attendance.find((badge) => badge.label === status);
+
+    const handleDelete = async (id) => {
+        try {
+            const response = await axios.delete(
+                `${url}/api/v1/invitation/guest/${id}`,
+                {
+                    headers: { Authorization: 'Bearer ' + token }
+                }
+            );
+
+            window.location.reload();
+
+            return response;
+        } catch (error) {
+            // setIsLoading(false);
+        } finally {
+            // setIsLoading(false);
+        }
+    };
 
     return (
         <div
@@ -34,9 +57,12 @@ export default function GuestListTable({ guest, index }) {
                     </div>
                 )}
             </div>
-            <div className='xl:col-span-2 min-[800px]:col-span-1 col-span-2 ml-auto me-4'>
-                <button className='rounded-sm border-gray border p-1'>
-                    <IoEllipsisVertical />
+            <div className='xl:col-span-2 min-[800px]:col-span-1 col-span-2 mx-auto'>
+                <button
+                    className='bg-red-500 w-full text-sm text-white p-3 rounded-lg'
+                    onClick={() => handleDelete(id)}
+                >
+                    <IoTrashBin />
                 </button>
             </div>
         </div>
