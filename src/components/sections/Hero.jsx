@@ -3,10 +3,11 @@ import { Button } from "../../shared/Button";
 import { Wrapper } from "../../shared/Wrapper";
 import heroImage from "../../../public/assets/heroImage.png";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Hero = () => {
   return (
-    <section className="">
+    <section className="mt-24">
       <Wrapper>
         <div className="flex flex-col md:flex-row gap-2 p-2 sm:p-4 items-center justify-between pb-10">
           {/* left side */}
@@ -22,7 +23,9 @@ export const Hero = () => {
               you.
             </p>
             <div className="w-[]">
-              <Button text="Sign up for free" />
+              <Link href="/auth/signup">
+                <Button text="Sign up for free" />
+              </Link>
             </div>
           </div>
           {/* right side */}
