@@ -16,7 +16,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
         last_name: string;
         email: string;
         isAttending: 'yes' | 'no' | null;
-        status: 'attending' | 'not_attending';
+        status: 'attending' | 'rejected';
         plus_ones?: { name: string }[];
         event_id: string;
         message: string;
@@ -73,12 +73,14 @@ export default function Page({ params }: { params: { eventID: string } }) {
           setFormData((prevState) => ({
               ...prevState,
               isAttending: value,
+              status: 'attending',
               plus_ones: []
           }));
       } else {
           // For other fields, update as usual
           setFormData((prevState) => ({
               ...prevState,
+              status: 'rejected',
               [name]: value
           }));
       }
@@ -117,6 +119,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
                 }));
             }
         }
+        console.log(formData)
 
         try {
             const response = await axios.post(
@@ -134,11 +137,17 @@ export default function Page({ params }: { params: { eventID: string } }) {
 
 
             console.log('Form data submitted successfully');
-            setShowCongratulations(true);
+            
 
         } catch (error) {
             console.error('Error submitting form data:', error);
             alert("Your email has already been added, check your mail.")
+        }
+        finally{
+            if(formData.status == 'attending'){
+                setShowCongratulations(true);
+            }
+            router.push("/")
         }
     };
 
