@@ -37,11 +37,11 @@ export default function EventDashboardPage({
                 headers: { Authorization: 'Bearer ' + token }
             });
 
-            console.log('Events:', response.data);
+            console.log('Event:', response.data);
             setEvent(response.data);
             return response.data;
         } catch (error: any) {
-            console.error('Error signing up:', error);
+            console.error('Error:', error);
             setEvent({} as Event);
             return [];
         }
@@ -57,11 +57,11 @@ export default function EventDashboardPage({
                 }
             );
 
-            console.log('Events:', response.data);
+            console.log('Guests:', response.data);
             setGuests(response.data);
             return response.data;
         } catch (error: any) {
-            console.error('Error signing up:', error);
+            console.error('Error:', error);
             setGuests([]);
             return [];
         }
@@ -74,8 +74,6 @@ export default function EventDashboardPage({
         const token = sessionStorage.getItem('token');
         if (!token) {
             router.push('/auth/login');
-        } else {
-            console.log('Token found:', token);
         }
 
         getEventByID(params.id, url, token);

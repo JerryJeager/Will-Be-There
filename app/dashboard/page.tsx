@@ -36,8 +36,16 @@ const Dashboard = () => {
                 headers: { Authorization: 'Bearer ' + token }
             });
 
-            console.log('Events:', response.data);
-            setEvents(response.data);
+            const sortedEvents = response.data.sort((a: any, b: any) => {
+                // Convert date strings to Date objects for comparison
+                const dateA: any = new Date(a.created_at);
+                const dateB: any = new Date(b.created_at);
+
+                // Compare the dates
+                return dateB - dateA;
+            });
+            setEvents(sortedEvents);
+            console.log('Event:', sortedEvents);
             return response.data;
         } catch (error: any) {
             console.error('Error signing up:', error);
@@ -102,15 +110,6 @@ const Dashboard = () => {
     }, [0]);
 
     console.log(events, user);
-
-    // if (events.length === 0) {
-    //     return (
-    //         <main className='w-full col-span-10 flex flex-col p-8 bg-[#F2EFF7] flex-grow items-center justify-center'>
-    //             <NoEventAvailable />
-    //         </main>
-    //     );
-    // }
-
     return (
         <main className='w-full sm:p-7  p-5   bg-[#F2EFF7]'>
             <header className='mb-8'>
