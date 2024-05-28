@@ -113,11 +113,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
       console.error("Error submitting form data:", error);
       alert("Your email has already been added, check your mail.");
     } finally {
-      if (formData.status === "attending") {
         setShowCongratulations(true);
-      } else {
-        router.push("/");
-      }
     }
   };
 
