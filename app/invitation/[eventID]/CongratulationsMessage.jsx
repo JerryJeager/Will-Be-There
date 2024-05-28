@@ -1,13 +1,5 @@
-"use client"
-import React, { useState } from "react";
 
 const CongratulationsMessage = ({ onClose, isAttending }) => {
-  const [emailSent, setEmailSent] = useState(false);
-
-  const handleCheckEmail = () => {
-    // Logic to handle checking email
-    setEmailSent(true);
-  };
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
@@ -29,8 +21,8 @@ const CongratulationsMessage = ({ onClose, isAttending }) => {
         <h2 className="text-2xl font-semibold text-gray-900 mb-2">Congratulations!</h2>
         <p className="text-gray-600 mb-4">
           Your RSVP has been submitted successfully.
-          <br />Check your mail for more details.
-          {emailSent && isAttending ? " Please check your email for further details." : ""}
+          <br />
+          {isAttending ? " Check your mail for more details." : ""}
         </p>
         <button
           onClick={onClose}
