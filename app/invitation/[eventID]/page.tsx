@@ -362,6 +362,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
               setShowCongratulations(false);
               router.push(`/`);
             }}
+            isAttending={formData.status === 'attending' ? true : false}
           />
         )}
       </div>

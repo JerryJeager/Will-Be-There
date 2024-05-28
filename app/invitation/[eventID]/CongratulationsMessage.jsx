@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react";
 
-const CongratulationsMessage = ({ onClose }) => {
+const CongratulationsMessage = ({ onClose, isAttending }) => {
   const [emailSent, setEmailSent] = useState(false);
 
   const handleCheckEmail = () => {
@@ -30,7 +30,7 @@ const CongratulationsMessage = ({ onClose }) => {
         <p className="text-gray-600 mb-4">
           Your RSVP has been submitted successfully.
           <br />Check your mail for more details.
-          {emailSent ? " Please check your email for further details." : ""}
+          {emailSent && isAttending ? " Please check your email for further details." : ""}
         </p>
         <button
           onClick={onClose}
