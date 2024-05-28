@@ -113,11 +113,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
       console.error("Error submitting form data:", error);
       alert("Your email has already been added, check your mail.");
     } finally {
-      if (formData.status === "attending") {
         setShowCongratulations(true);
-      } else {
-        router.push("/");
-      }
     }
   };
 
@@ -316,7 +312,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
                         onClick={handleAddPlusOne}
                         className="bg-indigo-600 text-white px-4 py-2 text-[16px] rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
                       >
-                        Add Another guest
+                        Add guest
                       </button>
                     </div>
                   )}
@@ -362,6 +358,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
               setShowCongratulations(false);
               router.push(`/`);
             }}
+            isAttending={formData.status === 'attending' ? true : false}
           />
         )}
       </div>
