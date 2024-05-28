@@ -10,7 +10,6 @@ export default function Page({ params }: { params: { eventID: string } }) {
     const router = useRouter();
     const extras = searchParams.get('extras');
     const [showCongratulations, setShowCongratulations] = useState(false);
-
     interface FormData {
         first_name: string;
         last_name: string;
@@ -424,6 +423,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
                             setShowCongratulations(false);
                             router.push(`/`);
                         }}
+                        isAttending={formData.isAttending === 'yes' ? true : false}
                     />
                 )}
             </div>
