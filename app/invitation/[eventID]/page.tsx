@@ -312,7 +312,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
                         onClick={handleAddPlusOne}
                         className="bg-indigo-600 text-white px-4 py-2 text-[16px] rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
                       >
-                        Add Another guest
+                        Add guest
                       </button>
                     </div>
                   )}
