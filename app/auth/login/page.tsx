@@ -79,7 +79,7 @@ const Login = () => {
           >
              <span className="font-semibold">Email</span>
             <input
-              type="text"
+              type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
