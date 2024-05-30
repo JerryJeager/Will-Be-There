@@ -12,4 +12,3 @@
 
 - [ ] This PR has been connected to the issue number
 - [ ] PR name follows the pattern **Resolves [Ticket Name]**
-- [ ] PR Includes Post collection and api documentation for Api changes
