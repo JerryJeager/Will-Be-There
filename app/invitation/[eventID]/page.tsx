@@ -4,12 +4,14 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import CongratulationsMessage from "./CongratulationsMessage";
+import ButtonSpinner from "../../../src/components/auth/ButtonSpinner";
 
 export default function Page({ params }: { params: { eventID: string } }) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const extras = searchParams.get("extras");
   const [showCongratulations, setShowCongratulations] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   interface FormData {
     first_name: string;
@@ -92,6 +94,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setIsLoading(true)
 
     if (formData.status === "attending") {
       if (formData.plus_ones.length === 0) {
@@ -113,6 +116,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
       console.error("Error submitting form data:", error);
       alert("Your email has already been added, check your mail.");
     } finally {
+        setIsLoading(false)
         setShowCongratulations(true);
     }
   };
@@ -348,7 +352,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
               type="submit"
               className="bg-[#0D35FB] text-white px-4 py-2 rounded-md hover:bg-[#0D35FB] focus:outline-none focus:ring-2 focus:ring-[#0D35FB]focus:ring-opacity-50"
             >
-              Submit
+              {isLoading ? <ButtonSpinner /> : 'Submit'}
             </button>
           </div>
         </form>
