@@ -5,7 +5,7 @@ import Image from 'next/image'
 import image from '../../../public/assets/Rectangle 5.png'
 import Link from 'next/link'
 
-export const Overview1 = () => {
+export const Overview1: React.FC = () => {
   return (
     <section>
         <Wrapper>

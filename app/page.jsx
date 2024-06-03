@@ -8,7 +8,7 @@ import { Pricing } from "../src/components/sections/Pricing";
 import { Faq } from "../src/components/sections/Faq";
 import { Footer } from "../src/components/Footer";
 import { Planning } from "../src/components/sections/Planning";
-import { NumberMetrics } from "../src/components/sections/NumberMetrics";
+import { NumberMetrics } from "../src/components/sections/NumberMetrics.jsx";
 
 export default function Home() {
   return (

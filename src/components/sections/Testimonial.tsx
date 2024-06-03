@@ -4,7 +4,15 @@ import Image from 'next/image'
 import arrowRight from "../../../public/assets/Arrow circle left.png"
 import arrowLeft from "../../../public/assets/Arrow circle right.png"
 
-export const testimonialData = [ 
+interface TestimonialDataItem {
+    id: number;
+    comment: string;
+    name: string;
+    occupation: string;
+    bgColor?: string;
+  }
+
+export const testimonialData: TestimonialDataItem[] = [ 
     {
         id: 1,
         comment: "Since using Will Be There, the quality of our guest invite process has improved drastically. The user-friendly interface allows even non-designers like myself to create professional-looking Invite. It's a fantastic tool for any business looking to improve their Event process.",
@@ -26,7 +34,7 @@ export const testimonialData = [
     }
 ]
 
-export const Testimonial = () => {
+export const Testimonial: React.FC = () => {
 
      // set sliderLeft
      const slideLeft = () =>{

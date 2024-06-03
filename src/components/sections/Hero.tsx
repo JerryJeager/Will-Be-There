@@ -5,7 +5,7 @@ import heroImage from "../../../public/assets/heroImage.png";
 import Image from "next/image";
 import Link from "next/link";
 
-export const Hero = () => {
+export const Hero: React.FC = () => {
   return (
     <section className="mt-24">
       <Wrapper>

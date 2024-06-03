@@ -5,10 +5,17 @@ import icon3 from "../../../public/assets/icon3.png";
 import icon4 from "../../../public/assets/icon4.png";
 import icon5 from "../../../public/assets/icon5.png";
 import icon6 from "../../../public/assets/icon6.png";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Wrapper } from "../../shared/Wrapper";
 
-export const Featuredata = [
+interface FeatureItem {
+  id: number;
+  icon: StaticImageData;
+  title: string;
+  text: string;
+}
+
+const Featuredata: FeatureItem[] = [
   {
     id: 1,
     icon: icon1,
@@ -47,7 +54,7 @@ export const Featuredata = [
   },
 ];
 
-export const Features = () => {
+export const Features: React.FC = () => {
   return (
     <section id="feature" className="">
       <div className="bg-[#0D154B] flex flex-col justify-center items-center p-5 pb-12">

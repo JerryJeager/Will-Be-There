@@ -3,14 +3,20 @@ import React, { useState } from "react";
 import { Wrapper } from "../../shared/Wrapper";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-export const FaqData = [
+
+interface FaqDataItem {
+  id: number;
+  title: string;
+  details: string;
+}
+const FaqData : FaqDataItem[] = [
   {
     id: 1,
     title: "What Is Will Be There About",
     details: "Will Be There is standard online event planning, guest tracking and management platform making it easy for event organizers to  manage their guest in real time.",
   },
   {
-    id: 2,
+    id: 2,  
     title: "Is it free to use?",
     details: "Will Be There has different pricing structure that fits individual peculiar needs beginning from the free plan to basic and premium.",
   },
@@ -36,10 +42,10 @@ export const FaqData = [
   },
 ];
 
-export const Faq = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const Faq: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<number | false>(false);
 
-  const handleToggle = (index) => {
+  const handleToggle = (index: number) => {
     isOpen === index ? setIsOpen(false) : setIsOpen(index);
   };
 
