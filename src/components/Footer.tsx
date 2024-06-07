@@ -7,7 +7,7 @@ import Link from "next/link";
 import logo from "../../public/assets/footerLogo.png";
 
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   return (
     <section className="flex flex-col items-start justify-center gap-7 h-auto bg-[#0B195B] text-white py-8 md:px-10 px-5 ">
       <div className="flex flex-wrap items-center w-full h-full justify-between space-y-4 ">

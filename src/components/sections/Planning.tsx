@@ -5,7 +5,7 @@ import linkIcon from "../../../public/assets/link.png";
 import Image from "next/image";
 import Link from "next/link";
 
-export const Planning = () => {
+export const Planning: React.FC = () => {
   return (
     <div>
       <Wrapper>

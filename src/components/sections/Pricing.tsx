@@ -1,11 +1,26 @@
 import React from 'react'
 import { Wrapper } from '../../shared/Wrapper'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import icon from '../../../public/assets/Vector.png'
 import icon2 from '../../../public/assets/Vector2.png'
 
+interface PricingItem {
+    id: number;
+    title: string;
+    price: string;
+    duration: string;
+    description: string;
+    offer1: string;
+    offer2: string;
+    offer3: string;
+    button: string;
+    bgColor?: string;
+    color?: string;
+    color2?: string;
+    icon?: StaticImageData;
+  }
 
-export const PricingData = [
+export const PricingData: PricingItem[] = [
     {
         id: 1,
         title: 'Free',
