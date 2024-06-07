@@ -6,6 +6,7 @@ import useFormStore from "../../../../src/store/useFormStore";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useState } from "react";
+import ShareLink from "../../../../src/components/dashboard/ShareLink";
 
 export default function StepThree() {
   const [generatedUrl, setGeneratedUrl] = useState("");
@@ -93,6 +94,7 @@ export default function StepThree() {
             />
 
             {generatedUrl && (
+              <>
               <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-y-4 md:gap-y-0 md:gap-x-6">
                 <div className="text-center md:text-left">
                   Copy this link and send to your guests:
@@ -115,6 +117,8 @@ export default function StepThree() {
                   )}
                 </div>
               </div>
+              <ShareLink url={generatedUrl}/>
+              </>
             )}
 
             <div className="grid">
