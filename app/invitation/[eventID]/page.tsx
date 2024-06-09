@@ -122,8 +122,8 @@ export default function Page({ params }: { params: { eventID: string } }) {
     }
 
     try {
-      let response 
-      if (guest != ""){
+      let response
+      if (guest == ""){
         response = await axios.post(
         `https://will-be-there.onrender.com/api/v1/invitation/guest?${params.eventID}`,
         formData
