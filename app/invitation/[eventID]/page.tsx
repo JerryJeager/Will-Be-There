@@ -40,7 +40,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
   const getUserEmail = async () => {
     try {
       const response = await axios.get(
-        `https://will-be-there.onrender.com/api/v1/guest/${guest}`
+        `https://will-be-there.onrender.com/api/v1/invitation/guest/${guest}`
       );
       setEmail(response.data.email);
     } catch (error) {
