@@ -10,8 +10,10 @@ export default function Page({ params }: { params: { eventID: string } }) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const extras = searchParams.get("extras");
+  const guest = searchParams.get("guest");
   const [showCongratulations, setShowCongratulations] = useState(false);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
 
   interface FormData {
     first_name: string;
@@ -21,7 +23,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
     plus_ones?: { name: string }[];
     event_id: string;
     message: string;
-    extras: "yes" | "no"
+    extras: "yes" | "no";
   }
   const [formData, setFormData] = useState<FormData>({
     first_name: "",
@@ -31,9 +33,20 @@ export default function Page({ params }: { params: { eventID: string } }) {
     plus_ones: [],
     event_id: params.eventID,
     message: "",
-    extras: "no"
+    extras: "no",
   });
   const [eventData, setEventData] = useState<any>({});
+
+  const getUserEmail = async () => {
+    try {
+      const response = await axios.get(
+        `https://will-be-there.onrender.com/api/v1/invitation/guest/${guest}`
+      );
+      setEmail(response.data.email);
+    } catch (error) {
+      console.error("Error fetching event data:", error);
+    }
+  };
 
   useEffect(() => {
     const fetchEventData = async () => {
@@ -48,6 +61,9 @@ export default function Page({ params }: { params: { eventID: string } }) {
     };
 
     fetchEventData();
+    if (guest != "") {
+      getUserEmail();
+    }
   }, [params.eventID]);
 
   const handleChange = (
@@ -94,7 +110,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    setIsLoading(true)
+    setIsLoading(true);
 
     if (formData.status === "attending") {
       if (formData.plus_ones.length === 0) {
@@ -106,18 +122,25 @@ export default function Page({ params }: { params: { eventID: string } }) {
     }
 
     try {
-      const response = await axios.post(
+      let response
+      if (guest == ""){
+        response = await axios.post(
         `https://will-be-there.onrender.com/api/v1/invitation/guest?${params.eventID}`,
         formData
       );
+      }else{
+        response = await axios.put(
+        `https://will-be-there.onrender.com/api/v1/invitation/guest/${guest}`,
+        formData)
+      }
 
       console.log("Form data submitted successfully");
     } catch (error) {
       console.error("Error submitting form data:", error);
       alert("Your email has already been added, check your mail.");
     } finally {
-        setIsLoading(false)
-        setShowCongratulations(true);
+      setIsLoading(false);
+      setShowCongratulations(true);
     }
   };
 
@@ -200,7 +223,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
                 id="email"
                 name="email"
                 type="email"
-                value={formData.email}
+                value={email ? email : formData.email}
                 onChange={handleChange}
                 required
                 autoComplete="email"
@@ -283,7 +306,8 @@ export default function Page({ params }: { params: { eventID: string } }) {
 
             {extras &&
               Number(extras) !== 0 &&
-              formData.status === "attending" && formData.extras === "yes" && (
+              formData.status === "attending" &&
+              formData.extras === "yes" && (
                 <div>
                   <h2 className="text-base font-semibold text-gray-900">
                     Additional Guest Details
@@ -352,7 +376,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
               type="submit"
               className="bg-[#0D35FB] text-white px-4 py-2 rounded-md hover:bg-[#0D35FB] focus:outline-none focus:ring-2 focus:ring-[#0D35FB]focus:ring-opacity-50"
             >
-              {isLoading ? <ButtonSpinner /> : 'Submit'}
+              {isLoading ? <ButtonSpinner /> : "Submit"}
             </button>
           </div>
         </form>
@@ -362,7 +386,7 @@ export default function Page({ params }: { params: { eventID: string } }) {
               setShowCongratulations(false);
               router.push(`/`);
             }}
-            isAttending={formData.status === 'attending' ? true : false}
+            isAttending={formData.status === "attending" ? true : false}
           />
         )}
       </div>

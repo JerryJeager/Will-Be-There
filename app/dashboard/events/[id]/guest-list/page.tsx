@@ -27,6 +27,7 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
     const [guests, setGuests] = useState([]);
     const [event, setEvent] = useState<Event>();
     const [isLoading, setIsLoading] = useState(false)
+    const [accToken, setAccToken] = useState("")
 
     const getEventByID = async (id: string, url: string, token: string) => {
         try {
@@ -68,6 +69,7 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
 
     useEffect(() => {
         const token = sessionStorage.getItem('token');
+        setAccToken(token)
         if (!token) {
             router.push('/auth/login');
         }
@@ -92,7 +94,7 @@ export default function GuestListPage({ params }: { params: { id: string } }) {
 
             <section className='space-y-6'>
                 <div className='flex justify-between items-center md:flex-nowrap flex-wrap md:gap-y-0 gap-y-5'>
-                    <AddNewGuest />
+                    {event && <AddNewGuest eventID={event.id} accToken={accToken}/>}
                     <Searchbar />
                 </div>
 
