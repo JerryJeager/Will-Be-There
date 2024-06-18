@@ -1,4 +1,4 @@
-type Guests = {
+export type Guests = {
   id: string;
   created_at: string;
   first_name: string;
