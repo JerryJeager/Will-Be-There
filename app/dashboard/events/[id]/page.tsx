@@ -5,6 +5,7 @@ import { AttendanceStatusCard } from "../../../../src/components/dashboard";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import GuestListTable from "../../../../src/components/dashboard/GuestListTable";
+import { Guests } from "../../../../src/types/guests";
 
 const url = "https://will-be-there.onrender.com";
 
