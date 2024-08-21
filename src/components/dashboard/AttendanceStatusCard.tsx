@@ -1,20 +1,21 @@
 import {
-  IoCheckmarkCircleOutline,
-  IoPersonAddOutline,
-  IoCloseCircleOutline,
-} from "react-icons/io5";
-import CardColumn from "./CardColumn";
+    IoCheckmarkCircleOutline,
+    IoPersonAddOutline,
+    IoCloseCircleOutline
+} from 'react-icons/io5';
+import { CardColumn } from './CardColumn';
+import React from 'react';
+import { Guests } from "../../../src/types/guests";
 
-export default function AttendanceStatusCard({ guests }) {
-  // Calculate the total number of guests, including plus ones
-  console.log(guests);
-  const totalGuests = guests.reduce((total, guest) => {
-    if (guest.plus_ones) {
-      return total + guest.plus_ones?.length + 1;
-    } else {
-      return total + 1;
-    }
-  }, 0);
+interface AttendanceStatusCardProps {
+    guests: Guests[];
+}
+export const AttendanceStatusCard: React.FC<AttendanceStatusCardProps> = ({ guests }) => {
+    // Calculate the total number of guests, including plus ones
+    const totalGuests = guests.reduce(
+        (total, guest) => total + guest.plus_ones.length + 1,
+        0
+    );
 
   // Calculate the number of guests in each status
   const attending = guests.filter(

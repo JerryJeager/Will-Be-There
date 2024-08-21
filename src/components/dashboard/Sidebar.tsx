@@ -10,21 +10,34 @@ import logoutIcon from '../../../public/assets/logout-02.png';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
+interface SidebarLinkProps {
+    href: string;
+    label: string;
+    icon: JSX.Element;
+    isActive?: boolean;
+    isDisplayed?: boolean;
+    onClick?: () => void;
+}
+
 /**
  * Used for the main dashboard
  * @returns {JSX.Element} - The completed Sidebar component
  */
-export default function Sidebar() {
-    const [eventID, setEventID] = useState('');
+export default function Sidebar(): JSX.Element {
+    const [eventID, setEventID] = useState<string>('');
+    
     useEffect(() => {
         const id = sessionStorage.getItem('event_id');
-        setEventID(id);
-    });
+        if (id) {
+            setEventID(id);
+        }
+    }, []);
+
     const pathname = usePathname();
 
     const iconSize = 24;
 
-    const asideLinks = [
+    const asideLinks: SidebarLinkProps[] = [
         {
             href: '/dashboard',
             label: 'Home',
@@ -38,9 +51,7 @@ export default function Sidebar() {
         {
             href: '#',
             label: 'Invitations',
-            icon: (
-                <Image src={invitationIcon} alt='icon' height={20} width={20} />
-            )
+            icon: <Image src={invitationIcon} alt='icon' height={20} width={20} />
         },
         {
             href: '#',
@@ -57,29 +68,24 @@ export default function Sidebar() {
     return (
         <>
             <aside
-                className={`bg-[#0B195B] text-white col-span-2 w-10  p-8  ${
+                className={`bg-[#0B195B] text-white col-span-2 w-10 p-8 ${
                     !pathname.startsWith('/dashboard/events/')
                         ? 'hidden md:flex flex-col md:col-span-2 lg:w-80'
                         : 'hidden md:flex flex-col md:col-span-1'
-                }  items-center transition-all ease-in `}
+                } items-center transition-all ease-in `}
             >
-                <div className='flex flex-col justify-between h-4/5 '>
-                    <ul className='space-y-4 '>
-                        {asideLinks &&
-                            asideLinks.map((link) => (
-                                <SidebarLink
-                                    key={link.label}
-                                    href={link.href}
-                                    label={link.label}
-                                    icon={link.icon}
-                                    isActive={pathname.endsWith(link.href)}
-                                    isDisplayed={
-                                        !pathname.startsWith(
-                                            '/dashboard/events/'
-                                        )
-                                    }
-                                />
-                            ))}
+                <div className='flex flex-col justify-between h-4/5'>
+                    <ul className='space-y-4'>
+                        {asideLinks.map((link) => (
+                            <SidebarLink
+                                key={link.label}
+                                href={link.href}
+                                label={link.label}
+                                icon={link.icon}
+                                isActive={pathname.endsWith(link.href)}
+                                isDisplayed={!pathname.startsWith('/dashboard/events/')}
+                            />
+                        ))}
                     </ul>
                     <ul>
                         <SidebarLink
@@ -88,17 +94,8 @@ export default function Sidebar() {
                                 sessionStorage.clear();
                             }}
                             label='Logout'
-                            icon={
-                                <Image
-                                    src={logoutIcon}
-                                    alt='icon'
-                                    height={20}
-                                    width={20}
-                                />
-                            }
-                            isDisplayed={
-                                !pathname.startsWith('/dashboard/events/')
-                            }
+                            icon={<Image src={logoutIcon} alt='icon' height={20} width={20} />}
+                            isDisplayed={!pathname.startsWith('/dashboard/events/')}
                         />
                     </ul>
                 </div>

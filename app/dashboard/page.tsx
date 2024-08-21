@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { CreateEventButton, EventCard } from '../../src/components/dashboard';
-import ImageUpload from '../../src/components/dashboard/ImageUpload';
+import {ImageUpload } from '../../src/components/dashboard/ImageUpload';
 
 
 interface User {
@@ -25,7 +25,7 @@ const Dashboard = () => {
     const [isLoading, setIsLoading] = useState(false)
     const token = sessionStorage.getItem('token')
     const [image, setImage] = useState(null);
-    const [imageUrl, setImageUrl] = useState('')
+    const [imageUrl, setImageUrl] = useState<string>('')
     const id = sessionStorage.getItem('event_id')
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 

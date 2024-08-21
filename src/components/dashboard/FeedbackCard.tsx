@@ -1,4 +1,21 @@
-export default function FeedbackCard({ guests }) {
+import React from "react";
+
+
+interface Guest {
+    message: string;
+    id: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    status: "pending" | "attending" | "rejected" | "approved";
+    plus_ones?: { name: string }[];
+  }
+
+interface FeedbackCardProps {
+    guests: Guest;
+}
+
+export const FeedbackCard: React.FC<FeedbackCardProps> = ({ guests }) => {
     const { message, first_name, last_name } = guests;
 
     return (

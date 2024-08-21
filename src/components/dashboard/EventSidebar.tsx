@@ -1,13 +1,17 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import EventSidebarLink from '../../components/dashboard/EventSidebarLink';
+import { EventSidebarLink } from './EventSidebarLink';
+import React from 'react';
 
-export default function EventSidebar({ eventId }) {
+interface EventSidebarProps {
+    eventId: string;
+}
+export const EventSidebar: React.FC<EventSidebarProps> = ({ eventId }) => {
     const path = `/dashboard/events/${eventId}`;
 
     const pathname = usePathname();
 
-    const eventSidebarMenuLinks = [
+    const eventSidebarMenuLinks: { href: string; label: string }[] = [
         { href: `${path}`, label: 'Dashboard' },
         { href: `${path}/guest-list`, label: 'Guest List' },
         { href: `${path}/rsvp-tracking`, label: 'RSVP Tracking' },

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import FeedbackCard from '../../../../../src/components/dashboard/FeedbackCard';
+import {FeedbackCard} from '../../../../../src/components/dashboard/FeedbackCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 

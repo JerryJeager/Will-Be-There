@@ -3,8 +3,20 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import { IoTrashBin } from 'react-icons/io5';
 const url = 'https://will-be-there.onrender.com';
+interface Guest {
+    id: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    status: "pending" | "attending" | "rejected" | "approved";
+    plus_ones?: { name: string }[];
+  }
+interface GuestListTableProps {
+    guest: Guest;
+    index: number;
+}
 
-export default function GuestListTable({ guest, index }) {
+export const GuestListTable: React.FC<GuestListTableProps> = ({ guest, index }) => {
     const { id, first_name, last_name, email, status } = guest;
     const router = useRouter();
     const token = sessionStorage.getItem('token');
@@ -17,7 +29,7 @@ export default function GuestListTable({ guest, index }) {
 
     const matching = attendance.find((badge) => badge.label === status);
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (id: string) => {
         try {
             const response = await axios.delete(
                 `${url}/api/v1/invitation/guest/${id}`,

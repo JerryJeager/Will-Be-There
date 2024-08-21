@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import React from 'react';
 
-export default function CreateEventButton() {
+export const CreateEventButton: React.FC = () => {
     return (
         <Link
             href='/dashboard/onboarding/step-one'
@@ -9,4 +10,4 @@ export default function CreateEventButton() {
             Create Event
         </Link>
     );
-}
+};

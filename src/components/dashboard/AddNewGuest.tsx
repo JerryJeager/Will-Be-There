@@ -2,6 +2,7 @@ import React from "react";
 import { addGuestByEmail } from "../../actions/addGuestByEmail";
 import { IoAdd } from "react-icons/io5";
 
+
 export default function AddNewGuest({ eventID, accToken }: { eventID: string, accToken: string }) {
   return (
     <form action={addGuestByEmail}>

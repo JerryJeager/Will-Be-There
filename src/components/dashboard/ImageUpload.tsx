@@ -1,38 +1,49 @@
 
-import React, { useRef, useState } from 'react';
+import React, { FormEvent, useRef, useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 
-export default function ImageUpload({ open, setOpen, handleSubmit, image, imageUrl, setImage, setImageUrl}) {
-    const [imagePreview, setImagePreview] = useState(null);
-   const inputRef = useRef()
+interface ImageUploadProps {
+    open: boolean;
+    setOpen: (open: boolean) => void;
+    handleSubmit: (e: FormEvent) => void;
+    image: File | null;
+    imageUrl: string | null;
+    setImage: (image: File | null) => void;
+    setImageUrl: (url: string | null) => void;
+}
+
+
+export const ImageUpload: React.FC<ImageUploadProps> = ({ open, setOpen, handleSubmit, image, imageUrl, setImage, setImageUrl}) => {
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
   
-    const handleDrop = (e) => {
+    const handleDrop = (e: React.DragEvent<HTMLLabelElement>) => {
         e.preventDefault();
         const file = e.dataTransfer.files[0];
         setImage(file)
         handleFile(file);
     };
 
-    const handleFileSelect = (e) => {
+    const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files[0];
         setImage(file)
         handleFile(file);
     };
 
-    const handleFile = (file) => {
+    const handleFile = (file: File) => {
         let reader = new FileReader()
         let formData = new FormData()
         // setImagePreview(reader);
         reader.onload = () => {
-            setImagePreview(reader.result);
+            setImagePreview(reader.result as string);
             // handleImageUpload(reader.result);
         };
         reader.readAsDataURL(file);
         formData.append('file', file)
-        setImageUrl(formData)
+        //setImageUrl(formData)
     };
 
-    const preventDefault = (e) => {
+    const preventDefault = (e: React.DragEvent | React.MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
     };

@@ -1,6 +1,21 @@
+import React from 'react';
 import { IoEllipsisVertical } from 'react-icons/io5';
 
-export default function GuestSummary({ guest, index }) {
+interface Guest {
+    id: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    status: "pending" | "attending" | "rejected" | "approved";
+    plus_ones?: { name: string }[];
+  }
+
+interface GuestSummaryProps {
+    guest: Guest;
+    index: number;
+}
+
+export const GuestSummary: React.FC<GuestSummaryProps> = ({ guest, index }) => {
     const { id, first_name, last_name, email, status, plus_ones } = guest;
 
     const attendanceBadges = [

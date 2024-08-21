@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import EventSidebar from '../../../../src/components/dashboard/EventSidebar';
+import {EventSidebar} from '../../../../src/components/dashboard/EventSidebar';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [eventID, setEventID] = useState('');

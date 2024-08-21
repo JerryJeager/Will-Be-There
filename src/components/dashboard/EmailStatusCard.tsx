@@ -1,7 +1,18 @@
 import { IoCheckmark, IoClose, IoAlert } from "react-icons/io5";
-import CardColumn from './CardColumn';
+import { CardColumn } from "./CardColumn";
+import React from 'react';
 
-export default function EmailStatusCard({ status }) {
+interface EmailStatus {
+    sent: number;
+    notSent: number;
+    pending: number;
+}
+
+interface EmailStatusCardProps {
+    status: EmailStatus;
+}
+
+export const EmailStatusCard: React.FC<EmailStatusCardProps> = ({ status }) => {
 
     const { sent, notSent, pending } = status;
 
@@ -22,4 +33,4 @@ export default function EmailStatusCard({ status }) {
             <div className="w-full h-2 rounded-lg" style={{ background: `linear-gradient(to right, rgba(0, 113, 5, 1) ${sentPercentage}%, rgba(238, 150, 17, 1) ${sentPercentage}% ${sentPercentage + notSentPercentage}%, rgba(186, 26, 26, 1) ${sentPercentage + notSentPercentage}% 100%)` }}></div>
         </div>
     )
-}
+};

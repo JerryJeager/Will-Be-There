@@ -1,14 +1,16 @@
 "use client"
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import React from "react";
 
-export default function EventSidebarLink({ ...props }) {
+interface EventSidebarLinkProps {
+    href: string;
+    label: string;
+    isActive: boolean;
+}
+
+export const EventSidebarLink: React.FC<EventSidebarLinkProps> = ({ href, label, isActive }) => {
     const pathname = usePathname();
-
-
-
-  const { href, label, isActive } = props;
-
 
     return (
         <li>

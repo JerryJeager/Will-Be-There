@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent, DragEvent } from 'react';
 import { Button } from '../../shared/Button';
 import { IoClose } from 'react-icons/io5';
 
 // Reusable TextInput component
-const TextInput = ({ label, id, value, onChange, width, placeholder, readOnly }) => {
+interface TextInputProps {
+    label: string;
+    id: string;
+    value: string;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    width: string;
+    placeholder?: string;
+    readOnly?: boolean;
+}
+
+const TextInput: React.FC<TextInputProps> = ({ label, id, value, onChange, width, placeholder, readOnly }) => {
     return (
         <div className="flex flex-col">
             <label className="text-[#1f1f1f] text-sm" htmlFor={id}>{label}</label>
@@ -22,7 +32,16 @@ const TextInput = ({ label, id, value, onChange, width, placeholder, readOnly })
 };
 
 // Reusable DateInput component
-const DateInput = ({ label, id, value, onChange, width, placeholder }) => {
+interface DateInputProps {
+    label: string;
+    id: string;
+    value: string;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    width: string;
+    placeholder?: string;
+}
+
+const DateInput: React.FC<DateInputProps> = ({ label, id, value, onChange, width, placeholder }) => {
     return (
         <div className="flex flex-col">
             <label className="text-[#1f1f1f] text-sm" htmlFor={id}>{label}</label>
@@ -40,7 +59,16 @@ const DateInput = ({ label, id, value, onChange, width, placeholder }) => {
 };
 
 // Reusable TimeInput component
-const TimeInput = ({ label, id, value, onChange, width, placeholder }) => {
+interface TimeInputProps {
+    label: string;
+    id: string;
+    value: string;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    width: string;
+    placeholder?: string;
+}
+
+const TimeInput: React.FC<TimeInputProps> = ({ label, id, value, onChange, width, placeholder }) => {
     return (
         <div className="flex flex-col">
             <label className="text-[#1f1f1f] placeholder:text-[#1f1f1f] text-sm" htmlFor={id}>{label}</label>
@@ -57,10 +85,24 @@ const TimeInput = ({ label, id, value, onChange, width, placeholder }) => {
     );
 };
 
-export default function CreateEventForm({ open, handleClose }) {
-
-    const [step, setStep] = useState(2);
-    const [ eventLink, setEventLink ] = useState('some random copy');
+interface CreateEventFormProps {
+    open: boolean;
+    handleClose: () => void;
+}
+interface FormData {
+    eventName: string;
+    eventStartDate: string;
+    eventStartTime: string;
+    eventEndDate: string;
+    eventEndTime: string;
+    timeZone: string;
+    eventLocation: string;
+    eventDescription: string;
+    eventImage: string;
+}
+const CreateEventForm: React.FC<CreateEventFormProps> = ({ open, handleClose }) => {
+    const [step, setStep] = useState<number>(2);
+    const [eventLink, setEventLink] = useState<string>('some random copy');
     const [formData, setFormData] = useState({
         eventName: '',
         eventStartDate: '',
@@ -73,62 +115,80 @@ export default function CreateEventForm({ open, handleClose }) {
         eventImage: ''
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(step === 1) {
+        if (step === 1) {
             setStep(2);
+
         } else if(step === 2) {
             setStep(3);
 
-            //set the eventLink state to res.event_link??
-        } 
+            // set the eventLink state to res.event_link??
+        }
     };
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-
         setFormData({
             ...formData,
             [name]: value
         });
     };
 
-    const handleImageUpload = (imageData) => {
+    const handleImageUpload = (imageData: string) => {
         setFormData({
             ...formData,
             eventImage: imageData
         });
     };
-    
-    return(
+
+    return (
         <div className={`${open ? 'block' : 'hidden'} w-full h-screen fixed top-0 left-0 bg-black/20 z-[999]`}>
             <div className="flex justify-center items-center h-screen">
                 <div className="p-8 bg-white rounded-lg shadow-lg">
                     <div>
                         <button className='text-[#9A9A9A] hover:text-[#1f1f1f]' onClick={handleClose}><IoClose /></button>
                     </div>
-                    {step === 1 && (<StepOne formData={formData} handleSubmit={handleSubmit} handleInputChange={handleInputChange} />)}
-                    {step === 2 && (<StepTwo formData={formData} handleSubmit={handleSubmit} handleImageUpload={handleImageUpload} /> )}
-                    {step === 3 && (<StepThree eventLink={eventLink} />)}
+                    {step === 1 && (
+                        <StepOne
+                            formData={formData}
+                            handleSubmit={handleSubmit}
+                            handleInputChange={handleInputChange}
+                        />
+                    )}
+                    {step === 2 && (
+                        <StepTwo
+                            handleSubmit={handleSubmit}
+                            handleImageUpload={handleImageUpload}
+                        />
+                    )}
+                    {step === 3 && (
+                        <StepThree eventLink={eventLink} />
+                    )}
                 </div>
             </div>
         </div>
-    )
+    );
 };
 
-function StepOne({ formData, handleSubmit, handleInputChange }) {
-    const [errorMessage, setErrorMessage] = useState('');
+interface StepOneProps {
+    formData: FormData;
+    handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+    handleInputChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+}
 
-    const validateForm = () => {
+const StepOne: React.FC<StepOneProps> = ({ formData, handleSubmit, handleInputChange }) => {
+    const [errorMessage, setErrorMessage] = useState<string>('');
+
+    const validateForm = (): boolean => {
         if (!formData.eventName || !formData.eventStartDate || !formData.eventStartTime || !formData.eventEndDate || !formData.eventEndTime || !formData.timeZone || !formData.eventLocation || !formData.eventDescription) {
             setErrorMessage('Please fill in all fields');
             return false;
         }
-        
         return true;
     };
 
-    const handleSubmitForm = (e) => {
+    const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateForm()) {
             handleSubmit(e);
@@ -234,38 +294,43 @@ function StepOne({ formData, handleSubmit, handleInputChange }) {
             </form>
         </>
     );
+};
+
+interface StepTwoProps {
+    handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+    handleImageUpload: (imageData: string) => void;
 }
 
-function StepTwo({ handleSubmit, handleImageUpload }) {
-    const [imagePreview, setImagePreview] = useState(null);
+const StepTwo: React.FC<StepTwoProps> = ({ handleSubmit, handleImageUpload }) => {
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-    const handleDrop = (e) => {
+    const handleDrop = (e: DragEvent<HTMLLabelElement>) => {
         e.preventDefault();
         const file = e.dataTransfer.files[0];
         handleFile(file);
     };
 
-    const handleFileSelect = (e) => {
-        const file = e.target.files[0];
+    const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files![0];
         handleFile(file);
     };
 
-    const handleFile = (file) => {
+    const handleFile = (file: File) => {
         const reader = new FileReader();
         reader.onload = () => {
-            setImagePreview(reader.result);
-            handleImageUpload(reader.result);
+            setImagePreview(reader.result as string);
+            handleImageUpload(reader.result as string);
         };
         reader.readAsDataURL(file);
     };
 
-    const preventDefault = (e) => {
+    const preventDefault = (e: DragEvent<HTMLLabelElement>) => {
         e.preventDefault();
         e.stopPropagation();
     };
 
     const handleClick = () => {
-        document.getElementById('eventImageInput').click();
+        document.getElementById('eventImageInput')?.click();
     };
 
     return (
@@ -300,11 +365,16 @@ function StepTwo({ handleSubmit, handleImageUpload }) {
             </form>
         </>
     );
+};
+
+interface StepThreeProps {
+    eventLink: string;
 }
 
-function StepThree({ eventLink }) {
-
-
+const StepThree: React.FC<StepThreeProps> = ({ eventLink }) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+       
+    };
     return (
         <div className='p-8'>
             <div className='text-center'>
@@ -312,14 +382,19 @@ function StepThree({ eventLink }) {
                 <p className='text-[#9A9A9A]'>Copy to share the link with your attendees</p>
             </div>
             <div className='flex flex-row'>
-                <TextInput value={eventLink} readOnly={true} />
-                <button onClick={() => {
-                    navigator.clipboard.writeText(eventLink)
-                }} type="submit" className="bg-[#0D35FB] hover:bg-blue-700 text-white text-sm p-4 rounded-md">
+                <TextInput value={eventLink} readOnly={true} width="w-full" label="" id="" onChange={handleInputChange}  />
+                <button
+                    onClick={() => {
+                        navigator.clipboard.writeText(eventLink);
+                    }}
+                    type="button"
+                    className="bg-[#0D35FB] hover:bg-blue-700 text-white text-sm p-4 rounded-md"
+                >
                     Copy
                 </button>
             </div>
         </div>
-    )
-}
+    );
+};
 
+export default CreateEventForm;
